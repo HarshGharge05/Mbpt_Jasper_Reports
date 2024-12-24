@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListOfLetout" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="742040a4-a4bf-4c6b-83e1-504c1c7d1782">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="total_records" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select plot_id, let_out_name, letout_category_id, 
+layout_type_id, prev_cust_code, status, remarks, 
+let_out_no, cess_building, cess_building_no, 
+allotment_status, from_date, to_date, sor, is_mbpt_prop,
+building_name, land_area, dept_id, struct_type_id, amount,
+is_higher_fee_applicable, percent_home_occupant, letout_from_date, 
+prev_letout_id, area, year_of_constr, home_occupation, non_home_occupation,
+billable_area, surrender_status from let_out]]>
+	</queryString>
+	<field name="plot_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="plot_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="let_out_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="let_out_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="let_out_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="letout_category_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="letout_category_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="letout_category_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="layout_type_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="layout_type_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="layout_type_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="prev_cust_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.label" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="let_out_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="let_out_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="let_out_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="cess_building" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="cess_building"/>
+		<property name="com.jaspersoft.studio.field.label" value="cess_building"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="cess_building_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cess_building_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="cess_building_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="allotment_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="allotment_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="allotment_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="from_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="to_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="sor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sor"/>
+		<property name="com.jaspersoft.studio.field.label" value="sor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="is_mbpt_prop" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="is_mbpt_prop"/>
+		<property name="com.jaspersoft.studio.field.label" value="is_mbpt_prop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="building_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="building_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="building_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="land_area" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="land_area"/>
+		<property name="com.jaspersoft.studio.field.label" value="land_area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="dept_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="dept_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="dept_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="struct_type_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="struct_type_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="struct_type_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="is_higher_fee_applicable" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="is_higher_fee_applicable"/>
+		<property name="com.jaspersoft.studio.field.label" value="is_higher_fee_applicable"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="percent_home_occupant" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="percent_home_occupant"/>
+		<property name="com.jaspersoft.studio.field.label" value="percent_home_occupant"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="letout_from_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="letout_from_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="letout_from_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="prev_letout_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prev_letout_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="prev_letout_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="area" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="area"/>
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="year_of_constr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="year_of_constr"/>
+		<property name="com.jaspersoft.studio.field.label" value="year_of_constr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="home_occupation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="home_occupation"/>
+		<property name="com.jaspersoft.studio.field.label" value="home_occupation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="non_home_occupation" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="non_home_occupation"/>
+		<property name="com.jaspersoft.studio.field.label" value="non_home_occupation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="billable_area" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="billable_area"/>
+		<property name="com.jaspersoft.studio.field.label" value="billable_area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="surrender_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="surrender_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="surrender_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="79892f15-131f-4e2b-bc62-f3374d8eb04a"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="250" y="0" width="259" height="39" uuid="0427c06a-6706-4713-9caf-8a07a66b30a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="30" width="350" height="30" uuid="ea51b816-c76f-4b21-85c4-2bde2eb73a5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="651" y="0" width="100" height="30" uuid="9b009c73-d0e1-479f-8976-72b26742faff"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="628" y="10" width="122" height="30" uuid="a120ed54-60bc-4f8b-a3be-578bf25c3d3b"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="750" height="1" uuid="092b7cce-e2a0-4750-a927-59d8165a601a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="330" y="80" width="119" height="30" uuid="2bd84da4-373e-405f-9096-e88ca5f4fbe4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Let Out Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="606" y="90" width="100" height="20" uuid="1d92b491-c16a-4409-8089-ac27c9541535"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[Total No Of Records :   ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="706" y="90" width="44" height="20" uuid="a62adddc-f7af-4a0b-a742-084033bc5c0e"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{total_records}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="75" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="750" height="2" uuid="eb4002be-ca05-44dc-a0dc-b07a9ec04c08">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="4" width="19" height="26" uuid="637119e6-e9f5-4167-b598-984b5c5993d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="4" width="30" height="26" uuid="ed11b3ae-1d6d-486d-b365-80922b9d968c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="2" width="80" height="30" uuid="3db625b5-5c4c-477b-bc26-8ed94577981d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Let Out Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="2" width="50" height="30" uuid="f2185d89-6008-42b3-b10c-a7b406db624f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Letout Category Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="2" width="40" height="30" uuid="073bf7bd-1f06-4961-95f0-a269eba03b16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Layout Type Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="2" width="60" height="30" uuid="7b706eef-29e8-4044-a2cc-30abb547d777"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previous Customer Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="2" width="40" height="30" uuid="670ace3f-5d56-423e-894c-e5aab3253c25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="2" width="100" height="30" uuid="b0e26bb0-17a9-47bd-b89d-a97b60c4f259"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="2" width="50" height="30" uuid="6f630da4-1007-4a84-bceb-ebfcd3399482"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Let Out no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="2" width="50" height="30" uuid="df247a8c-0754-4ce5-b485-e9d66ae8846b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cess building]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="2" width="50" height="30" uuid="04fcc88d-e6ca-42f1-b440-57f367d7ee73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cess Building no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="2" width="50" height="30" uuid="748988f1-39de-433e-92ee-76f76490efc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Allotment Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="635" y="2" width="30" height="30" uuid="75ffa3e4-01b6-4f54-a0cc-34aa4c8257e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="674" y="2" width="30" height="30" uuid="808fa3cb-c3d6-42a7-a64c-9da72101cb6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="704" y="2" width="47" height="30" uuid="f896b78d-7828-48d5-8af7-b981331af121"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="37" width="40" height="30" uuid="26a88a6a-ea4a-427e-bd07-8b8b42b679ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Is MBPT property]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="37" width="50" height="30" uuid="78718332-c189-4061-a8ba-596822757a12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Building name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="37" width="50" height="30" uuid="46752757-4337-4499-9ecb-917fdc79e68d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Land Area]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="37" width="50" height="30" uuid="c91b90d4-1966-4c4f-887f-44b56c9de6a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="37" width="40" height="30" uuid="2a47a1a3-99a0-48f0-8c09-ddaea25831a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Structure type Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="37" width="54" height="30" uuid="ea9f2c07-91b7-4f59-a20a-c80ffa42493e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="32" width="40" height="40" uuid="5a1031f6-0f8b-4768-a8e5-85e460144070"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Is Higher fee applicable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="38" width="59" height="28" uuid="ece45d30-5c58-466f-b9a2-6383d6940e55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Percent home occupant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="37" width="40" height="30" uuid="2d1e9d1e-0bbd-47a3-8c9a-05b4570884a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Letout from date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="37" width="50" height="30" uuid="4a08b363-d4b3-42cf-ab04-5b14e4c76145"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previous letout id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="37" width="50" height="30" uuid="34b757fb-879b-4ef5-acb8-c02e680874ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Area]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="37" width="50" height="30" uuid="cc85fa11-fadb-4f04-9b6f-90da125c7978"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Year of construction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="37" width="50" height="30" uuid="31af925d-bde3-4b1d-b8b9-ea83df95a81a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Home Occupation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="630" y="37" width="44" height="30" uuid="c46b047c-0cad-47e3-ae78-10a53a850b66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Non home occupation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="674" y="37" width="36" height="30" uuid="4b42fcbc-6491-4389-acbc-135e06efac4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Billable area]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="710" y="37" width="41" height="30" uuid="bf48ed94-9105-4135-8e86-1f3f9f5e8194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Surrender status]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="73" width="751" height="1" uuid="9f476448-37db-4343-ae95-83d4e02f8fe1">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="5" width="20" height="15" uuid="36ced8d6-c83b-43a3-b7c9-76059346a523"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="20" y="5" width="40" height="15" uuid="70700b4a-7a5b-4639-88fc-839bc812d6eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{plot_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="60" y="5" width="80" height="15" uuid="07ae8cab-9d0c-4cd3-a8f2-d8c9d2874464"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{let_out_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="145" y="5" width="40" height="15" uuid="fe32f2d9-0585-495d-89b1-a2a0619ac998"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{letout_category_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="195" y="5" width="30" height="15" uuid="ed0119eb-160f-4f1e-b467-a70250dbd769"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{layout_type_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="233" y="5" width="57" height="15" uuid="a94b5996-37d7-4fdc-862b-f790532bcb15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prev_cust_code}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="290" y="5" width="40" height="15" uuid="406003d5-ed3f-488a-b2b6-a120d4091c46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="330" y="5" width="100" height="15" uuid="f2b2919f-fc10-4e27-a008-6a06aa49813d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="430" y="5" width="50" height="15" uuid="aabe2c50-1dc9-4e54-b001-793dff94139e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{let_out_no}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="480" y="5" width="50" height="15" uuid="8d3f4b18-b83b-46ae-a436-aad8fed24896"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cess_building}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="530" y="5" width="50" height="15" uuid="ac6bd18f-9947-4632-b09c-b256600f19f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cess_building_no}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="580" y="5" width="50" height="15" uuid="890e0f2d-e3f0-49c7-b2f5-9fab6386b7f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{allotment_status}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="630" y="5" width="42" height="15" uuid="961ca241-743e-4930-9a05-c9fad23916ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{from_date}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="672" y="5" width="40" height="15" uuid="2caf5b69-5a0d-4dbb-8a17-49adb37935d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{to_date}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement isPrintRepeatedValues="false" x="712" y="5" width="39" height="15" uuid="84fad755-cefe-499f-9187-5666e870fa34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sor}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="7" y="24" width="40" height="15" uuid="38cca91a-3aa8-47ee-ace9-7f0846ba9c80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{is_mbpt_prop}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="47" y="24" width="50" height="15" uuid="44767443-d727-43a6-8228-a8395784f94c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{building_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="97" y="24" width="50" height="15" uuid="dd493144-acc8-42cd-a0ec-706d32477783"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{land_area}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="147" y="24" width="50" height="15" uuid="19c64801-64ba-458f-b861-892db0988aa3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dept_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="197" y="24" width="40" height="15" uuid="90ad7035-094c-4847-8049-8f2b3b6a9aac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{struct_type_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="237" y="24" width="60" height="15" uuid="a712aca8-e121-4417-a194-90153ce67821"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="297" y="24" width="40" height="15" uuid="c7ab02c4-a775-42ee-80bd-19551ac3c54c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{is_higher_fee_applicable}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="337" y="24" width="55" height="15" uuid="721eaa58-724e-42a9-ae05-84e21f3a710c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{percent_home_occupant}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="392" y="24" width="40" height="15" uuid="1f3a1758-5c7b-4323-af70-6e8f0a2a0c04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{letout_from_date}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="432" y="24" width="50" height="15" uuid="3aa8c29d-359c-4a69-9537-837f973ab5b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prev_letout_id}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="482" y="24" width="50" height="15" uuid="dc424dff-ee4a-4231-bceb-837f0ec16d07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="532" y="24" width="50" height="15" uuid="064b86a3-4548-4018-9863-b30488cb7f31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year_of_constr}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="582" y="24" width="50" height="15" uuid="0ded9294-ad14-4f8a-9e3b-14696275029f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{home_occupation}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="632" y="24" width="40" height="15" uuid="fc749524-3540-4d42-813c-bc899ded9014"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{non_home_occupation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="672" y="24" width="40" height="15" uuid="6e606fdf-42dd-4282-a92c-0013f9fcb4b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{billable_area}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="712" y="24" width="40" height="15" uuid="6be6fdf3-6f1c-4665-8910-02e77e66e665"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{surrender_status}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="41" width="751" height="1" uuid="566b723d-f748-4734-8c83-b0ae62c4eb49">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="751" height="1" uuid="c7fe75a8-344d-47a8-8d48-bd7da01d4e90">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="280" y="1" width="100" height="18" uuid="d66710bc-7b8c-4700-bd76-a9193e2ef7e6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="380" y="1" width="100" height="18" uuid="4a03b9d9-e236-420c-a59b-9b82256ab903"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
