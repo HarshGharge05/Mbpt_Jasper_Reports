@@ -1,5 +1,7 @@
 package com.jasperRport;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.security.Timestamp;
@@ -26,6 +28,10 @@ import com.jasperRport.entities.EstateInformation;
 import com.jasperRport.entities.EstateInformationListOfPlots;
 import com.jasperRport.entities.EstateReportField;
 import com.jasperRport.entities.LetOut;
+import com.jasperRport.entities.PlotInformationMainReportFields;
+import com.jasperRport.entities.PlotInformationSubReportZoneTable;
+import com.jasperRport.entities.PlotInformationSubreportLetoutTable;
+import com.jasperRport.entities.PlotInformationSubreportMergeLetoutTable;
 import com.jasperRport.entities.PlotReportField;
 import com.jasperRport.entities.Unit;
 import com.jasperRport.entities.UnitInformation;
@@ -35,6 +41,7 @@ import com.jasperRport.entities.WayLeave;
 
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -760,119 +767,323 @@ public class App {
 			
 //			=====================================Estate Information=====================================
 			// getting only required fields from db and map it to Estate Information
-			List<Object[]> result = session.createSQLQuery("select e.estate_code, e.estate_name, e.estate_desc, e.update_timestamp, e.status,\r\n"
-					+ "u.unit_code, au.\"name\", d.div_name, er.remark \r\n"
-					+ "from estate e  \r\n"
-					+ "left join admin_users au on e.admin_id = au.admin_id\r\n"
-					+ "left join unit u on e.unit_id = u.unit_id \r\n"
-					+ "left join division d on u.div_id = d.div_id\r\n"
-					+ "left join estate_rmk er on e.estate_id = er.estate_id\r\n"
-					+ "where e.estate_id = 1").list();
+//			List<Object[]> result = session.createSQLQuery("select e.estate_code, e.estate_name, e.estate_desc, e.update_timestamp, e.status,\r\n"
+//					+ "u.unit_code, au.\"name\", d.div_name, er.remark \r\n"
+//					+ "from estate e  \r\n"
+//					+ "left join admin_users au on e.admin_id = au.admin_id\r\n"
+//					+ "left join unit u on e.unit_id = u.unit_id \r\n"
+//					+ "left join division d on u.div_id = d.div_id\r\n"
+//					+ "left join estate_rmk er on e.estate_id = er.estate_id\r\n"
+//					+ "where e.estate_id = 1").list();
+//			
+//			// getting only required fields from db and map it to EstateInformation_PlotsList
+//			List<Object[]> result_1= session.createSQLQuery("select p.rr_no, p.plot_code, p.customer_code, p.plot_desc, p.status from plot p \r\n"
+//					+ "left join estate e on p.estate_id = e.estate_id \r\n"
+//					+ "where p.estate_id = 1;").list();
+//			
+//			// mapping
+//			
+//			//Fields mapping
+//			List<EstateInformation> estateInformationFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				EstateInformation estateInformation = new EstateInformation();
+//				
+//				estateInformation.setEstate_code((String)row[0]);
+//				estateInformation.setEstate_name((String)row[1]);
+//				estateInformation.setEstate_desc((String)row[2]);
+//				estateInformation.setUpdate_timestamp(row[3].toString());
+////				estateInformation.setStatus((String)row[4]);
+//				if ("A".equals((String) row[4])) {
+//					estateInformation.setStatus("Approved");
+//				} else if ("RG".equals((String) row[4])) {
+//					estateInformation.setStatus("Registered");
+//				} else if ("RT".equals((String) row[4])) {
+//					estateInformation.setStatus("Return");
+//				} else {
+//					estateInformation.setStatus("Verified");
+//				}
+//				estateInformation.setUnit_code((String)row[5]);
+//				estateInformation.setName((String)row[6]);
+//				estateInformation.setDiv_name((String)row[7]);
+//				estateInformation.setRemark((String)row[8]);
+//				estateInformation.setCustodian("Estate Division");
+//				
+//				estateInformationFields.add(estateInformation);
+//			}
+//			
+//			//table fields mapping
+//			List<EstateInformationListOfPlots> estateInformationListOfPlotsFields = new ArrayList<>();
+//			
+//			for (Object[] row : result_1) {
+//				
+//				EstateInformationListOfPlots estateInformationListOfPlots = new EstateInformationListOfPlots();
+//				
+//				estateInformationListOfPlots.setRr_no((String)row[0]);
+//				estateInformationListOfPlots.setPlot_code((String)row[1]);
+//				estateInformationListOfPlots.setCustomer_code((String)row[2]);
+//				estateInformationListOfPlots.setPlot_desc((String)row[3]);
+////				estateInformationListOfPlots.setStatus((String)row[4]);
+//				if ("A".equals((String) row[4])) {
+//					estateInformationListOfPlots.setStatus("Approved");
+//				} else if ("RG".equals((String) row[4])) {
+//					estateInformationListOfPlots.setStatus("Registered");
+//				} else if ("RT".equals((String) row[4])) {
+//					estateInformationListOfPlots.setStatus("Return");
+//				} else {
+//					estateInformationListOfPlots.setStatus("Verified");
+//				}
+//				
+//				estateInformationListOfPlotsFields.add(estateInformationListOfPlots);
+//			}
+//			
+//			System.out.println("=====Fields Data=====");
+//			for (EstateInformation estateInformation : estateInformationFields) {
+//				System.out.println(estateInformation);
+//			}
+//			System.out.println("=====Table Data=====");
+//			for (EstateInformationListOfPlots estateInformationListOfPlots : estateInformationListOfPlotsFields) {
+//				System.out.println(estateInformationListOfPlots);
+//			}
+//			
+//			// jrxml file 
+//			InputStream inputStream = App.class.getResourceAsStream("/EstateInformation.jrxml");
+//			if(inputStream == null) {
+//				System.out.println("Report template not found");
+//			}
+//			
+//			// compiling jasper report
+//			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+//			
+//			// Creating a JRBeanCollectionDataSource for records
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(estateInformationFields);
+//			
+//			// Creating a JRBeanCollectionDataSource for table records
+//			JRBeanCollectionDataSource dataSource1 = new JRBeanCollectionDataSource(estateInformationListOfPlotsFields);
+//
+//			// parameters maping
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("EstateInformation_PlotsList", dataSource1);
+//			
+//			// Filling the report with data
+//			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+//			
+//			// Exporting the report to PDF
+//			String outputFile = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\EstateInformation.pdf";
+//			
+//			JRPdfExporter exporter = new JRPdfExporter();
+//			exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+//			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, outputFile);
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputFile);
 			
-			// getting only required fields from db and map it to EstateInformation_PlotsList
-			List<Object[]> result_1= session.createSQLQuery("select p.rr_no, p.plot_code, p.customer_code, p.plot_desc, p.status from plot p \r\n"
-					+ "left join estate e on p.estate_id = e.estate_id \r\n"
-					+ "where p.estate_id = 1;").list();
-			
-			// mapping
-			
-			//Fields mapping
-			List<EstateInformation> estateInformationFields = new ArrayList<>();
-			
-			for (Object[] row : result) {
+//			=====================================Plot Information=====================================
+			try {
 				
-				EstateInformation estateInformation = new EstateInformation();
+				// Compiling both main report and subreports
+				JasperReport mainReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/PlotsInformation.jrxml"));
+				JasperReport zonesTableSubReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/PlotInformation_ZonesForPlotsTable.jrxml"));
+				JasperReport mergeLetoutSubreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/PlotInformation_MergeLetouts.jrxml"));
+				JasperReport letoutSubreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/PlotInformation_ListOfLetouts.jrxml"));
 				
-				estateInformation.setEstate_code((String)row[0]);
-				estateInformation.setEstate_name((String)row[1]);
-				estateInformation.setEstate_desc((String)row[2]);
-				estateInformation.setUpdate_timestamp(row[3].toString());
-//				estateInformation.setStatus((String)row[4]);
-				if ("A".equals((String) row[4])) {
-					estateInformation.setStatus("Approved");
-				} else if ("RG".equals((String) row[4])) {
-					estateInformation.setStatus("Registered");
-				} else if ("RT".equals((String) row[4])) {
-					estateInformation.setStatus("Return");
-				} else {
-					estateInformation.setStatus("Verified");
+				if (zonesTableSubReport == null) {
+					System.out.println("Subreport Not found");
 				}
-				estateInformation.setUnit_code((String)row[5]);
-				estateInformation.setName((String)row[6]);
-				estateInformation.setDiv_name((String)row[7]);
-				estateInformation.setRemark((String)row[8]);
-				estateInformation.setCustodian("Estate Division");
 				
-				estateInformationFields.add(estateInformation);
-			}
-			
-			//table fields mapping
-			List<EstateInformationListOfPlots> estateInformationListOfPlotsFields = new ArrayList<>();
-			
-			for (Object[] row : result_1) {
+				String outputPath = "F:\\\\C-DAC Mumbai Internship\\\\8th week\\\\Generated_Reports\\\\PlotInformation.pdf";
 				
-				EstateInformationListOfPlots estateInformationListOfPlots = new EstateInformationListOfPlots();
+				// Mapping compiled zone table subreport in main report
+				Map<String, Object> parameters = new HashMap<String, Object>();
+				parameters.put("Subreport_Path_Zone", zonesTableSubReport);
 				
-				estateInformationListOfPlots.setRr_no((String)row[0]);
-				estateInformationListOfPlots.setPlot_code((String)row[1]);
-				estateInformationListOfPlots.setCustomer_code((String)row[2]);
-				estateInformationListOfPlots.setPlot_desc((String)row[3]);
-//				estateInformationListOfPlots.setStatus((String)row[4]);
-				if ("A".equals((String) row[4])) {
-					estateInformationListOfPlots.setStatus("Approved");
-				} else if ("RG".equals((String) row[4])) {
-					estateInformationListOfPlots.setStatus("Registered");
-				} else if ("RT".equals((String) row[4])) {
-					estateInformationListOfPlots.setStatus("Return");
-				} else {
-					estateInformationListOfPlots.setStatus("Verified");
+				// Mapping compiled merge letout table subreport in main report
+				parameters.put("Subreport_Path_MergeLetouts", mergeLetoutSubreport);
+				
+				// Mapping compiled letout table subreport in main report
+				parameters.put("Subreport_Path_ListOfLetouts", letoutSubreport);
+				
+				// Getting Main report fields form DB
+				List<Object[]> mainReportData = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.plot_code,  \r\n"
+						+ "p.main_structure_name, p.area, p.street_no, p.mcgm_allotted_no,\r\n"
+						+ "mw.ward_name, p.\"location\", p.pincode, p.city_survey_no, p.city_survey_div, p.mbpt_road_connectivity,\r\n"
+						+ "p.from_date, p.plot_desc, p.owner_name , p.dept_name, p.schedule_north, p.schedule_south, p.schedule_east,\r\n"
+						+ "p.schedule_west, p.reservation, pd.plot_id, p.remarks, p.created_by_merge\r\n"
+						+ "from plot p \r\n"
+						+ "left join division d on p.div_id = d.div_id \r\n"
+						+ "left join unit u on p.unit_id = u.unit_id \r\n"
+						+ "left join estate e on p.estate_id = e.estate_id \r\n"
+						+ "left join m_wards mw on p.ward_id = mw.ward_id\r\n"
+						+ "left join plot_docs pd on p.plot_id = pd.plot_id\r\n"
+						+ "where p.plot_code = '311020077'").list(); 
+				
+				// putting fetched fields from db in entity class for main report
+				List<PlotInformationMainReportFields> plotInformationMainReportFieldsList = new ArrayList<>();
+				
+				for (Object[] row : mainReportData) {
+					
+					PlotInformationMainReportFields plotInformationMainReportFields = new PlotInformationMainReportFields();
+					
+					plotInformationMainReportFields.setDiv_name((String) row[0]);
+					plotInformationMainReportFields.setUnit_code((String) row[1]);
+					plotInformationMainReportFields.setEstate_name((String) row[2]);
+					plotInformationMainReportFields.setPlot_code((String) row[3]);
+					plotInformationMainReportFields.setMain_structure_name((String) row[4]);
+					plotInformationMainReportFields.setArea((BigDecimal) row[5]);
+					plotInformationMainReportFields.setStreet_no((String) row[6]);
+					plotInformationMainReportFields.setMcgm_allotted_no((String) row[7]);
+					plotInformationMainReportFields.setWard_name((String) row[8]);
+					plotInformationMainReportFields.setLocation((String) row[9]);
+					plotInformationMainReportFields.setPincode((BigDecimal) row[10]);
+					plotInformationMainReportFields.setCity_survey_no((String) row[11]);
+					plotInformationMainReportFields.setCity_survey_div((String) row[12]);
+					plotInformationMainReportFields.setMbpt_road_connectivity((Boolean) row[13]);
+					plotInformationMainReportFields.setFrom_date((String) row[14]);
+					plotInformationMainReportFields.setPlot_desc((String) row[15]);
+					plotInformationMainReportFields.setOwner_name((String) row[16]);
+					plotInformationMainReportFields.setDept_name((String) row[17]);
+					plotInformationMainReportFields.setSchedule_north((String) row[18]);
+					plotInformationMainReportFields.setSchedule_south((String) row[19]);
+					plotInformationMainReportFields.setSchedule_east((String) row[20]);
+					plotInformationMainReportFields.setSchedule_west((String) row[21]);
+					plotInformationMainReportFields.setReservation((String) row[22]);
+					plotInformationMainReportFields.setPlot_id((Integer) row[23]);
+					plotInformationMainReportFields.setRemarks((String) row[24]);
+					plotInformationMainReportFields.setCreated_by_merge((Boolean) row[25]);
+					plotInformationMainReportFields.setDocuments_attached("No");
+					
+					plotInformationMainReportFieldsList.add(plotInformationMainReportFields);
 				}
 				
-				estateInformationListOfPlotsFields.add(estateInformationListOfPlots);
+				System.out.println("====================Main Report Field====================");
+				for (PlotInformationMainReportFields plotInformationMainReportFields : plotInformationMainReportFieldsList) {
+					System.out.println(plotInformationMainReportFields);
+				}
+				
+				//==================================================================================
+				
+				JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(plotInformationMainReportFieldsList);
+				
+				// putting fetched fields from db in entity class for Zone table
+				List<Object[]> subReportZoneTable = session.createSQLQuery("select mz.zone_name, mzd.sub_zone_desc\r\n"
+						+ "from plot p \r\n"
+						+ "left join plot_zone_details pz on p.plot_id = pz.plot_id\r\n"
+						+ "left join m_zones mz on pz.zone_id = mz.zone_id\r\n"
+						+ "left join m_zones_details mzd on pz.zone_detail_id = mzd.zone_detail_id\r\n"
+						+ "where p.plot_code = '311020077'").list();
+				
+				// putting fetched fields from db in entity class for sub report zone table
+				List<PlotInformationSubReportZoneTable> informationSubReportZoneTableFields = new ArrayList<>();
+				
+				for (Object[] row : subReportZoneTable) {
+					
+					PlotInformationSubReportZoneTable informationSubReportZoneTable = new PlotInformationSubReportZoneTable();
+					
+					informationSubReportZoneTable.setZone_name((String) row[0]);
+					informationSubReportZoneTable.setSub_zone_desc((String) row[1]);
+					
+					informationSubReportZoneTableFields.add(informationSubReportZoneTable);
+				}
+				
+				System.out.println("====================SubReport Zone table Field====================");
+				for (PlotInformationSubReportZoneTable plotInformationSubReportZoneTable : informationSubReportZoneTableFields) {
+					System.out.println(plotInformationSubReportZoneTable);
+				}
+				
+				// Mapping fetched data in jasper
+				JRBeanCollectionDataSource subReportDataSource = new JRBeanCollectionDataSource(informationSubReportZoneTableFields);
+				parameters.put("ZonesForPlots", subReportDataSource);
+				
+				//==================================================================================
+				
+				// putting fetched fields from db in entity class for Merge letout table
+				List<Object[]> subReportMergeLetoutsTable = session.createSQLQuery("select let_out.let_out_id, let_out.let_out_name ,let_out.billable_area ,let_out.let_out_desc  \r\n"
+						+ "from plot , let_out \r\n"
+						+ "where plot.plot_id = let_out.let_out_id and plot.plot_code = '311020077'").list();
+				
+				// putting fetched fields from db in entity class for sub report Merge letout table
+				List<PlotInformationSubreportMergeLetoutTable> informationSubreportMergeLetoutTableFields = new ArrayList<>();
+				
+				for (Object[] row : subReportMergeLetoutsTable) {
+					
+					PlotInformationSubreportMergeLetoutTable informationSubreportMergeLetoutTable = new PlotInformationSubreportMergeLetoutTable();
+					
+					informationSubreportMergeLetoutTable.setLet_out_id((Integer) row[0]);
+					informationSubreportMergeLetoutTable.setLet_out_name((String) row[1]);
+					informationSubreportMergeLetoutTable.setBillable_area((String) row[2]);
+					informationSubreportMergeLetoutTable.setLet_out_desc((String) row[3]);
+					
+					informationSubreportMergeLetoutTableFields.add(informationSubreportMergeLetoutTable);
+				}
+				
+				// checking whether merge letout table is empty or not
+				System.out.println(informationSubreportMergeLetoutTableFields.isEmpty());
+				
+				if(informationSubreportMergeLetoutTableFields.isEmpty() == true) {
+					parameters.put("Merge_Letouts", "There is no merge letout.");
+				}
+				
+				System.out.println("====================SubReport Merge Letout table Field====================");
+				for (PlotInformationSubreportMergeLetoutTable plotInformationSubreportMergeLetoutTable : informationSubreportMergeLetoutTableFields) {
+					System.out.println(plotInformationSubreportMergeLetoutTable);
+				}
+				
+				// Mapping fetched data in jasper
+				JRBeanCollectionDataSource mergeLetoutTable = new JRBeanCollectionDataSource(informationSubreportMergeLetoutTableFields);
+				parameters.put("MergeLetoutsTable", mergeLetoutTable);
+				
+				//==================================================================================
+				
+				List<Object[]> subReportLetoutTable = session.createSQLQuery("select lo.let_out_name, lo.let_out_desc, lo.layout_type_id,\r\n"
+						+ "lo.allotment_status, lo.status\r\n"
+						+ "from let_out lo\r\n"
+						+ "where lo.plot_id = 4797; ").list();
+				
+				// putting fetched fields from db in entity class for letout table
+				List<PlotInformationSubreportLetoutTable> informationSubreportLetoutTableFields = new ArrayList<>();
+				
+				for (Object[] row : subReportLetoutTable) {
+					
+					PlotInformationSubreportLetoutTable informationSubreportLetoutTable = new PlotInformationSubreportLetoutTable();
+					
+					informationSubreportLetoutTable.setLet_out_name((String)row[0]);
+					informationSubreportLetoutTable.setLet_out_desc((String)row[1]);
+					informationSubreportLetoutTable.setLayout_type_id((String)row[2]);
+					informationSubreportLetoutTable.setAllotment_status((String)row[3]);
+//					informationSubreportLetoutTable.setStatus((String)row[4]);
+					if ("A".equals((String) row[4])) {
+						informationSubreportLetoutTable.setStatus("Approved");
+					} else if ("RG".equals((String) row[4])) {
+						informationSubreportLetoutTable.setStatus("Registered");
+					} else if ("RT".equals((String) row[4])) {
+						informationSubreportLetoutTable.setStatus("Return");
+					} else {
+						informationSubreportLetoutTable.setStatus("Verified");
+					}
+					
+					informationSubreportLetoutTableFields.add(informationSubreportLetoutTable);
+				}
+				
+				System.out.println("====================SubReport Letout table Field====================");
+				for (PlotInformationSubreportLetoutTable plotInformationSubreportLetoutTable : informationSubreportLetoutTableFields) {
+					System.out.println(plotInformationSubreportLetoutTable);
+				}
+				
+				JRBeanCollectionDataSource letoutTable = new JRBeanCollectionDataSource(informationSubreportLetoutTableFields);
+				parameters.put("LetoutsTable", letoutTable);
+				
+				// printing jasper report
+				JasperPrint report = JasperFillManager.fillReport(mainReport, parameters, dataSource);
+				JasperExportManager.exportReportToPdfFile(report, outputPath);
+				
+				System.out.println("\nReport Generated Successfully at "+outputPath);
+				
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
 			}
-			
-			System.out.println("=====Fields Data=====");
-			for (EstateInformation estateInformation : estateInformationFields) {
-				System.out.println(estateInformation);
-			}
-			System.out.println("=====Table Data=====");
-			for (EstateInformationListOfPlots estateInformationListOfPlots : estateInformationListOfPlotsFields) {
-				System.out.println(estateInformationListOfPlots);
-			}
-			
-			// jrxml file 
-			InputStream inputStream = App.class.getResourceAsStream("/EstateInformation.jrxml");
-			if(inputStream == null) {
-				System.out.println("Report template not found");
-			}
-			
-			// compiling jasper report
-			JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-			
-			// Creating a JRBeanCollectionDataSource for records
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(estateInformationFields);
-			
-			// Creating a JRBeanCollectionDataSource for table records
-			JRBeanCollectionDataSource dataSource1 = new JRBeanCollectionDataSource(estateInformationListOfPlotsFields);
-
-			// parameters maping
-			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("EstateInformation_PlotsList", dataSource1);
-			
-			// Filling the report with data
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-			
-			// Exporting the report to PDF
-			String outputFile = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\EstateInformation.pdf";
-			
-			JRPdfExporter exporter = new JRPdfExporter();
-			exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, outputFile);
-			
-			exporter.exportReport();
-			
-			System.out.println("\nReport Generated Successfully at "+outputFile);
-			
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

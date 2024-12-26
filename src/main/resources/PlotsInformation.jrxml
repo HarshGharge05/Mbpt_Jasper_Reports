@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PlotInformation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e048dc06-8b3e-408c-8940-b7d877567529">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="Subreport_Path_Zone" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="ZonesForPlots" class="java.util.Collection"/>
+	<parameter name="MergeLetoutsTable" class="java.util.Collection"/>
+	<parameter name="Subreport_Path_MergeLetouts" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="Merge_Letouts" class="java.lang.String"/>
+	<parameter name="Subreport_Path_ListOfLetouts" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="LetoutsTable" class="java.util.Collection"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="div_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="div_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="div_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="division"/>
+	</field>
+	<field name="unit_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="unit_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unit"/>
+	</field>
+	<field name="estate_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estate_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="estate_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estate"/>
+	</field>
+	<field name="plot_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plot_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="main_structure_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="main_structure_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="main_structure_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="area" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="area"/>
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="street_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="street_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="street_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="mcgm_allotted_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mcgm_allotted_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="mcgm_allotted_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="ward_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ward_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="ward_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_wards"/>
+	</field>
+	<field name="location" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="location"/>
+		<property name="com.jaspersoft.studio.field.label" value="location"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="pincode" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="pincode"/>
+		<property name="com.jaspersoft.studio.field.label" value="pincode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="city_survey_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="city_survey_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="city_survey_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="city_survey_div" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="city_survey_div"/>
+		<property name="com.jaspersoft.studio.field.label" value="city_survey_div"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="mbpt_road_connectivity" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="mbpt_road_connectivity"/>
+		<property name="com.jaspersoft.studio.field.label" value="mbpt_road_connectivity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="from_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="plot_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plot_desc"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_desc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="owner_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="owner_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="owner_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="dept_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dept_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="dept_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="schedule_north" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_north"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_north"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="schedule_south" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_south"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_south"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="schedule_east" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_east"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_east"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="schedule_west" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_west"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_west"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="reservation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reservation"/>
+		<property name="com.jaspersoft.studio.field.label" value="reservation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="plot_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="plot_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot_docs"/>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.label" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="created_by_merge" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="created_by_merge"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_by_merge"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="documents_attached" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="d802113c-877e-419a-986a-1287491a70a5"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="09eac748-622a-49ce-916c-81d996363a0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="a450ab44-a175-423e-a3ce-998c3209bca6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="ca09ee61-769d-4557-8440-684a4ce817f6"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="b2880cd5-fabe-4165-a347-5ff72f10711d"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="7743c21f-c5ff-4b00-a628-e2b9b76b686a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="204" y="80" width="150" height="27" uuid="9903777c-79f0-4924-b153-a41e0831a67a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot Information]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="105" width="553" height="1" uuid="acef68d4-e0a0-469b-8b84-a1ba073fbccb">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="482" splitType="Stretch">
+			<textField>
+				<reportElement x="130" y="10" width="120" height="20" uuid="f4497125-886f-4cd7-bb29-8edca425a7f3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{div_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="80" height="20" uuid="76ddef06-bf75-4ba0-a703-b706d8a79dc0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Division Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="80" height="20" uuid="2b17fdda-2e1d-47d3-9ad3-94196a87f8ce"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estate :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="10" width="80" height="20" uuid="03df5ad0-d39a-4f24-88b6-e7795fc0b2a6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="65" width="120" height="34" uuid="aa7e857f-b3e7-409c-83b7-9ec6ae028898"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Building/Mansion/Structure Name/Land :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="99" width="80" height="20" uuid="74ed8fc3-0c93-4601-9985-fa0d62dca93e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Street Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="135" width="80" height="20" uuid="71fa060c-8d66-4196-bdde-0f53374c44ba"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MCGM Ward :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="155" width="80" height="20" uuid="52a6741f-cade-4fcd-af77-2214bd6a4e56"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pincode :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="35" width="150" height="30" uuid="1c337ebd-3de5-481f-bba6-9aedfba0c347"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{estate_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="67" width="120" height="30" uuid="14ea0884-90ec-4ae6-97f5-33d48939b8a1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{main_structure_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="10" width="100" height="20" uuid="17912e2b-c71c-4352-b81e-cfdb26e4f189"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{unit_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="50" width="100" height="20" uuid="d7113a64-6a82-49fc-bc82-fbbb6033cc54"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot Area (Sq. Mtr.) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="70" width="100" height="26" uuid="c5c89ad0-00a3-4de8-9fd7-f57bb9d5779f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MCGM Building UID No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="30" width="80" height="20" uuid="360f314d-93ca-4d3d-921e-f5dec67cc835"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot Code :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="96" width="80" height="20" uuid="2c9a6879-75ae-42b9-9aac-aa7849de505f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="30" width="100" height="20" uuid="133de6ca-4844-4406-b286-ed0dafbb306d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{plot_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="50" width="153" height="20" uuid="066728db-615d-4fd7-8f7b-a860bf56f720"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="104" width="150" height="31" uuid="7f0c57ae-b641-4707-be4c-9f7cfabdfb4f"/>
+				<textFieldExpression><![CDATA[$F{street_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="70" width="130" height="26" uuid="8c70cdaa-0900-4731-b6d2-30983a9b6d86"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{mcgm_allotted_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="135" width="150" height="20" uuid="bd522dd8-66f8-4f19-acca-7932a3b15846"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ward_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="201" width="80" height="20" uuid="43cf19c8-1c2a-47fa-a312-467437b76359"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[From Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="175" width="100" height="26" uuid="f32eb061-c7fa-4838-a153-14de04b9de29">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Survey Division/CS Division :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="221" width="80" height="20" uuid="2e3f00dd-c5ca-42c8-a395-6ee42370df4d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="116" width="90" height="20" uuid="17e167f9-c649-4297-8536-bc2b1b4615a7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Survey No/CS No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="136" width="99" height="27" uuid="1eb26f8a-99fb-4bfa-807b-0473019de75c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MbPA Road Connected :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="96" width="153" height="20" uuid="e8fc8dc2-ab0b-41d9-80d5-a1c257778514"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="155" width="110" height="20" uuid="bd2f0899-89aa-45c3-83ee-e0a88d444d37"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pincode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="116" width="140" height="20" uuid="23408e2a-7ca6-463d-a88e-8e84ff50730e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{city_survey_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="175" width="150" height="26" uuid="818bc13e-3781-478a-b3c9-71c77af07a0e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{city_survey_div}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="136" width="100" height="30" uuid="1080ac95-9cfd-4416-9eb0-812171d98739"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{mbpt_road_connectivity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="201" width="150" height="21" uuid="d83e8aa3-6466-4c0e-8bb7-d44d38eb1ed2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{from_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="225" width="150" height="28" uuid="f701240f-c473-4714-8abc-ce0064aeb043"/>
+				<textFieldExpression><![CDATA[$F{plot_desc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="400" width="80" height="20" uuid="fe85ac1f-45d8-4f3d-9a6e-f450eec9fbff"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Schedule : -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="270" width="80" height="20" uuid="d5982ddf-a8b0-4255-aa42-375b213781ff"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ownership :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="270" width="150" height="20" uuid="d8f28aad-5199-4d85-af28-814b3e5a7311"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{owner_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="270" width="100" height="20" uuid="c27dce34-b31e-4538-a0e4-a7aac88720b1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="270" width="152" height="20" uuid="a39499ca-0fc5-4697-9b40-056b0fc0d167"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dept_name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="393" width="554" height="1" uuid="f17f0f23-7369-40d1-b3fd-a7470b72ba25">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="270" width="554" height="20" uuid="655c7adb-c28f-441a-98bf-a6d488681530">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#D9D7D7"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="100" y="420" width="160" height="20" uuid="4a663ad2-4334-4469-9b94-409b7d047570"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{schedule_north}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="420" width="50" height="20" uuid="e1d63098-6eed-4fa9-b162-622b39bef300">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[North :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="420" width="160" height="20" uuid="79e27450-60fa-45c3-8c86-537d07d5c870"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{schedule_south}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="420" width="50" height="20" uuid="d7d8d79c-cecf-4ac7-b9b3-498b5e39ab51">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[South :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="440" width="160" height="20" uuid="d9dedb23-5ff9-4c66-ae60-4dc47f59f12d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{schedule_east}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="440" width="50" height="20" uuid="1e1aaa0a-63b1-4971-b58c-3fd3758a2260">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[East :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="440" width="160" height="20" uuid="f5fe4ded-c1f7-4af4-b576-17e68c424a57"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{schedule_west}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="440" width="50" height="20" uuid="c30e8b5e-0cbc-4f6a-8cd4-784b20ac7d5e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[West :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="300" width="410" height="20" uuid="58cf47c2-ccc0-4639-8285-332b90000f7a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{reservation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="300" width="100" height="20" uuid="e044c1dc-9c50-4357-be22-7734442a7d7a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reservation :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="325" width="120" height="18" uuid="e837fd43-c162-4e56-b2bd-052d7e21f508"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Are Documents uploaded :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="354" width="410" height="36" uuid="19eacc0c-dfba-4803-afdb-1c432134a30c"/>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="350" width="100" height="20" uuid="5e4e7535-f88d-428e-9327-6a7f33835f2f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="419" width="555" height="40" uuid="8b4997ab-69d2-468c-9305-a7598fba0e81">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#C7C3C3"/>
+				</graphicElement>
+			</rectangle>
+			<subreport isUsingCache="false">
+				<reportElement x="-20" y="461" width="595" height="19" uuid="fb1d7e12-bab7-4e1a-bf9f-fb309280e6f0"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{Subreport_Path_Zone}]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="131" y="325" width="100" height="18" uuid="9d14ce15-2990-455e-8321-c1ffff11ffac"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{documents_attached}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="21">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="20" uuid="6aff8887-f6ef-4f2a-ae5c-3a09a7054320"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="Merge_Letouts">
+					<subreportParameterExpression><![CDATA[$P{Merge_Letouts}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{Subreport_Path_MergeLetouts}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="22">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="20" uuid="c0f17c3e-a0a3-4db9-bbad-ddb838aac3b9"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{Subreport_Path_ListOfLetouts}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="3d94017d-9054-4aeb-a9d2-1472428937fc">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="e992abc0-f660-4f92-902a-c8b1f12c2dbe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="268300a9-402b-4d98-9189-48ee0a4b847a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
