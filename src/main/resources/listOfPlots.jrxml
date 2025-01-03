@@ -6,7 +6,7 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="plot_code" class="java.lang.Integer"/>
+	<field name="plot_code" class="java.lang.String"/>
 	<field name="customer_name" class="java.lang.String"/>
 	<field name="div_name" class="java.lang.String"/>
 	<field name="unit_id" class="java.lang.Integer"/>

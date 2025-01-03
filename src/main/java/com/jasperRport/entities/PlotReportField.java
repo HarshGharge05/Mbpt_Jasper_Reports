@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class PlotReportField {
 	
-	private Integer plot_code;
+	private String plot_code;
 	private String customer_name;
 	private String div_name;
 	private Integer unit_id;
@@ -22,10 +22,11 @@ public class PlotReportField {
 	private String customer_code;
 	private Date from_date;
 	private Date to_date;
-	public Integer getPlot_code() {
+	
+	public String getPlot_code() {
 		return plot_code;
 	}
-	public void setPlot_code(Integer plot_code) {
+	public void setPlot_code(String plot_code) {
 		this.plot_code = plot_code;
 	}
 	public String getCustomer_name() {

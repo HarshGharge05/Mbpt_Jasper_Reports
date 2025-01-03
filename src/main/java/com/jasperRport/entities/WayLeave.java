@@ -1,5 +1,6 @@
 package com.jasperRport.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -37,7 +38,7 @@ public class WayLeave {
 	private String unit_id;
 
 	@Column(name = "wyl_date")
-	private String wyl_date;
+	private Date wyl_date;
 
 	@Column(name = "draw_number")
 	private String draw_number;
@@ -104,11 +105,11 @@ public class WayLeave {
 		this.unit_id = unit_id;
 	}
 
-	public String getWyl_date() {
+	public Date getWyl_date() {
 		return wyl_date;
 	}
 
-	public void setWyl_date(String wyl_date) {
+	public void setWyl_date(Date wyl_date) {
 		this.wyl_date = wyl_date;
 	}
 

@@ -69,12 +69,12 @@ billable_area, surrender_status from let_out]]>
 		<property name="com.jaspersoft.studio.field.label" value="allotment_status"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="from_date" class="java.lang.String">
+	<field name="from_date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="from_date"/>
 		<property name="com.jaspersoft.studio.field.label" value="from_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="to_date" class="java.lang.String">
+	<field name="to_date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="to_date"/>
 		<property name="com.jaspersoft.studio.field.label" value="to_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
@@ -124,12 +124,12 @@ billable_area, surrender_status from let_out]]>
 		<property name="com.jaspersoft.studio.field.label" value="percent_home_occupant"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="letout_from_date" class="java.lang.String">
+	<field name="letout_from_date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="letout_from_date"/>
 		<property name="com.jaspersoft.studio.field.label" value="letout_from_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="prev_letout_id" class="java.lang.String">
+	<field name="prev_letout_id" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="prev_letout_id"/>
 		<property name="com.jaspersoft.studio.field.label" value="prev_letout_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
@@ -149,12 +149,12 @@ billable_area, surrender_status from let_out]]>
 		<property name="com.jaspersoft.studio.field.label" value="home_occupation"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="non_home_occupation" class="java.lang.Long">
+	<field name="non_home_occupation" class="java.math.BigInteger">
 		<property name="com.jaspersoft.studio.field.name" value="non_home_occupation"/>
 		<property name="com.jaspersoft.studio.field.label" value="non_home_occupation"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
 	</field>
-	<field name="billable_area" class="java.lang.String">
+	<field name="billable_area" class="java.math.BigInteger">
 		<property name="com.jaspersoft.studio.field.name" value="billable_area"/>
 		<property name="com.jaspersoft.studio.field.label" value="billable_area"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>

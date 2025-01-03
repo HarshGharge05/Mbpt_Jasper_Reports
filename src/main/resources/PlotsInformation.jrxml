@@ -180,7 +180,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="80" width="554" height="1" uuid="7743c21f-c5ff-4b00-a628-e2b9b76b686a">
@@ -557,9 +557,9 @@
 				<textFieldExpression><![CDATA[$F{documents_attached}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="21">
+		<band height="40">
 			<subreport>
-				<reportElement x="-20" y="0" width="595" height="20" uuid="6aff8887-f6ef-4f2a-ae5c-3a09a7054320"/>
+				<reportElement x="-20" y="20" width="595" height="19" uuid="6aff8887-f6ef-4f2a-ae5c-3a09a7054320"/>
 				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 				<subreportParameter name="Merge_Letouts">
 					<subreportParameterExpression><![CDATA[$P{Merge_Letouts}]]></subreportParameterExpression>
@@ -567,10 +567,22 @@
 				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{Subreport_Path_MergeLetouts}]]></subreportExpression>
 			</subreport>
+			<staticText>
+				<reportElement x="0" y="0" width="110" height="20" uuid="88f3bc2c-8dde-40e0-a75f-091f63dc1130"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[List Of Merge Letouts :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="0" width="200" height="20" uuid="9d49c97c-84b9-4f84-b13e-74835f2a4f59"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{Merge_Letouts}]]></textFieldExpression>
+			</textField>
 		</band>
-		<band height="22">
+		<band height="21">
 			<subreport>
-				<reportElement x="-20" y="0" width="595" height="20" uuid="c0f17c3e-a0a3-4db9-bbad-ddb838aac3b9"/>
+				<reportElement x="-20" y="1" width="595" height="20" uuid="c0f17c3e-a0a3-4db9-bbad-ddb838aac3b9"/>
 				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{Subreport_Path_ListOfLetouts}]]></subreportExpression>

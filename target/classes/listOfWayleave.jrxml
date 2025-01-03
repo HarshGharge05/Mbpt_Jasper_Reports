@@ -37,7 +37,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="unit_id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="wayleave"/>
 	</field>
-	<field name="wyl_date" class="java.lang.String">
+	<field name="wyl_date" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="wyl_date"/>
 		<property name="com.jaspersoft.studio.field.label" value="wyl_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="wayleave"/>

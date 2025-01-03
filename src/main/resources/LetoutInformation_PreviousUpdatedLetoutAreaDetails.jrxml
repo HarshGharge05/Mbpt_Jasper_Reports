@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LetoutInformation_PreviousUpdatedLetoutAreaDetails" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f545c4f2-35c2-488c-9558-26d429c2a912">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="BuiltupArea" class="java.lang.String"/>
+	<parameter name="Status" class="java.lang.String"/>
+	<parameter name="Description" class="java.lang.String"/>
+	<parameter name="Forwardto" class="java.lang.String"/>
+	<parameter name="Remarks" class="java.lang.String"/>
+	<parameter name="DocumentUploaded" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="201" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="6e826407-810c-4f5d-8f9d-ce697f5a7968">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="10" y="10" width="200" height="20" uuid="ba69413c-ee1c-44e5-bc46-79b4c7721e9e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previous Updated Letout Area Details ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="50" width="100" height="20" uuid="980411a7-1d6c-4a4c-b007-b03fc08f28c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{BuiltupArea}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="30" width="100" height="20" uuid="c9b9664d-0658-42ab-9a63-18dfb2056fcf"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Built up Area :
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="80" width="60" height="20" uuid="33c42b8d-b517-46c4-a253-aa1c195910a9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="80" width="100" height="20" uuid="253efb21-02c2-4eca-9c1f-ae5ff14076ea"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{Status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="110" width="70" height="20" uuid="20a3b984-58cd-4a74-bdaf-5f481e682485"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description :]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="100" y="113" width="180" height="40" uuid="1f79c392-64f5-4d36-8f22-deb6d02adbc8"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{Description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="80" width="110" height="20" uuid="e72d902d-00b0-4981-a31d-8d0b92e7198f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forward to NO / HOD :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="80" width="154" height="20" uuid="4b915810-1d3d-4cd9-926a-896a5b074cf8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{Forwardto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="110" width="110" height="20" uuid="c6efa004-b9a6-497f-987b-b94f193d26a4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previous Remarks :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="114" width="154" height="40" uuid="136171cf-8bda-4775-9660-1557d937437f"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{Remarks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="170" width="210" height="20" uuid="b57d29a5-72d2-4a1e-83f3-9b98aebd9c8d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{DocumentUploaded}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="170" width="110" height="20" uuid="3525fdbd-6832-44b1-a6a2-59a1a5ee0514"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document Uploaded :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="160" width="555" height="1" uuid="53bcb07c-6461-4d12-98cc-acb691b50a90">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="200" width="555" height="1" uuid="37c91e93-d449-400c-b25f-6b76c3eb9270">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,6 +1,8 @@
 package com.jasperRport.entities;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,10 +54,10 @@ public class LetOut {
     private String allotment_status;
 	
 	@Column(name = "from_date")
-    private String from_date;
+    private Date from_date;
 	
 	@Column(name = "to_date")
-    private String to_date;
+    private Date to_date;
 	
 	@Column(name = "sor", length = 20)
     private String sor;
@@ -85,10 +87,10 @@ public class LetOut {
     private BigDecimal percent_home_occupant;
 	
 	@Column(name = "letout_from_date")
-    private String letout_from_date;
+    private Date letout_from_date;
 	
 	@Column(name = "prev_letout_id")
-    private String prev_letout_id;
+    private Date prev_letout_id;
 	
 	@Column(name = "area")
     private String area;
@@ -100,10 +102,10 @@ public class LetOut {
     private String home_occupation;
 	
 	@Column(name = "non_home_occupation")
-    private String non_home_occupation;
+    private BigInteger non_home_occupation;
 	
 	@Column(name = "billable_area")
-    private String billable_area;
+    private BigInteger billable_area;
 	
 	@Column(name = "surrender_status", length = 20)
     private String surrender_status;
@@ -204,19 +206,19 @@ public class LetOut {
 		this.allotment_status = allotment_status;
 	}
 
-	public String getFrom_date() {
+	public Date getFrom_date() {
 		return from_date;
 	}
 
-	public void setFrom_date(String from_date) {
+	public void setFrom_date(Date from_date) {
 		this.from_date = from_date;
 	}
 
-	public String getTo_date() {
+	public Date getTo_date() {
 		return to_date;
 	}
 
-	public void setTo_date(String to_date) {
+	public void setTo_date(Date to_date) {
 		this.to_date = to_date;
 	}
 
@@ -292,19 +294,19 @@ public class LetOut {
 		this.percent_home_occupant = percent_home_occupant;
 	}
 
-	public String getLetout_from_date() {
+	public Date getLetout_from_date() {
 		return letout_from_date;
 	}
 
-	public void setLetout_from_date(String letout_from_date) {
+	public void setLetout_from_date(Date letout_from_date) {
 		this.letout_from_date = letout_from_date;
 	}
 
-	public String getPrev_letout_id() {
+	public Date getPrev_letout_id() {
 		return prev_letout_id;
 	}
 
-	public void setPrev_letout_id(String prev_letout_id) {
+	public void setPrev_letout_id(Date prev_letout_id) {
 		this.prev_letout_id = prev_letout_id;
 	}
 
@@ -332,19 +334,19 @@ public class LetOut {
 		this.home_occupation = home_occupation;
 	}
 
-	public String getNon_home_occupation() {
+	public BigInteger getNon_home_occupation() {
 		return non_home_occupation;
 	}
 
-	public void setNon_home_occupation(String non_home_occupation) {
+	public void setNon_home_occupation(BigInteger non_home_occupation) {
 		this.non_home_occupation = non_home_occupation;
 	}
 
-	public String getBillable_area() {
+	public BigInteger getBillable_area() {
 		return billable_area;
 	}
 
-	public void setBillable_area(String billable_area) {
+	public void setBillable_area(BigInteger billable_area) {
 		this.billable_area = billable_area;
 	}
 

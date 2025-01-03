@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LetoutInformation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd2128d9-8808-478d-b938-f954b480ddbc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="BuiltUpAreaTable_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SurrenderLetoutTable_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="TenancyAllotmentDetailsTable_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="PreviousUpdatedLetoutAreaDetails_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="BuiltupArea" class="java.lang.String"/>
+	<parameter name="Status" class="java.lang.String"/>
+	<parameter name="Description" class="java.lang.String"/>
+	<parameter name="Forwardto" class="java.lang.String"/>
+	<parameter name="Remarks" class="java.lang.String"/>
+	<parameter name="DocumentUploaded" class="java.lang.String"/>
+	<parameter name="BuiltUpAreaTable" class="java.util.Collection"/>
+	<parameter name="SurrenderLetoutTable" class="java.util.Collection"/>
+	<parameter name="TenancyAllotmentTable" class="java.util.Collection"/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select d.div_name, u.unit_code, e.estate_name, p.rr_no, p.plot_code, 
+lst.struct_type, lt.layout_type, lo.let_out_no, lo.let_out_name , lo.area, lo.home_occupation,
+lo.non_home_occupation, md.dept_name, lo.from_date, lo.billable_area, lo.status, lo.let_out_desc,
+lo.remarks
+from let_out lo 
+left join plot p on lo.plot_id = p.plot_id 
+left join division d on p.div_id = d.div_id
+left join unit u on p.unit_id = u.unit_id 
+left join estate e on p.estate_id = e.estate_id 
+left join m_layout_type lt on lo.layout_type_id = lt.layout_type_id
+left join m_letout_structure_type lst on lo.struct_type_id = lst.struct_type_id
+left join m_department md on lo.dept_id = md.dept_id
+where p.plot_code = '311020077']]>
+	</queryString>
+	<field name="div_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="div_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="div_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="division"/>
+	</field>
+	<field name="unit_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="unit_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unit"/>
+	</field>
+	<field name="estate_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estate_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="estate_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estate"/>
+	</field>
+	<field name="rr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="rr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="plot_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plot_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="plot"/>
+	</field>
+	<field name="struct_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="struct_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="struct_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_letout_structure_type"/>
+	</field>
+	<field name="layout_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="layout_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="layout_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_layout_type"/>
+	</field>
+	<field name="let_out_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="let_out_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="let_out_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="let_out_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="let_out_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="let_out_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="area" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="area"/>
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="home_occupation" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="home_occupation"/>
+		<property name="com.jaspersoft.studio.field.label" value="home_occupation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="non_home_occupation" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="non_home_occupation"/>
+		<property name="com.jaspersoft.studio.field.label" value="non_home_occupation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="dept_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dept_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="dept_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="m_department"/>
+	</field>
+	<field name="from_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="billable_area" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="billable_area"/>
+		<property name="com.jaspersoft.studio.field.label" value="billable_area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="let_out_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="let_out_desc"/>
+		<property name="com.jaspersoft.studio.field.label" value="let_out_desc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.label" value="remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="27124243-0de9-40af-8010-ba278e47cbe7"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="57332e8a-c59e-4da7-9059-90bf27b7d0b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="0c28d6fd-221d-45a9-89d3-b51713aa4d6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="61b3b4f0-836a-40fb-b2c2-679c38e609f8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="97c94808-5374-446e-8b05-54ef69142382"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="7c770185-952b-4f43-a900-a9d27cb00ff6">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="204" y="80" width="150" height="27" uuid="27d0abbf-5052-4a28-9a3f-81e888a3c681"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Letout Information]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="105" width="553" height="1" uuid="713b9d49-8ce8-4ad0-9c6b-888910091f38">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="221" splitType="Stretch">
+			<textField>
+				<reportElement x="110" y="10" width="130" height="20" uuid="c6fdfa7a-d564-4c34-8937-30e47f5e11a3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{div_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="90" height="20" uuid="2d8af040-c9e2-4bc8-84d6-8f1f831e423a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Division Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="390" y="10" width="100" height="20" uuid="88be8c0a-b93f-4dcd-a08e-68498f2f0103"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{unit_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="10" width="70" height="20" uuid="54b25269-0752-4d32-9a07-6a63ccf851c1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="90" height="20" uuid="a6339950-ad73-4d3d-871f-06e0545171b9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estate :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="90" height="20" uuid="eb73b29a-4a8c-4cba-ba6c-4475e8667b5c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot Code :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="90" height="20" uuid="9c397210-be24-4777-a97e-66486822fa8c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Letout Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="90" width="90" height="20" uuid="d55b47e5-705d-4bef-82d8-e09f12a0892e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Land Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="110" width="90" height="20" uuid="5d73235d-2856-4f9b-a889-9a46fd8e6227"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HO(Sq. Mtr.) :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="30" width="130" height="20" uuid="938e5f98-7893-48bd-b71a-5edfb340cce1"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estate_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="50" width="130" height="20" uuid="e0693a25-2133-458a-93e4-1e32da1235c3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{plot_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="70" width="160" height="20" uuid="bca6bc08-bdf5-4146-ad03-396bbfd4404e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{layout_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="90" width="160" height="20" uuid="28babe26-897d-46e4-89ef-80c1bfc19d3b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{let_out_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="110" width="160" height="20" uuid="ae0342a6-22aa-4b92-8ca8-7a52d1cea9b8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{home_occupation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="30" width="70" height="20" uuid="8e712a8b-0ca2-4a2d-9362-10a91a2a03bb"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot R R No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="50" width="80" height="20" uuid="fe1fc902-bba3-4062-8636-2be81cedd42a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Structure Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="70" width="90" height="30" uuid="067971b4-6ac6-482c-aeb1-8f7a99752002"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Land Identification No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="100" width="80" height="20" uuid="5205ac9d-f179-40b7-a377-07b961d953d3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Area(Sq. Mtr.) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="120" width="80" height="20" uuid="efd99bb1-01ae-408b-83d3-54b0ff5dfa34"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NHO(Sq. Mtr.) :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="390" y="30" width="164" height="20" uuid="b278d85a-762c-4b48-92c0-b0b3d26bf843"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rr_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="50" width="164" height="20" uuid="ba448f35-ea51-4676-8260-734391705dba"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{struct_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="75" width="150" height="20" uuid="6f6ab306-6d70-4788-bbf1-95d4a9a77935"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{let_out_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="100" width="150" height="20" uuid="523f2b1a-58b8-493a-8e29-033df5d7ae3f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="120" width="150" height="20" uuid="e09836cd-8825-4b19-a26b-b972efe201cd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{non_home_occupation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="140" width="90" height="20" uuid="a0a03f54-2bd3-49cf-a932-3a108dd2d9dd"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Letout From Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="130" width="90" height="20" uuid="071cb6c4-3b81-43fc-8aa9-a44c119a11c7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="135" width="120" height="30" uuid="4ddaca14-21b9-4a7f-9bef-6d5e4e0141a4"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{dept_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="164" width="90" height="26" uuid="d1f1e75b-8406-4a6e-97ef-8833223baaf0"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Billable Area(in sq,mtr.) :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="167" width="160" height="20" uuid="41b806ce-dd6b-4199-9dda-45913f7b62c7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billable_area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="140" width="150" height="20" uuid="b5061c76-4afa-4eca-ac7a-1370ca4cfdf0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{from_date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="200" width="553" height="1" uuid="12f146e9-41f3-4dc4-b77e-bfc951607918">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<subreport>
+				<reportElement x="-20" y="201" width="595" height="19" uuid="86603c90-beb5-4f9a-988e-98c494610138"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{BuiltUpAreaTable_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="21">
+			<subreport isUsingCache="false">
+				<reportElement x="-20" y="0" width="595" height="20" uuid="5f754e68-a66b-4a62-8ee7-4e62d51748f6"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{PreviousUpdatedLetoutAreaDetails_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="21">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="20" uuid="65348595-0e99-4411-8b65-e4f54131cf2d"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SurrenderLetoutTable_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="21">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="20" uuid="a207ab2c-85fd-4d42-adb2-a99666b9de9e"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{TenancyAllotmentDetailsTable_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="79bb5231-bb44-49eb-b3a0-d0922e9f40a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="25bf3895-6145-4fdb-b55c-a7833b14cc29"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="8bd9a36e-23cc-441f-a9aa-cf83b40f402a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

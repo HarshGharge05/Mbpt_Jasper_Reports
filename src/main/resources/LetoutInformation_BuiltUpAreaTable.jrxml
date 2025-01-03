@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PlotInformation_MergeLetouts" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab6da6f5-e3f1-466d-b1c8-579e1345d0a9">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LetoutInformation_BillAreaTable" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd713333-bc55-4d81-8865-3b5a81446992">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
@@ -29,37 +29,38 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="ListOfMergeLetouts" uuid="172bc889-865f-4db4-92a0-8aac8c5c5d6b">
+	<subDataset name="BillAreaTable" uuid="220406a0-3123-4cb3-a906-e81200018bcd">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
 		<queryString language="SQL">
-			<![CDATA[select let_out.let_out_id, let_out.let_out_name ,let_out.billable_area ,let_out.let_out_desc  
-from plot , let_out 
-where plot.plot_id = let_out.let_out_id and plot.plot_code = '311020077']]>
+			<![CDATA[select lba.built_up_area_commercial, lba.built_up_area_rec, lba.consumed_fsi, lba.from_date
+from letout_b_area lba 
+left join let_out lo on lba.let_out_id = lo.let_out_id 
+where lo.let_out_id = 1960
+order by lba.from_date]]>
 		</queryString>
-		<field name="let_out_id" class="java.lang.Long">
-			<property name="com.jaspersoft.studio.field.name" value="let_out_id"/>
-			<property name="com.jaspersoft.studio.field.label" value="let_out_id"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+		<field name="built_up_area_commercial" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="built_up_area_commercial"/>
+			<property name="com.jaspersoft.studio.field.label" value="built_up_area_commercial"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="letout_b_area"/>
 		</field>
-		<field name="let_out_name" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.name" value="let_out_name"/>
-			<property name="com.jaspersoft.studio.field.label" value="let_out_name"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+		<field name="built_up_area_rec" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="built_up_area_rec"/>
+			<property name="com.jaspersoft.studio.field.label" value="built_up_area_rec"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="letout_b_area"/>
 		</field>
-		<field name="billable_area" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.name" value="billable_area"/>
-			<property name="com.jaspersoft.studio.field.label" value="billable_area"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+		<field name="consumed_fsi" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="consumed_fsi"/>
+			<property name="com.jaspersoft.studio.field.label" value="consumed_fsi"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="letout_b_area"/>
 		</field>
-		<field name="let_out_desc" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.name" value="let_out_desc"/>
-			<property name="com.jaspersoft.studio.field.label" value="let_out_desc"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="let_out"/>
+		<field name="from_date" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="from_date"/>
+			<property name="com.jaspersoft.studio.field.label" value="from_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="letout_b_area"/>
 		</field>
 	</subDataset>
-	<parameter name="Merge_Letouts" class="java.lang.String"/>
-	<parameter name="MergeLetoutsTable" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="BuiltUpAreaTable" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -67,87 +68,87 @@ where plot.plot_id = let_out.let_out_id and plot.plot_code = '311020077']]>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="63" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<componentElement>
-				<reportElement x="0" y="2" width="550" height="60" uuid="193fe9fc-2d32-49fa-a5e5-6165c4be9ad1">
+				<reportElement x="3" y="0" width="550" height="60" uuid="90b7dd44-be56-41d2-8a02-bc82357085b7">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="ListOfMergeLetouts" uuid="0d3becb7-846a-4a54-8116-51cef0369ef5">
-						<dataSourceExpression><![CDATA[$P{MergeLetoutsTable}]]></dataSourceExpression>
+					<datasetRun subDataset="BillAreaTable" uuid="3f09744a-fc8d-451c-9371-26bf0a774278">
+						<dataSourceExpression><![CDATA[$P{BuiltUpAreaTable}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="120" uuid="6ec8fa3d-8d11-46de-a6f0-bb2f6a45c581">
+					<jr:column width="130" uuid="d811b423-cf53-4aff-b1b4-13a317c79a49">
 						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="120" height="30" uuid="7af2d1c1-b4c0-4545-bc35-f81c4167c00c"/>
+								<reportElement x="0" y="0" width="130" height="30" uuid="a4d1f3ee-c17c-4f55-a926-e624b7ff325f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
-								<text><![CDATA[Letout Id]]></text>
+								<text><![CDATA[Built up Area Commercial(Sq. Mtr.)]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField textAdjust="StretchHeight">
-								<reportElement x="0" y="0" width="120" height="30" uuid="6b57cddd-d05c-4a51-b90f-5c9928a7e55e"/>
+								<reportElement x="0" y="0" width="130" height="30" uuid="ff723f3e-1e58-4607-8039-d0b2d6f58e67"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{let_out_id}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{built_up_area_commercial}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="140" uuid="1a9cf04a-75a6-46e1-89c3-a5068d39fd04">
+					<jr:column width="140" uuid="d9407314-4502-4dd0-a5af-3369c0c20100">
 						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="140" height="30" uuid="88262642-ea0b-4a72-9c73-850eda81483e"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="cd40a001-6f38-43d5-a351-aa712dda45a6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
-								<text><![CDATA[Letout name]]></text>
+								<text><![CDATA[Built up Area Residential (Sq. Mtr.)]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField textAdjust="StretchHeight">
-								<reportElement x="0" y="0" width="140" height="30" uuid="fcb5035b-7912-4f37-b3e2-d18487b17c3a"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="c6352895-46ef-4f1b-aca8-cca579d36032"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{let_out_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{built_up_area_rec}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="140" uuid="68d022db-7387-4e89-92c2-dee18faf9376">
+					<jr:column width="140" uuid="28e92654-0551-4d05-8747-b9371afc32a6">
 						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="140" height="30" uuid="3613681e-e9f2-453e-8924-789692965a71"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="6933daf2-4550-4a40-9ed5-7a97cb9de22f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
-								<text><![CDATA[Billable Area]]></text>
+								<text><![CDATA[Consumed Fsi]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField textAdjust="StretchHeight">
-								<reportElement x="0" y="0" width="140" height="30" uuid="092f4ace-dfac-49bf-b733-d4e7bf88cdf5"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="957d69e9-cbc5-41be-b076-e341fe89ca74"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{billable_area}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{consumed_fsi}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="150" uuid="933ba5ec-6d5a-4b66-af55-0a454c306b20">
+					<jr:column width="140" uuid="31cfb5aa-2743-497a-919e-3da9604eb696">
 						<jr:columnHeader style="Table_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="150" height="30" uuid="7631df76-475f-4083-a5cb-16d25c903b66"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="ae653e12-80bc-4ee5-948a-4812ef7b3f03"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
-								<text><![CDATA[Letout Description]]></text>
+								<text><![CDATA[Built up Area From Date]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField textAdjust="StretchHeight">
-								<reportElement x="0" y="0" width="150" height="30" uuid="6c93fb91-8435-4332-ab9a-b1f2eec0890f"/>
+								<reportElement x="0" y="0" width="140" height="30" uuid="093b5215-8722-4e2f-aa8f-0428d6153d39"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{let_out_desc}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{from_date}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
