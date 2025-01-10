@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InspectionReportInformationPersonTable" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c17a7abc-f5c3-44b9-a93b-455b1c40e669">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="PersonTable" uuid="16ade44e-f8b3-4f81-8763-36e37e2de2de">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+		<queryString language="SQL">
+			<![CDATA[]]>
+		</queryString>
+		<field name="person_at_site" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="person_at_site"/>
+			<property name="com.jaspersoft.studio.field.label" value="person_at_site"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="inspection_person_found_at_site_other"/>
+		</field>
+		<field name="person_desg_lgl_status" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="person_desg_lgl_status"/>
+			<property name="com.jaspersoft.studio.field.label" value="person_desg_lgl_status"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="inspection_person_found_at_site_other"/>
+		</field>
+		<field name="person_contact_no" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="person_contact_no"/>
+			<property name="com.jaspersoft.studio.field.label" value="person_contact_no"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="inspection_person_found_at_site_other"/>
+		</field>
+		<field name="occupied_since" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="occupied_since"/>
+			<property name="com.jaspersoft.studio.field.label" value="occupied_since"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="inspection_person_found_at_site_other"/>
+		</field>
+	</subDataset>
+	<parameter name="PersonTable_Data" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="29" width="555" height="60" uuid="b11b7464-d574-4236-b642-7ac8e7c653c2">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="PersonTable" uuid="eeb7f284-eb6e-4a36-833c-b8af74b42a0b">
+						<dataSourceExpression><![CDATA[$P{PersonTable_Data}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="50" uuid="1d7b0f7d-f173-48b7-92c3-b31b2a9911fc">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="0fe54845-35f9-441f-8ef9-0277f8581178"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Sr. No.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="50" height="30" uuid="594f1ae6-8e4c-44ad-ae9f-43537af6927a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="18d718cd-f602-471c-b73b-b989f49cc32c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="30" uuid="83c75276-c780-41c8-b521-9230f60c03fc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Name of Person]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="130" height="30" uuid="34a10046-c9e2-4f72-82df-805c9d44b71b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{person_at_site}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="2706146d-ce99-4d1a-bf1b-a0f05458200d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="09bc7d89-a594-443d-a324-5793d3f5e689"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Designation/Legal Status]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="120" height="30" uuid="3c103775-205a-4a95-a262-883c69e6f107"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{person_desg_lgl_status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="bf3362f9-08ff-4081-a9ec-973ebaeeb236">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="bbd7117f-ea43-43b6-9a67-7ae6627df2ed"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Contact No]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="120" height="30" uuid="930cc596-058d-42fa-b39b-8ce040dd1e1a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{person_contact_no}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="135" uuid="f4d52fd9-a79b-400b-b879-408530f2f7e0">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="135" height="30" uuid="bc6e9b40-3f5c-4e06-a6de-2bff150041c0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Email Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="135" height="30" uuid="1fc5060e-a344-4ab1-8f30-6a6639086ac4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{occupied_since}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="df93cdf6-3374-4910-a443-866fbdc004dc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="10" width="170" height="19" uuid="7abeefd2-6540-46bb-85e0-4f03f68a6cca"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Information about person :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -28,11 +28,19 @@ import com.jasperRport.entities.DivisionReportField;
 import com.jasperRport.entities.EstateInformation;
 import com.jasperRport.entities.EstateInformationListOfPlots;
 import com.jasperRport.entities.EstateReportField;
+import com.jasperRport.entities.InspectionReportInformationFields;
+import com.jasperRport.entities.InspectionReportInformationTableFields;
 import com.jasperRport.entities.LetOut;
 import com.jasperRport.entities.LetoutInformationBuiltUpAreaTable;
 import com.jasperRport.entities.LetoutInformationMainReportField;
 import com.jasperRport.entities.LetoutInformationSurrenderLetoutTable;
 import com.jasperRport.entities.LetoutInformationTenancyAllotmentDetailsTable;
+import com.jasperRport.entities.ListOfInspectionReportFields;
+import com.jasperRport.entities.ListOfOtherThanEstateInspectionReport;
+import com.jasperRport.entities.ListOfSurveyReportFields;
+import com.jasperRport.entities.OtherThanEstateInspectionReportDocumentTableFields;
+import com.jasperRport.entities.OtherThanEstateInspectionReportInformationFields;
+import com.jasperRport.entities.OtherThanEstateInspectionReportPersonTableFields;
 import com.jasperRport.entities.PlotInformationMainReportFields;
 import com.jasperRport.entities.PlotInformationSubReportZoneTable;
 import com.jasperRport.entities.PlotInformationSubreportLetoutTable;
@@ -568,7 +576,8 @@ public class App {
 //            		Object[].class).list();
 //            
 //         // getting only required fields from db and map it to Division_Information_table
-//            List<Object[]> results_2 = session.createSQLQuery("select u.unit_code, u.mbpt_unit_id, u.unit_desc, u.status\r\n"
+//            List<Object[]> results_2 =
+//			session.createSQLQuery("select u.unit_code, u.mbpt_unit_id, u.unit_desc, u.status\r\n"
 //            		+ "from unit u \r\n"
 //            		+ "left join division d on u.div_id = d.div_id \r\n"
 //            		+ "where d.div_code = '1'\r\n"
@@ -1416,6 +1425,369 @@ public class App {
 //			} catch (Exception e) {
 //				System.out.println(e.getMessage());
 //			}
+			
+//			=====================================List Of Inspection Report=====================================
+//			List<Object[]> result = session.createSQLQuery("select ir.customer_code, ir.inspection_date, l.let_out_name, \r\n"
+//					+ "au.\"name\", ir.status \r\n"
+//					+ "from inspection_rpt ir\r\n"
+//					+ "left join \r\n"
+//					+ "let_out l on l.let_out_id = ir.let_out_id\r\n"
+//					+ "left join\r\n"
+//					+ "admin_users au on ir.admin_id = au.admin_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on u.unit_id = ir.unit_id\r\n"
+//					+ "where ir.unit_id = 1;").list();
+//			
+//			List<ListOfInspectionReportFields> listOfInspectionReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfInspectionReportFields listOfInspectionReportField = new ListOfInspectionReportFields();
+//				
+//				listOfInspectionReportField.setCustomer_code((String) row[0]);
+//				listOfInspectionReportField.setInspection_date((Date) row[1]);
+//				listOfInspectionReportField.setLet_out_name((String) row[2]);
+//				listOfInspectionReportField.setName((String) row[3]);
+//				if("A".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Registered");
+//				}else if ("S".equals((String) row[4])){
+//					listOfInspectionReportField.setStatus("Submitted");
+//				}
+//				listOfInspectionReportFields.add(listOfInspectionReportField);
+//			}
+//			
+//			for (ListOfInspectionReportFields listOfInspectionReportField : listOfInspectionReportFields) {
+//				System.out.println(listOfInspectionReportField);
+//			}
+//			
+//			System.out.println("Total Records : "+listOfInspectionReportFields.size());
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfInspectionReportFields.size());
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfInspectionReportFields);
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfInspectionReport.jrxml"));
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\\\C-DAC Mumbai Internship\\\\8th week\\\\Generated_Reports\\\\ListOfInspectionReport.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================Inspection Report Information==========================================
+			
+//			==========================Main Report Fields==========================
+//			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.rr_no, ir.inspection_date, ir.person_at_site,\r\n"
+//					+ "ir.customer_code, au.\"name\", ir.status, ir.is_fresh_survey\r\n"
+//					+ "from inspection_rpt ir\r\n"
+//					+ "left join\r\n"
+//					+ "division d on ir.division_id = d.div_id\r\n"
+//					+ "left join \r\n"
+//					+ "unit u on ir.unit_id = u.unit_id\r\n"
+//					+ "left join \r\n"
+//					+ "estate e on ir.estate_id = e.estate_id\r\n"
+//					+ "left join  \r\n"
+//					+ "plot p on ir.plot_id = p.plot_id\r\n"
+//					+ "left join \r\n"
+//					+ "admin_users au on ir.admin_id = au.admin_id \r\n"
+//					+ "where ir.inspection_rpt_id = '4303';").list();
+//			
+//			List<InspectionReportInformationFields> inspectionReportInformationFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				InspectionReportInformationFields inspectionReportInformationField = new InspectionReportInformationFields();
+//				
+//				inspectionReportInformationField.setDiv_name((String) row[0]);
+//				inspectionReportInformationField.setUnit_code((String) row[1]);
+//				inspectionReportInformationField.setEstate_name((String) row[2]);
+//				inspectionReportInformationField.setRr_no((String) row[3]);
+//				inspectionReportInformationField.setLet_out_omponent((String) row[3]);
+//				inspectionReportInformationField.setInspection_date((Date) row[4]);
+//				inspectionReportInformationField.setPerson_at_site((String) row[5]);
+//				inspectionReportInformationField.setCustomer_code((String) row[6]);
+//				inspectionReportInformationField.setName((String) row[7]);
+//				inspectionReportInformationField.setStatus((String) row[8]);
+//				
+//				inspectionReportInformationFields.add(inspectionReportInformationField);
+//			}
+//			
+//			System.out.println("===================Main Report Fields Data================");
+//			for (InspectionReportInformationFields inspectionReportInformationField : inspectionReportInformationFields) {
+//				System.out.println(inspectionReportInformationField);
+//			}
+//			
+////			==========================Main reports Construction Table==========================
+//			List<Object[]> tableResult = session.createSQLQuery("select mct.constr_type, ic.area, ic.detection_date, ic.location_unauth, ic.remarks\r\n"
+//					+ "from inspection_rpt ir\r\n"
+//					+ "left join\r\n"
+//					+ "inspection_construction ic on ir.inspection_rpt_id = ic.inspection_rpt_id\r\n"
+//					+ "left join \r\n"
+//					+ "m_constr_type mct on ic.constr_type_id = mct.constr_type_id\r\n"
+//					+ "where ir.inspection_rpt_id = '4303';").list();
+//			
+//			List<InspectionReportInformationTableFields> inspectionReportInformationTableFields = new ArrayList<>();
+//			
+//			for (Object[] row : tableResult) {
+//				
+//				InspectionReportInformationTableFields inspectionReportInformationTableField = new InspectionReportInformationTableFields();
+//				
+//				inspectionReportInformationTableField.setConstr_type((String) row[0]);
+//				inspectionReportInformationTableField.setArea((BigDecimal) row[1]);
+//				inspectionReportInformationTableField.setDetection_date((Date) row[2]);
+//				inspectionReportInformationTableField.setLocation_unauth((String) row[3]);
+//				inspectionReportInformationTableField.setRemarks((String) row[4]);
+//				
+//				inspectionReportInformationTableFields.add(inspectionReportInformationTableField);
+//			}
+//			
+//			System.out.println("===================Main Report Construction table data===================");
+//			for (InspectionReportInformationTableFields inspectionReportInformationTableField : inspectionReportInformationTableFields) {
+//				System.out.println(inspectionReportInformationTableField);
+//			}
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/InspectionReportInformation.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainReportFieldsDataSource = new JRBeanCollectionDataSource(inspectionReportInformationFields);
+//			JRBeanCollectionDataSource constructionTableDataSource = new JRBeanCollectionDataSource(inspectionReportInformationTableFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("ConstructionTable", constructionTableDataSource);
+//			
+//			String outputPath = "F:\\\\\\\\C-DAC Mumbai Internship\\\\\\\\8th week\\\\\\\\Generated_Reports\\\\\\\\InspectionReportInformation.pdf";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, mainReportFieldsDataSource);
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================List Of Other Than Estate Inspection Report==========================================
+//			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, oir.plot_location, l.let_out_name, mit.insp_type, oir.inspection_date,\r\n"
+//					+ "oir.observation_date, oir.person_at_site\r\n"
+//					+ "from  other_inspection_rpt oir\r\n"
+//					+ "left join\r\n"
+//					+ "estate e on oir.estate_id = e.estate_id\r\n"
+//					+ "left join\r\n"
+//					+ "admin_users au on oir.admin_id = au.admin_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on u.unit_id = e.unit_id\r\n"
+//					+ "left join \r\n"
+//					+ "division d on d.div_id = u.div_id\r\n"
+//					+ "left join \r\n"
+//					+ "inspection_rpt ir on ir.inspection_date = oir.inspection_date\r\n"
+//					+ "left join \r\n"
+//					+ "m_inspection_type mit on ir.insp_type_id = mit.insp_type_id\r\n"
+//					+ "left join\r\n"
+//					+ "let_out l on ir.let_out_id = l.let_out_id\r\n"
+//					+ "order by oir.inspection_date asc;").list();
+//			
+//			List<ListOfOtherThanEstateInspectionReport> listOfOtherThanEstateInspectionReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfOtherThanEstateInspectionReport listOfOtherThanEstateInspectionReport = new ListOfOtherThanEstateInspectionReport();
+//				
+//				listOfOtherThanEstateInspectionReport.setDiv_name((String) row[0]);
+//				listOfOtherThanEstateInspectionReport.setUnit_code((String) row[1]);
+//				listOfOtherThanEstateInspectionReport.setEstate_name((String) row[2]);
+//				listOfOtherThanEstateInspectionReport.setPlot_location((String) row[3]);
+//				listOfOtherThanEstateInspectionReport.setLet_out_name((String) row[4]);
+//				listOfOtherThanEstateInspectionReport.setInsp_type((String) row[5]);
+//				listOfOtherThanEstateInspectionReport.setInspection_date((Date) row[6]);
+//				listOfOtherThanEstateInspectionReport.setObservation_date((Date) row[7]);
+//				listOfOtherThanEstateInspectionReport.setPerson_at_site((String) row[8]);
+//				
+//				listOfOtherThanEstateInspectionReportFields.add(listOfOtherThanEstateInspectionReport);
+//			}
+//			
+//			for (ListOfOtherThanEstateInspectionReport listOfOtherThanEstateInspectionReport : listOfOtherThanEstateInspectionReportFields) {
+//				System.out.println(listOfOtherThanEstateInspectionReport);
+//			}
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfOtherThanEstateInspectionReport.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfOtherThanEstateInspectionReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfOtherThanEstateInspectionReportFields.size());
+//			
+//			String outputPath = "F:\\\\\\\\C-DAC Mumbai Internship\\\\\\\\8th week\\\\\\\\Generated_Reports\\\\\\\\ListOfOtherThanEstateInspectionReport.pdf";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================List Of Other Than Estate Inspection Information Report==========================================
+//			======================Main Report======================
+//			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, oir.plot_location, oir.custodian_dept,\r\n"
+//					+ "oir.landmark, oir.inspection_date, oir.observation_date, oir.person_at_site\r\n"
+//					+ "from other_inspection_rpt oir\r\n"
+//					+ "left join\r\n"
+//					+ "estate e on oir.estate_id = e.estate_id\r\n"
+//					+ "left join\r\n"
+//					+ "admin_users au on oir.admin_id = au.admin_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on u.unit_id = e.unit_id\r\n"
+//					+ "left join \r\n"
+//					+ "division d on d.div_id = u.div_id\r\n"
+//					+ "where oir.other_inspection_rpt_id = 4").list();
+//			
+//			List<OtherThanEstateInspectionReportInformationFields> otherThanEstateInspectionReportInformationFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				OtherThanEstateInspectionReportInformationFields otherThanEstateInspectionReportInformationField = new OtherThanEstateInspectionReportInformationFields();
+//				
+//				otherThanEstateInspectionReportInformationField.setDiv_name((String) row[0]);
+//				otherThanEstateInspectionReportInformationField.setUnit_code((String) row[1]);
+//				otherThanEstateInspectionReportInformationField.setEstate_name((String) row[2]);
+//				otherThanEstateInspectionReportInformationField.setPlot_location((String) row[3]);
+//				otherThanEstateInspectionReportInformationField.setCustodian_dept((String) row[4]);
+//				otherThanEstateInspectionReportInformationField.setLandmark((String) row[5]);;
+//				otherThanEstateInspectionReportInformationField.setInspection_date((Date) row[6]);
+//				otherThanEstateInspectionReportInformationField.setObservation_date((Date) row[7]);
+//				otherThanEstateInspectionReportInformationField.setPerson_at_site((String) row[8]);
+//				
+//				otherThanEstateInspectionReportInformationFields.add(otherThanEstateInspectionReportInformationField);
+//			}
+//			
+//			System.out.println("==============Main Report Fields Data==============");
+//			for (OtherThanEstateInspectionReportInformationFields otherThanEstateInspectionReportInformationField : otherThanEstateInspectionReportInformationFields) {
+//				System.out.println(otherThanEstateInspectionReportInformationField);
+//			}
+//			
+////			======================Document Table======================
+//			List<Object[]> resultDocumentTable = session.createSQLQuery("select oird.doc_type, oird.doc_name\r\n"
+//					+ "from other_inspection_report_docs oird\r\n"
+//					+ "where oird.other_inspection_rpt_id = 4;").list();
+//			
+//			List<OtherThanEstateInspectionReportDocumentTableFields> otherThanEstateInspectionReportDocumentTableFields = new ArrayList<>();
+//			
+//			for (Object[] row : resultDocumentTable) {
+//				
+//				OtherThanEstateInspectionReportDocumentTableFields otherThanEstateInspectionReportDocumentTableField = new OtherThanEstateInspectionReportDocumentTableFields();
+//				
+//				otherThanEstateInspectionReportDocumentTableField.setDoc_type((String) row[0]);
+//				otherThanEstateInspectionReportDocumentTableField.setDoc_name((String) row[1]);
+//				
+//				otherThanEstateInspectionReportDocumentTableFields.add(otherThanEstateInspectionReportDocumentTableField);
+//			}
+//			
+//			System.out.println("==============Document Table Fields Data==============");
+//			for (OtherThanEstateInspectionReportDocumentTableFields otherThanEstateInspectionReportDocumentTableField : otherThanEstateInspectionReportDocumentTableFields) {
+//				System.out.println(otherThanEstateInspectionReportDocumentTableField);
+//			}
+//			
+////			===============================Person Information Table===============================
+//			List<Object[]> resultPersonTable = session .createSQLQuery("select ipso.person_at_site, ipso.person_desg_lgl_status, ipso.person_contact_no,\r\n"
+//					+ "ipso.occupied_since\r\n"
+//					+ "from inspection_person_found_at_site_other ipso\r\n"
+//					+ "where ipso.other_inspection_rpt_id = 4").list();
+//			
+//			List<OtherThanEstateInspectionReportPersonTableFields> otherThanEstateInspectionReportPersonTableFields = new ArrayList<>();
+//			
+//			for (Object[] row : resultPersonTable) {
+//				
+//				OtherThanEstateInspectionReportPersonTableFields otherThanEstateInspectionReportPersonTableField = new OtherThanEstateInspectionReportPersonTableFields();
+//				
+//				otherThanEstateInspectionReportPersonTableField.setPerson_at_site((String) row[0]);
+//				otherThanEstateInspectionReportPersonTableField.setPerson_desg_lgl_status((String) row[1]);
+//				otherThanEstateInspectionReportPersonTableField.setPerson_contact_no((String) row[2]);
+//				otherThanEstateInspectionReportPersonTableField.setOccupied_since((String) row[3]);
+//				
+//				otherThanEstateInspectionReportPersonTableFields.add(otherThanEstateInspectionReportPersonTableField);
+//			}
+//			
+//			System.out.println("===================Person Table Data===================");
+//			for (OtherThanEstateInspectionReportPersonTableFields otherThanEstateInspectionReportPersonTableField : otherThanEstateInspectionReportPersonTableFields) {
+//				System.out.println(otherThanEstateInspectionReportPersonTableField);
+//			}
+//			
+////			=====================Generating Jasper Report=====================
+//			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/OtherThanEstateInspectionReportInformation.jrxml"));
+//			JasperReport personTableReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/OtherThanEstateInspectionReportInformationPersonTable.jrxml"));
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("PersonTable_Path", personTableReport);
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(otherThanEstateInspectionReportInformationFields);
+//			JRBeanCollectionDataSource documentDataSource = new JRBeanCollectionDataSource(otherThanEstateInspectionReportDocumentTableFields);
+//			JRBeanCollectionDataSource personDataSource = new JRBeanCollectionDataSource(otherThanEstateInspectionReportPersonTableFields);
+//			
+//			parameters.put("DocumentTable", documentDataSource);
+//			parameters.put("PersonTable_Data", personDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\OtherThanEstateInspectionReportInformation.pdf";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=======================================List Of Survey Report=======================================
+			List<Object[]> result = session.createSQLQuery("select sr.survey_date, sr.customer_code, p.rr_no, l.let_out_name,\r\n"
+					+ "sr.status, sr.forwarded_to\r\n"
+					+ "from survey_rpt sr\r\n"
+					+ "left join\r\n"
+					+ "let_out l on l.let_out_id = sr.let_out_id\r\n"
+					+ "left join \r\n"
+					+ "plot p on l.plot_id = p.plot_id\r\n"
+					+ "left join\r\n"
+					+ "unit u on p.unit_id = u.unit_id\r\n"
+					+ "where u.unit_id = 1").list();
+			
+			List<ListOfSurveyReportFields> listOfSurveyReportFields = new ArrayList<>();
+			
+			for (Object[] row : result) {
+				
+				ListOfSurveyReportFields listOfSurveyReportField = new ListOfSurveyReportFields();
+				
+				listOfSurveyReportField.setSurvey_date((Date) row[0]);
+				listOfSurveyReportField.setCustomer_code((String) row[1]);
+				listOfSurveyReportField.setRr_no((String) row[2]);
+				listOfSurveyReportField.setLet_out_name((String) row[3]);
+				if("A".equals((String) row[4])) {
+					listOfSurveyReportField.setStatus("Approved");
+				}else if ("V".equals((String) row[4])) {
+					listOfSurveyReportField.setStatus("Verified");
+				}else if ("RG".equals((String) row[4])) {
+					listOfSurveyReportField.setStatus("Registered");
+				}else if ("S".equals((String) row[4])){
+					listOfSurveyReportField.setStatus("Submitted");
+				}
+				listOfSurveyReportField.setForwarded_to((String) row[5]);
+				
+				listOfSurveyReportFields.add(listOfSurveyReportField);
+			}
+			
+			for (ListOfSurveyReportFields listOfSurveyReportField : listOfSurveyReportFields) {
+				System.out.println(listOfSurveyReportField);
+			}
+			
+			System.out.println("Total Records : "+listOfSurveyReportFields.size());
+			
+			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfSurveyReport.jrxml"));
+			
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfSurveyReportFields);
+			
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("total_records", listOfSurveyReportFields.size());
+			
+			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+			
+			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfSurveyReport.pdf";
+			
+			JasperExportManager.exportReportToPdfFile(report, outputPath);
+			
+			System.out.println("\nReport Generated Successfully at "+outputPath);
 		
 		} catch (Exception e) {
 //			System.out.println(e.getMessage());
