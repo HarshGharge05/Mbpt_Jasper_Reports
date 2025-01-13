@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MortgageOfLeaseholdRightsApplication_TermsandConditions" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de277043-a1be-4b88-9d76-b3dcfd782673">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="remark" class="java.lang.String"/>
+	<parameter name="Signature" class="java.lang.String"/>
+	<parameter name="UpdatedTimestamp" class="java.sql.Timestamp"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="532" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="0" width="340" height="20" uuid="7284f480-1dcb-443e-b8b0-a1f6f16fd459"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remark]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="20" width="340" height="20" uuid="e3256277-fbe6-44f5-8c86-e32f2acffa0f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{remark}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="60" width="180" height="20" uuid="43d9089f-d5b1-40a2-9575-35d6fd81d90e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Terms and Conditions:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="90" width="470" height="20" uuid="2ef2dbd8-73aa-4949-b2d1-9d6fbad5d6b3"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[i. Only the leasehold interest created under the Registered Indenture should be mortgaged.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="120" width="480" height="40" uuid="f8c97bc3-ec60-4bd2-84ee-4da3409d344d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ii. The lessees and the mortgagors must state in writing that all charges of the port for all claims under and/or arising out of the lease will have priority over the claims the mortgagees may have against the lessees for the loan.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="170" width="480" height="80" uuid="bce010a8-11af-44b1-9ec6-82582a4a2b94"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[iii. The mortgagees will further undertake in writing that, in the event of their intention to take over possession of the leasehold interest mortgaged to them in enforcement of their rights under the deed of the mortgage or otherwise, they may do so only with prior notice in writing to the port. In such an event, they will continue making regular payments of the port's dues and will observe and perform all covenants and conditions of the said lease. They shall remain liable in the same manner and to the same extent for any breaches as the lessees.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="260" width="480" height="30" uuid="8c418781-cbfd-416f-b02f-168dbe04e557"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[iv. Permission will be subject to the proposed mortgagers and/or mortgagees obtaining the sanction of the appropriate authority under any provision of law where necessary.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="300" width="480" height="70" uuid="f7b925b9-bcbf-49a5-aaa9-4df16f79f985"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[v. In case the mortgagees take over possession of the leasehold interest mortgaged to them in enforcement of their rights under the deed of mortgage, with or without prior permission of MbPA, then such transfers shall be deemed to be assignments or unlawful assignments, respectively. As per the policy in force, revised rent and/or premium, as the case may be, would be payable for such assignments from the date of assignment.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="380" width="480" height="30" uuid="b10c3a06-e77d-4229-abcd-3c3cbc850b9e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[vi. Permission for mortgage will be granted provided there are no outstanding dues and/or subsisting breaches.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="420" width="480" height="30" uuid="054b0ff8-4cfc-461a-b6fe-7aec02ff04d6"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[vii. Any other conditions that the Port may like to lay down, keeping in view the specific requirements of an individual case.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="490" width="80" height="20" uuid="ab9d8465-509e-4784-94b4-ca2286e1d4ad"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Submitted By :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="90" y="490" width="460" height="20" uuid="bce0103d-ac35-4a59-a197-32414a7d9706"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Signature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="510" width="30" height="20" uuid="62e5d117-bafb-41c2-a458-cbc890a129ac"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="510" width="300" height="20" uuid="bfd431b5-6c34-4829-8816-bd9b9163ed43"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{UpdatedTimestamp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

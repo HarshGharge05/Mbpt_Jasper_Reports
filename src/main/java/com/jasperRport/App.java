@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.security.Timestamp;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,6 +38,9 @@ import com.jasperRport.entities.LetoutInformationTenancyAllotmentDetailsTable;
 import com.jasperRport.entities.ListOfInspectionReportFields;
 import com.jasperRport.entities.ListOfOtherThanEstateInspectionReport;
 import com.jasperRport.entities.ListOfSurveyReportFields;
+import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationDocumentTableFields;
+import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationListFields;
+import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationViewFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportDocumentTableFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportInformationFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportPersonTableFields;
@@ -46,6 +49,8 @@ import com.jasperRport.entities.PlotInformationSubReportZoneTable;
 import com.jasperRport.entities.PlotInformationSubreportLetoutTable;
 import com.jasperRport.entities.PlotInformationSubreportMergeLetoutTable;
 import com.jasperRport.entities.PlotReportField;
+import com.jasperRport.entities.SurveyReportInformationFields;
+import com.jasperRport.entities.SurveyReportInformationFloorObservationListFields;
 import com.jasperRport.entities.Unit;
 import com.jasperRport.entities.UnitInformation;
 import com.jasperRport.entities.UnitInformationListOfEstate;
@@ -1733,58 +1738,312 @@ public class App {
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
 			
 //			=======================================List Of Survey Report=======================================
-			List<Object[]> result = session.createSQLQuery("select sr.survey_date, sr.customer_code, p.rr_no, l.let_out_name,\r\n"
-					+ "sr.status, sr.forwarded_to\r\n"
-					+ "from survey_rpt sr\r\n"
+//			List<Object[]> result = session.createSQLQuery("select sr.survey_date, sr.customer_code, p.rr_no, l.let_out_name,\r\n"
+//					+ "sr.status, sr.forwarded_to\r\n"
+//					+ "from survey_rpt sr\r\n"
+//					+ "left join\r\n"
+//					+ "let_out l on l.let_out_id = sr.let_out_id\r\n"
+//					+ "left join \r\n"
+//					+ "plot p on l.plot_id = p.plot_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on p.unit_id = u.unit_id\r\n"
+//					+ "where u.unit_id = 1").list();
+//			
+//			List<ListOfSurveyReportFields> listOfSurveyReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfSurveyReportFields listOfSurveyReportField = new ListOfSurveyReportFields();
+//				
+//				listOfSurveyReportField.setSurvey_date((Date) row[0]);
+//				listOfSurveyReportField.setCustomer_code((String) row[1]);
+//				listOfSurveyReportField.setRr_no((String) row[2]);
+//				listOfSurveyReportField.setLet_out_name((String) row[3]);
+//				if("A".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Registered");
+//				}else if ("S".equals((String) row[4])){
+//					listOfSurveyReportField.setStatus("Submitted");
+//				}
+//				listOfSurveyReportField.setForwarded_to((String) row[5]);
+//				
+//				listOfSurveyReportFields.add(listOfSurveyReportField);
+//			}
+//			
+//			for (ListOfSurveyReportFields listOfSurveyReportField : listOfSurveyReportFields) {
+//				System.out.println(listOfSurveyReportField);
+//			}
+//			
+//			System.out.println("Total Records : "+listOfSurveyReportFields.size());
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfSurveyReport.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfSurveyReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfSurveyReportFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfSurveyReport.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			====================================Survey Report Information====================================
+			
+			//===========================Main Report===========================
+//			List<Object[]> resultMain = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.rr_no,\r\n"
+//					+ "l.let_out_name, sr.survey_date, sr.plot_is_covered_with, sr.plot_area,\r\n"
+//					+ "sr.location_part_of_encroachment, sr.area_of_encroachment,\r\n"
+//					+ "sr.type_of_encroachment, sr.forwarded_to, sr.status, srmk.remark\r\n"
+//					+ "from survey_rpt sr\r\n"
+//					+ "left join\r\n"
+//					+ "survey_rmk srmk ON srmk.survey_rpt_id = sr.survey_rpt_id\r\n"
+//					+ "left join \r\n"
+//					+ "let_out l on sr.let_out_id = l.let_out_id\r\n"
+//					+ "left join\r\n"
+//					+ "plot p on l.plot_id = p.plot_id\r\n"
+//					+ "left join\r\n"
+//					+ "estate e on e.estate_id = p.estate_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on e.unit_id = u.unit_id\r\n"
+//					+ "left join\r\n"
+//					+ "division d on u.div_id = d.div_id\r\n"
+//					+ "where sr.survey_rpt_id = 171;").list();
+//			
+//			List<SurveyReportInformationFields> surveyReportInformationFields = new ArrayList<>();
+//			
+//			for (Object[] row : resultMain) {
+//				
+//				SurveyReportInformationFields surveyReportInformationField = new SurveyReportInformationFields();
+//				
+//				surveyReportInformationField.setDiv_name((String) row[0]);
+//				surveyReportInformationField.setUnit_code((String) row[1]);
+//				surveyReportInformationField.setEstate_name((String) row[2]);
+//				surveyReportInformationField.setRr_no((String) row[3]);
+//				surveyReportInformationField.setLet_out_name((String) row[4]);
+//				surveyReportInformationField.setSurvey_date((Date) row[5]);
+//				surveyReportInformationField.setPlot_is_covered_with((String) row[6]);
+//				surveyReportInformationField.setPlot_area((String) row[7]);
+//				surveyReportInformationField.setLocation_part_of_encroachment((String) row[8]);
+//				surveyReportInformationField.setArea_of_encroachment((String) row[9]);
+//				surveyReportInformationField.setType_of_encroachment((String) row[10]);
+//				surveyReportInformationField.setForwarded_to((String) row[11]);
+////				surveyReportInformationField.setStatus((String) row[12]);
+//				if("A".equals((String) row[12])) {
+//					surveyReportInformationField.setStatus("Approved");
+//				}else if ("V".equals((String) row[12])) {
+//					surveyReportInformationField.setStatus("Verified");
+//				}else if ("RG".equals((String) row[12])) {
+//					surveyReportInformationField.setStatus("Registered");
+//				}else if ("S".equals((String) row[12])){
+//					surveyReportInformationField.setStatus("Submitted");
+//				}
+//				surveyReportInformationField.setRemark((String) row[13]);
+//				
+//				surveyReportInformationFields.add(surveyReportInformationField);
+//			}
+//			
+//			System.out.println("==================Main Fields Data==================");
+//			for (SurveyReportInformationFields surveyReportInformationField : surveyReportInformationFields) {
+//				System.out.println(surveyReportInformationField);
+//			}
+//			
+//			List<Object []> resultList = session.createSQLQuery("select sfo.floor_no, sfo.main_structure, sfo.mezzanine_floor, \r\n"
+//					+ "sfo.\"others\", sfo.others_area, sfo.area_not_in_fsi, \r\n"
+//					+ "sfo.area_not_considered_fsi_justify, sfo.home_occupation, \r\n"
+//					+ "sfo.non_home_occupation, sfo.sum\r\n"
+//					+ "from survey_floor_observation sfo\r\n"
+//					+ "where sfo.survey_rpt_id = 171\r\n"
+//					+ "order by sfo.floor_no;").list();
+//			
+//			List<SurveyReportInformationFloorObservationListFields> surveyReportInformationFloorObservationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : resultList) {
+//				
+//				SurveyReportInformationFloorObservationListFields surveyReportInformationFloorObservationListField = new SurveyReportInformationFloorObservationListFields();
+//				
+//				surveyReportInformationFloorObservationListField.setFloor_no((String) row[0]);
+//				surveyReportInformationFloorObservationListField.setMain_structure((BigDecimal) row[1]);
+//				surveyReportInformationFloorObservationListField.setMezzanine_floor((BigDecimal) row[2]);
+//				surveyReportInformationFloorObservationListField.setOthers((String) row[3]);
+//				surveyReportInformationFloorObservationListField.setOthers_area((BigDecimal) row[4]);
+//				surveyReportInformationFloorObservationListField.setArea_not_in_fsi((BigDecimal) row[5]);
+//				surveyReportInformationFloorObservationListField.setArea_not_considered_fsi_justify((String) row[6]);
+//				surveyReportInformationFloorObservationListField.setHome_occupation((BigDecimal) row[7]);
+//				surveyReportInformationFloorObservationListField.setNon_home_occupation((BigDecimal) row[8]);
+//				surveyReportInformationFloorObservationListField.setSum((BigDecimal) row[9]);
+//				
+//				surveyReportInformationFloorObservationListFields.add(surveyReportInformationFloorObservationListField);
+//			}
+//			
+//			System.out.println("==================Floor Observation List Data==================");
+//			for (SurveyReportInformationFloorObservationListFields surveyReportInformationFloorObservationListField : surveyReportInformationFloorObservationListFields) {
+//				System.out.println(surveyReportInformationFloorObservationListField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/SurveyReportInformation.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(surveyReportInformationFields);
+//			JRBeanCollectionDataSource floorObservationListDataSource = new JRBeanCollectionDataSource(surveyReportInformationFloorObservationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("floorObservationList", floorObservationListDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\SurveyReportInformation.pdf";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, mainDataSource);
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+			
+//			=================================================MORTGAGE OF LEASEHOLD RIGHTS Application List=================================================
+			
+//			List<Object[]> mainResult = session.createSQLQuery("select afm.application_no, afm.update_timestamp,afm.tenancy_id, \r\n"
+//					+ "afm.plot_no, afm.mortgagor, afm.mortgagee, afm.form_status\r\n"
+//					+ "from applications_for_mortgage afm\r\n"
+//					+ "order by afm.applicant_id desc;").list();
+//			
+//			List<MortgageOfLeaseholdRightsApplicationListFields> mortgageOfLeaseholdRightsApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				MortgageOfLeaseholdRightsApplicationListFields mortgageOfLeaseholdRightsApplicationListField = new MortgageOfLeaseholdRightsApplicationListFields();
+//				
+//				mortgageOfLeaseholdRightsApplicationListField.setApplication_no((String) row[0]);
+//				mortgageOfLeaseholdRightsApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				mortgageOfLeaseholdRightsApplicationListField.setTenancy_id((String) row[2]);
+//				mortgageOfLeaseholdRightsApplicationListField.setPlot_no((String) row[3]);
+//				mortgageOfLeaseholdRightsApplicationListField.setMortgagor((String) row[4]);
+//				mortgageOfLeaseholdRightsApplicationListField.setMortgagee((String) row[5]);
+////				mortgageOfLeaseholdRightsApplicationListField.setForm_status((String) row[6]);
+//				if("APPR".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[6])){
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[6])){
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				mortgageOfLeaseholdRightsApplicationListFields.add(mortgageOfLeaseholdRightsApplicationListField);
+//			}
+//			
+//			for (MortgageOfLeaseholdRightsApplicationListFields mortgageOfLeaseholdRightsApplicationListField : mortgageOfLeaseholdRightsApplicationListFields) {
+//				System.out.println(mortgageOfLeaseholdRightsApplicationListField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", mortgageOfLeaseholdRightsApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MortgageOfLeaseholdRightsApplicationList.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			================================================MORTGAGE OF LEASEHOLD RIGHTS Application================================================
+//			==============================Main Report==============================
+			List<Object[]> resultMain = session.createSQLQuery("select afm.application_no, afm.form_status, afm.tenancy_id, afm.plot_no, \r\n"
+					+ "afm.estate, afm.mortgagor, afm.mortgagee, afm.name_of_org, afm.area_for_noc,\r\n"
+					+ "afm.tenure, afm.amount_for_loan, afm.purpose_of_mortgage, afm.form_date,\r\n"
+					+ "afm.to_date, vpf.verification_remarks, afm.signature, afm.update_timestamp\r\n"
+					+ "from applications_for_mortgage afm\r\n"
 					+ "left join\r\n"
-					+ "let_out l on l.let_out_id = sr.let_out_id\r\n"
-					+ "left join \r\n"
-					+ "plot p on l.plot_id = p.plot_id\r\n"
-					+ "left join\r\n"
-					+ "unit u on p.unit_id = u.unit_id\r\n"
-					+ "where u.unit_id = 1").list();
-			
-			List<ListOfSurveyReportFields> listOfSurveyReportFields = new ArrayList<>();
-			
-			for (Object[] row : result) {
-				
-				ListOfSurveyReportFields listOfSurveyReportField = new ListOfSurveyReportFields();
-				
-				listOfSurveyReportField.setSurvey_date((Date) row[0]);
-				listOfSurveyReportField.setCustomer_code((String) row[1]);
-				listOfSurveyReportField.setRr_no((String) row[2]);
-				listOfSurveyReportField.setLet_out_name((String) row[3]);
-				if("A".equals((String) row[4])) {
-					listOfSurveyReportField.setStatus("Approved");
-				}else if ("V".equals((String) row[4])) {
-					listOfSurveyReportField.setStatus("Verified");
-				}else if ("RG".equals((String) row[4])) {
-					listOfSurveyReportField.setStatus("Registered");
-				}else if ("S".equals((String) row[4])){
-					listOfSurveyReportField.setStatus("Submitted");
-				}
-				listOfSurveyReportField.setForwarded_to((String) row[5]);
-				
-				listOfSurveyReportFields.add(listOfSurveyReportField);
-			}
-			
-			for (ListOfSurveyReportFields listOfSurveyReportField : listOfSurveyReportFields) {
-				System.out.println(listOfSurveyReportField);
-			}
-			
-			System.out.println("Total Records : "+listOfSurveyReportFields.size());
-			
-			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfSurveyReport.jrxml"));
-			
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfSurveyReportFields);
+					+ "verification_permission_forms vpf on afm.applicant_id = vpf.application_id\r\n"
+					+ "where afm.applicant_id = 6960;").list();
 			
 			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("total_records", listOfSurveyReportFields.size());
 			
-			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+			List<MortgageOfLeaseholdRightsApplicationViewFields> mortgageOfLeaseholdRightsApplicationViewFields = new ArrayList<>();
+			for (Object[] row : resultMain) {
+				
+				MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField = new MortgageOfLeaseholdRightsApplicationViewFields();
+				
+				mortgageOfLeaseholdRightsApplicationViewField.setApplication_no((String) row[0]);
+				mortgageOfLeaseholdRightsApplicationViewField.setForm_status((String) row[1]);
+				mortgageOfLeaseholdRightsApplicationViewField.setTenancy_id((String) row[2]);
+				mortgageOfLeaseholdRightsApplicationViewField.setPlot_no((String) row[3]);
+				mortgageOfLeaseholdRightsApplicationViewField.setEstate((String) row[4]);
+				mortgageOfLeaseholdRightsApplicationViewField.setMortgagor((String) row[5]);
+				mortgageOfLeaseholdRightsApplicationViewField.setMortgagee((String) row[6]);
+				mortgageOfLeaseholdRightsApplicationViewField.setName_of_org((String) row[7]);
+				mortgageOfLeaseholdRightsApplicationViewField.setArea_for_noc((BigDecimal) row[8]);
+				mortgageOfLeaseholdRightsApplicationViewField.setTenure((BigInteger) row[9]);
+				mortgageOfLeaseholdRightsApplicationViewField.setAmount_for_loan((BigDecimal) row[10]);
+				mortgageOfLeaseholdRightsApplicationViewField.setPurpose_of_mortgage((String) row[11]);
+				mortgageOfLeaseholdRightsApplicationViewField.setForm_date((String) row[12]);
+				mortgageOfLeaseholdRightsApplicationViewField.setTo_date((String) row[13]);
+				if((String) row[14] == null) {
+					mortgageOfLeaseholdRightsApplicationViewField.setVerification_remarks("No remarks available.");
+				}
+				mortgageOfLeaseholdRightsApplicationViewField.setSignature((String) row[15]);
+				mortgageOfLeaseholdRightsApplicationViewField.setUpdate_timestamp((Timestamp) row[16]);
+				
+				parameters.put("remark", mortgageOfLeaseholdRightsApplicationViewField.getVerification_remarks());
+				parameters.put("Signature", mortgageOfLeaseholdRightsApplicationViewField.getSignature());
+				parameters.put("UpdatedTimestamp", mortgageOfLeaseholdRightsApplicationViewField.getUpdate_timestamp());
+				
+				mortgageOfLeaseholdRightsApplicationViewFields.add(mortgageOfLeaseholdRightsApplicationViewField);
+			}
 			
-			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfSurveyReport.pdf";
+			System.out.println("====================Main Report Data====================");
+			for (MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField : mortgageOfLeaseholdRightsApplicationViewFields) {
+				System.out.println(mortgageOfLeaseholdRightsApplicationViewField);
+			}
 			
+//			============================Document Table============================
+			List<Object[]> resultDocumentTable = session.createSQLQuery("select md.doc_name\r\n"
+					+ "from mortgage_doc md\r\n"
+					+ "where md.mortgage_id = 8;").list();
+			
+			List<MortgageOfLeaseholdRightsApplicationDocumentTableFields> mortgageOfLeaseholdRightsApplicationDocumentTableFields = new ArrayList<>();
+			
+			
+			for (Object row : resultDocumentTable) {
+				
+				MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField = new MortgageOfLeaseholdRightsApplicationDocumentTableFields();
+				
+				mortgageOfLeaseholdRightsApplicationDocumentTableField.setDoc_name((String) row);
+				
+				mortgageOfLeaseholdRightsApplicationDocumentTableFields.add(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+			}
+			
+			System.out.println("====================Document Table Data====================");
+			for (MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField : mortgageOfLeaseholdRightsApplicationDocumentTableFields) {
+				System.out.println(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+			}
+			
+			// Jasper Report
+			JasperReport compiledMainReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplicationView.jrxml"));
+			JasperReport compiledSubreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplication_TermsandConditions.jrxml"));
+			
+			JRBeanCollectionDataSource mainReportDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationViewFields);
+			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationDocumentTableFields);
+			
+			parameters.put("Subreport_Path", compiledSubreport);
+			parameters.put("DocumentTable_Data", documentTableDataSource);
+			
+			JasperPrint report = JasperFillManager.fillReport(compiledMainReport, parameters, mainReportDataSource);
+			
+			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MortgageOfLeaseholdRightsApplicationView.pdf";
 			JasperExportManager.exportReportToPdfFile(report, outputPath);
 			
 			System.out.println("\nReport Generated Successfully at "+outputPath);

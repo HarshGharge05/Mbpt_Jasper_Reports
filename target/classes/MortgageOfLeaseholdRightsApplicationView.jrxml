@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MortgageOfLeaseholdRightsApplicationView" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50e09543-64eb-411c-b7ab-8afcde5a19e1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DocumentTable" uuid="8e89c801-e059-42ae-827f-8a4ae14ec8a9">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+		<queryString language="SQL">
+			<![CDATA[select md.doc_name
+from mortgage_doc md
+where md.mortgage_id = 8]]>
+		</queryString>
+		<field name="doc_name" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="doc_name"/>
+			<property name="com.jaspersoft.studio.field.label" value="doc_name"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="mortgage_doc"/>
+		</field>
+	</subDataset>
+	<parameter name="remark" class="java.lang.String"/>
+	<parameter name="Signature" class="java.lang.String"/>
+	<parameter name="UpdatedTimestamp" class="java.sql.Timestamp"/>
+	<parameter name="Subreport_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="DocumentTable_Data" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString language="SQL">
+		<![CDATA[select afm.application_no, afm.form_status, afm.tenancy_id, afm.plot_no, 
+afm.estate, afm.mortgagor, afm.mortgagee, afm.name_of_org, afm.area_for_noc,
+afm.tenure, afm.amount_for_loan, afm.purpose_of_mortgage, afm.form_date,
+afm.to_date, vpf.verification_remarks, afm.signature, afm.update_timestamp
+from applications_for_mortgage afm
+left join
+verification_permission_forms vpf on afm.applicant_id = vpf.application_id
+where afm.applicant_id = 6960]]>
+	</queryString>
+	<field name="application_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="form_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="tenancy_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="plot_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plot_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="estate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estate"/>
+		<property name="com.jaspersoft.studio.field.label" value="estate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="mortgagor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mortgagor"/>
+		<property name="com.jaspersoft.studio.field.label" value="mortgagor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="mortgagee" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mortgagee"/>
+		<property name="com.jaspersoft.studio.field.label" value="mortgagee"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="name_of_org" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_of_org"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_of_org"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="area_for_noc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="area_for_noc"/>
+		<property name="com.jaspersoft.studio.field.label" value="area_for_noc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="tenure" class="java.math.BigInteger">
+		<property name="com.jaspersoft.studio.field.name" value="tenure"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenure"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="amount_for_loan" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="amount_for_loan"/>
+		<property name="com.jaspersoft.studio.field.label" value="amount_for_loan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="purpose_of_mortgage" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="purpose_of_mortgage"/>
+		<property name="com.jaspersoft.studio.field.label" value="purpose_of_mortgage"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="form_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="form_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="form_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="to_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="verification_remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="verification_remarks"/>
+		<property name="com.jaspersoft.studio.field.label" value="verification_remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="verification_permission_forms"/>
+	</field>
+	<field name="signature" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<field name="update_timestamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_mortgage"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="b511fc52-123f-428d-891d-4e40b8bb007e"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="b3e299f0-7a39-4993-a3ec-d797b55aea8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="196ceeca-c86b-4b76-8bf3-bb1e425a707f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="ff744300-201d-41bf-b6e2-674be2df4493"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="5b58024d-fd39-4bf9-b19e-16af1a71d4be"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="294041f4-22bb-43db-bf87-310a7dc13283">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="165" y="81" width="230" height="31" uuid="5df714f1-9a63-4a41-a299-e648f1578768"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APPLICATION FOR MORTGAGE OF LEASEHOLD RIGHTS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="112" width="555" height="1" uuid="eb700f79-6d87-415c-846e-77b0b609f782">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="507" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="50" height="20" uuid="e654b610-b94b-412d-b9c6-8f2a9b8451bc"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="c1a583c5-88ad-46b9-b0fc-ff16e5b46639"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[The Estate Manager,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="41" width="100" height="20" uuid="2acf14ac-1b10-481b-8908-9e0bd8d5e0eb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Estate Division,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="52" width="120" height="20" uuid="807712b9-986d-4730-8ae4-5f2e4b913bcb"/>
+				<text><![CDATA[Mumbai Port Authority.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="80" width="280" height="20" uuid="92cb82d7-5463-4527-9549-e75d99f70ba8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub: Application for Mortgage of Leasehold Rights.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="110" width="450" height="20" uuid="eb2b1f46-a89d-41bc-8221-52ed6e90f60a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[I request permission for mortgage of premises. The details are as follows:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="140" width="170" height="20" uuid="a06c57b1-9152-4bc0-8656-a576bfd28b37"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{application_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="140" width="170" height="20" uuid="adf5ac85-f5d1-4975-8489-9ad815cf2071"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Application No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="160" width="170" height="20" uuid="2d60232e-bede-4ac4-93e3-c5212c36f53f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Application Status:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="180" width="170" height="20" uuid="73f5a442-d700-4474-8a4b-ca4d25da1ca0"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Tenancy Code:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="220" width="170" height="20" uuid="727397db-000e-4d3e-ae4c-ce3f0b5bd325"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Estate:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="200" width="170" height="20" uuid="d6f35faf-1eba-43ce-a87a-88597169abb0"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Plot/RR No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="240" width="170" height="20" uuid="943d94c0-5910-4dd2-8668-e6bf01e9652b"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Mortgagor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="260" width="170" height="20" uuid="145aa12f-9b57-434c-8719-e2aa04ef0f86"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Mortgagee:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="280" width="170" height="20" uuid="68d2b3f1-c137-49e1-9b1a-4912aec92c6c"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Name of Organization:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="300" width="170" height="20" uuid="189dfd59-d2df-4b47-a116-0da74697ad45"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Area for which NOC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="360" width="170" height="20" uuid="b0658cb9-d128-466b-8f3c-319e1899f7da"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Purpose of Mortgage:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="320" width="170" height="20" uuid="48f556b6-68ea-4495-824e-35ca630faf0f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Mortgage Tenure:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="340" width="170" height="20" uuid="f37c58a6-2ca3-4942-b167-ad29f5b63484"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Amount of Loan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="380" width="170" height="20" uuid="aead1d89-2dcd-42bf-b626-7f1a1c330319"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[From Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="400" width="170" height="20" uuid="884e749e-e195-468f-9f08-179078491cc8"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[To Date:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="180" width="170" height="20" uuid="a5fd6590-697a-4477-8155-46737899fce6"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenancy_id}]]></textFieldExpression>
+				<patternExpression><![CDATA[$F{tenancy_id}]]></patternExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="160" width="170" height="20" uuid="8acb305b-f310-42d0-b601-6db43e9b0763"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{form_status}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="200" width="170" height="20" uuid="70b4b5a1-6a79-41b0-8b67-ae25319043e9"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{plot_no}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="220" width="170" height="20" uuid="fddf3ba2-6729-4736-bf9d-0bd4a91bdeb3"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="240" width="170" height="20" uuid="7e3192ff-6a9f-4dac-baba-be21ac0e7299"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mortgagor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="260" width="170" height="20" uuid="f832df0d-685d-499a-b580-cb4fb5c7a4b7"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mortgagee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="280" width="170" height="20" uuid="83b697f4-5707-479a-bb33-1d15c2e57937"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_of_org}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="300" width="170" height="20" uuid="4d1dfbac-7d58-419c-8d10-21dc986fb4ce"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area_for_noc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="320" width="170" height="20" uuid="5296a563-5f31-403a-8930-665d669614d5"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenure}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="340" width="170" height="20" uuid="1977235d-eda3-4789-8e04-994a4aef2b95"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount_for_loan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="360" width="170" height="20" uuid="a2ed06a5-4147-4c69-b569-9ba99fe7dc55"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purpose_of_mortgage}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="380" width="170" height="20" uuid="33fdbcf3-edae-420b-900b-511d1b8aabb7"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{form_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="400" width="170" height="20" uuid="11931602-d206-40ab-a7cf-fb63283ea78c"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{to_date}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="110" y="440" width="340" height="62" uuid="e5513961-7e8b-4252-a0ac-27e4462d8144">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DocumentTable" uuid="aec8496b-f881-478b-a3dc-44115713df4d">
+						<dataSourceExpression><![CDATA[$P{DocumentTable_Data}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="70" uuid="a65692d3-b0d5-43cd-b185-037bec4640c1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="f869383c-8bde-4369-9501-d7376416c1f9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Sr. No.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="70" height="30" uuid="39e90b23-559f-40dc-9b69-83b0f32d9ec9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="270" uuid="03e3fa57-fea0-4cbb-a574-987f58b23636">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="270" height="30" uuid="93259f29-d2c0-479a-80a7-a52289cf327b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Document Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="270" height="30" uuid="0e4b833c-2c4d-45f8-9c25-87daabea9225"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{doc_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="23">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="20" uuid="ed2a7e18-8ee1-4d91-9a79-5d73bfcb45b8"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{Subreport_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="2b52cfa8-64e3-481d-8d21-6f318939ff36">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="ffacc751-9112-4db8-83ae-2418daa0b204"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="9457c302-24d1-4a9a-8672-e78534737820"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
