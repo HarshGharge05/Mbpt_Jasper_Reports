@@ -21,6 +21,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.jasperRport.entities.BreachRegularizationApplicationListFields;
 import com.jasperRport.entities.Division;
 import com.jasperRport.entities.DivisionInformation;
 import com.jasperRport.entities.DivisionInformationListOfPlots;
@@ -28,6 +29,10 @@ import com.jasperRport.entities.DivisionReportField;
 import com.jasperRport.entities.EstateInformation;
 import com.jasperRport.entities.EstateInformationListOfPlots;
 import com.jasperRport.entities.EstateReportField;
+import com.jasperRport.entities.GrantFreshLeaseApplicationListFields;
+import com.jasperRport.entities.GrantFreshLeaseApplicationViewFields;
+import com.jasperRport.entities.GrantFreshLeaseApplicationView_AreaTableFields;
+import com.jasperRport.entities.GrantFreshLeaseApplicationView_DocumentTableFields;
 import com.jasperRport.entities.InspectionReportInformationFields;
 import com.jasperRport.entities.InspectionReportInformationTableFields;
 import com.jasperRport.entities.LetOut;
@@ -38,6 +43,9 @@ import com.jasperRport.entities.LetoutInformationTenancyAllotmentDetailsTable;
 import com.jasperRport.entities.ListOfInspectionReportFields;
 import com.jasperRport.entities.ListOfOtherThanEstateInspectionReport;
 import com.jasperRport.entities.ListOfSurveyReportFields;
+import com.jasperRport.entities.MonsoonProtectionShedsViewFields;
+import com.jasperRport.entities.MonsoonProtectionShedsView_DocumentTableFields;
+import com.jasperRport.entities.MonsoonShedApplicationListFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationDocumentTableFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationListFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationViewFields;
@@ -49,8 +57,17 @@ import com.jasperRport.entities.PlotInformationSubReportZoneTable;
 import com.jasperRport.entities.PlotInformationSubreportLetoutTable;
 import com.jasperRport.entities.PlotInformationSubreportMergeLetoutTable;
 import com.jasperRport.entities.PlotReportField;
+import com.jasperRport.entities.RegularizationOfBreachesViewFields;
+import com.jasperRport.entities.RegularizationOfBreachesView_BreachTableFields;
+import com.jasperRport.entities.RegularizationOfBreachesView_DocumentTableFields;
 import com.jasperRport.entities.SurveyReportInformationFields;
 import com.jasperRport.entities.SurveyReportInformationFloorObservationListFields;
+import com.jasperRport.entities.TemporaryUsePermissionApplicationListFields;
+import com.jasperRport.entities.TemporaryUsePermissionApplicationViewFields;
+import com.jasperRport.entities.TemporaryUsePermissionApplicationView_DocumentTableFields;
+import com.jasperRport.entities.TenantableRepairsApplicationListFields;
+import com.jasperRport.entities.TenantableRepairsApplicationViewFields;
+import com.jasperRport.entities.TenantableRepairsApplicationView_DocumentTableFields;
 import com.jasperRport.entities.Unit;
 import com.jasperRport.entities.UnitInformation;
 import com.jasperRport.entities.UnitInformationListOfEstate;
@@ -1961,93 +1978,801 @@ public class App {
 			
 //			================================================MORTGAGE OF LEASEHOLD RIGHTS Application================================================
 //			==============================Main Report==============================
-			List<Object[]> resultMain = session.createSQLQuery("select afm.application_no, afm.form_status, afm.tenancy_id, afm.plot_no, \r\n"
-					+ "afm.estate, afm.mortgagor, afm.mortgagee, afm.name_of_org, afm.area_for_noc,\r\n"
-					+ "afm.tenure, afm.amount_for_loan, afm.purpose_of_mortgage, afm.form_date,\r\n"
-					+ "afm.to_date, vpf.verification_remarks, afm.signature, afm.update_timestamp\r\n"
-					+ "from applications_for_mortgage afm\r\n"
-					+ "left join\r\n"
-					+ "verification_permission_forms vpf on afm.applicant_id = vpf.application_id\r\n"
-					+ "where afm.applicant_id = 6960;").list();
+//			List<Object[]> resultMain = session.createSQLQuery("select afm.application_no, afm.form_status, afm.tenancy_id, afm.plot_no, \r\n"
+//					+ "afm.estate, afm.mortgagor, afm.mortgagee, afm.name_of_org, afm.area_for_noc,\r\n"
+//					+ "afm.tenure, afm.amount_for_loan, afm.purpose_of_mortgage, afm.form_date,\r\n"
+//					+ "afm.to_date, vpf.verification_remarks, afm.signature, afm.update_timestamp\r\n"
+//					+ "from applications_for_mortgage afm\r\n"
+//					+ "left join\r\n"
+//					+ "verification_permission_forms vpf on afm.applicant_id = vpf.application_id\r\n"
+//					+ "where afm.applicant_id = 6960;").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<MortgageOfLeaseholdRightsApplicationViewFields> mortgageOfLeaseholdRightsApplicationViewFields = new ArrayList<>();
+//			for (Object[] row : resultMain) {
+//				
+//				MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField = new MortgageOfLeaseholdRightsApplicationViewFields();
+//				
+//				mortgageOfLeaseholdRightsApplicationViewField.setApplication_no((String) row[0]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setForm_status((String) row[1]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setTenancy_id((String) row[2]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setPlot_no((String) row[3]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setEstate((String) row[4]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setMortgagor((String) row[5]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setMortgagee((String) row[6]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setName_of_org((String) row[7]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setArea_for_noc((BigDecimal) row[8]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setTenure((BigInteger) row[9]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setAmount_for_loan((BigDecimal) row[10]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setPurpose_of_mortgage((String) row[11]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setForm_date((String) row[12]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setTo_date((String) row[13]);
+//				if((String) row[14] == null) {
+//					mortgageOfLeaseholdRightsApplicationViewField.setVerification_remarks("No remarks available.");
+//				}else {
+//					mortgageOfLeaseholdRightsApplicationViewField.setVerification_remarks((String) row[14]);
+//				}
+//				mortgageOfLeaseholdRightsApplicationViewField.setSignature((String) row[15]);
+//				mortgageOfLeaseholdRightsApplicationViewField.setUpdate_timestamp((Timestamp) row[16]);
+//				
+//				parameters.put("remark", mortgageOfLeaseholdRightsApplicationViewField.getVerification_remarks());
+//				parameters.put("Signature", mortgageOfLeaseholdRightsApplicationViewField.getSignature());
+//				parameters.put("UpdatedTimestamp", mortgageOfLeaseholdRightsApplicationViewField.getUpdate_timestamp());
+//				
+//				mortgageOfLeaseholdRightsApplicationViewFields.add(mortgageOfLeaseholdRightsApplicationViewField);
+//			}
+//			
+//			System.out.println("====================Main Report Data====================");
+//			for (MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField : mortgageOfLeaseholdRightsApplicationViewFields) {
+//				System.out.println(mortgageOfLeaseholdRightsApplicationViewField);
+//			}
+//			
+////			============================Document Table============================
+//			List<Object[]> resultDocumentTable = session.createSQLQuery("select md.doc_name\r\n"
+//					+ "from mortgage_doc md\r\n"
+//					+ "where md.mortgage_id = 8;").list();
+//			
+//			List<MortgageOfLeaseholdRightsApplicationDocumentTableFields> mortgageOfLeaseholdRightsApplicationDocumentTableFields = new ArrayList<>();
+//			
+//			
+//			for (Object row : resultDocumentTable) {
+//				
+//				MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField = new MortgageOfLeaseholdRightsApplicationDocumentTableFields();
+//				
+//				mortgageOfLeaseholdRightsApplicationDocumentTableField.setDoc_name((String) row);
+//				
+//				mortgageOfLeaseholdRightsApplicationDocumentTableFields.add(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+//			}
+//			
+//			System.out.println("====================Document Table Data====================");
+//			for (MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField : mortgageOfLeaseholdRightsApplicationDocumentTableFields) {
+//				System.out.println(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledMainReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplicationView.jrxml"));
+//			JasperReport compiledSubreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplication_TermsandConditions.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainReportDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationViewFields);
+//			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationDocumentTableFields);
+//			
+//			parameters.put("Subreport_Path", compiledSubreport);
+//			parameters.put("DocumentTable_Data", documentTableDataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledMainReport, parameters, mainReportDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MortgageOfLeaseholdRightsApplicationView.pdf";
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=================================================BREACH REGULARIZATION APPLICATION LIST=================================================
+			
+//			List<Object[]> result = session.createSQLQuery("select abr.application_no, abr.update_timestamp, abr.tenancy_id,\r\n"
+//					+ "abr.plot_no, abr.form_status\r\n"
+//					+ "from appl_for_breach_regularization abr;").list();
+//			
+//			List<BreachRegularizationApplicationListFields> breachRegularizationApplicationListFields = new ArrayList<>();
+//			for (Object[] row : result) {
+//				
+//				BreachRegularizationApplicationListFields breachRegularizationApplicationListField = new BreachRegularizationApplicationListFields();
+//				
+//				breachRegularizationApplicationListField.setApplication_no((String) row[0]);
+//				breachRegularizationApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				breachRegularizationApplicationListField.setTenancy_id((String) row[2]);
+//				breachRegularizationApplicationListField.setPlot_no((String) row[3]);
+////				breachRegularizationApplicationListField.setForm_status((String) row[4]);
+//				if("APPR".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[4])){
+//					breachRegularizationApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[4])){
+//					breachRegularizationApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				breachRegularizationApplicationListFields.add(breachRegularizationApplicationListField);
+//			}
+//			
+//			for (BreachRegularizationApplicationListFields breachRegularizationApplicationListField : breachRegularizationApplicationListFields) {
+//				System.out.println(breachRegularizationApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/BreachRegularizationApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(breachRegularizationApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", breachRegularizationApplicationListFields.size());
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\BreachRegularizationApplicationList.pdf";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=================================================BREACH REGULARIZATION APPLICATION View=================================================
+			
+			//=======================Main Report=======================
+//			List<Object[]> resultMain = session.createSQLQuery("select abr.estate, abr.plot_no, abr.tenancy_id,\r\n"
+//					+ "abr.application_no, abr.form_status, abr.signature, \r\n"
+//					+ "abr.update_timestamp\r\n"
+//					+ "from appl_for_breach_regularization abr\r\n"
+//					+ "where abr.breachreg_id = 7").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<RegularizationOfBreachesViewFields> regularizationOfBreachesViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : resultMain) {
+//				
+//				RegularizationOfBreachesViewFields regularizationOfBreachesViewField = new RegularizationOfBreachesViewFields();
+//				
+//				regularizationOfBreachesViewField.setEstate((String) row[0]);
+//				regularizationOfBreachesViewField.setPlot_no((String) row[1]);
+//				regularizationOfBreachesViewField.setTenancy_id((String) row[2]);
+//				regularizationOfBreachesViewField.setApplication_no((String) row[3]);
+//				regularizationOfBreachesViewField.setForm_status((String) row[4]);
+//				regularizationOfBreachesViewField.setSignature((String) row[5]);
+//				regularizationOfBreachesViewField.setUpdate_timestamp((Timestamp) row[6]);
+//				
+//				parameters.put("Signature", regularizationOfBreachesViewField.getSignature());
+//				parameters.put("Update_Timestamp", regularizationOfBreachesViewField.getUpdate_timestamp());
+//				
+//				regularizationOfBreachesViewFields.add(regularizationOfBreachesViewField);
+//			}
+//			
+//			System.out.println("==================Main Report data=================");
+//			for (RegularizationOfBreachesViewFields regularizationOfBreachesViewField : regularizationOfBreachesViewFields) {
+//				System.out.println(regularizationOfBreachesViewField);
+//			}
+//			
+//			//=================Breach Table=======================
+//			List<Object[]> breachTableResult = session.createSQLQuery("select abr.typeo_of_breach, abr.removal_date,\r\n"
+//					+ "abr.\"location\"\r\n"
+//					+ "from appl_for_breach_regularization abr\r\n"
+//					+ "where abr.breachreg_id = 7").list();
+//			
+//			List<RegularizationOfBreachesView_BreachTableFields> regularizationOfBreachesView_BreachTableFields = new ArrayList<>();
+//			
+//			for (Object[] row : breachTableResult) {
+//				
+//				RegularizationOfBreachesView_BreachTableFields regularizationOfBreachesView_BreachTableField = new RegularizationOfBreachesView_BreachTableFields();
+//				
+//				regularizationOfBreachesView_BreachTableField.setTypeo_of_breach((String) row[0]);
+//				regularizationOfBreachesView_BreachTableField.setRemoval_date((String) row[1]);
+//				regularizationOfBreachesView_BreachTableField.setLocation((String) row[2]);
+//				
+//				regularizationOfBreachesView_BreachTableFields.add(regularizationOfBreachesView_BreachTableField);
+//			}
+//			
+//			System.out.println("===================Breach Table Datalocation================");
+//			for (RegularizationOfBreachesView_BreachTableFields regularizationOfBreachesView_BreachTableField : regularizationOfBreachesView_BreachTableFields) {
+//				System.out.println(regularizationOfBreachesView_BreachTableField);
+//			}
+//			
+//			// ===================Document Table===================
+//			List<Object> documentTableResult = session.createSQLQuery("select bd.doc_name\r\n"
+//					+ "from breachreg_doc bd\r\n"
+//					+ "where bd.breachreg_id = 7").list();
+//			
+//			List<RegularizationOfBreachesView_DocumentTableFields> regularizationOfBreachesView_DocumentTablesFields = new ArrayList<>();
+//			
+//			for (Object row : documentTableResult) {
+//				RegularizationOfBreachesView_DocumentTableFields regularizationOfBreachesView_DocumentTableField = new RegularizationOfBreachesView_DocumentTableFields();
+//				
+//				regularizationOfBreachesView_DocumentTableField.setDoc_name((String) row);
+//				
+//				regularizationOfBreachesView_DocumentTablesFields.add(regularizationOfBreachesView_DocumentTableField);
+//			}
+//			
+//			System.out.println("==================Document Table Fields===============");
+//			for (RegularizationOfBreachesView_DocumentTableFields regularizationOfBreachesView_DocumentTableField : regularizationOfBreachesView_DocumentTablesFields) {
+//				System.out.println(regularizationOfBreachesView_DocumentTableField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledMainReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/RegularizationOfBreachesView.jrxml"));
+//			JasperReport compiledDocumentReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/RegularizationOfBreachesView_DocumentTable.jrxml"));
+//			JasperReport compiledBottomReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/RegularizationOfBreachesView_Bottom.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(regularizationOfBreachesViewFields);
+//			JRBeanCollectionDataSource breachtableDataSource = new JRBeanCollectionDataSource(regularizationOfBreachesView_BreachTableFields);
+//			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(regularizationOfBreachesView_DocumentTablesFields);
+//			
+//			parameters.put("DocumentTable_Path", compiledDocumentReport);
+//			parameters.put("BottomContent_Path", compiledBottomReport);
+//			parameters.put("BreachTable_DataSource", breachtableDataSource);
+//			parameters.put("DocumentTable_DataSet", documentTableDataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledMainReport, parameters, mainDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\RegularizationOfBreachesView.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			====================================Monsoon Shed Application List====================================
+//			List<Object[]> result = session.createSQLQuery("select amp.application_no, amp.update_timestamp, amp.tenancy_id,\r\n"
+//					+ "amp.plot_no, amp.estate, amp.\"location\", amp.form_status\r\n"
+//					+ "from appl_for_mansoon_protech amp").list();
+//			
+//			List<MonsoonShedApplicationListFields> monsoonShedApplicationListFields = new ArrayList<>();
+//			for (Object[] row : result) {
+//				
+//				MonsoonShedApplicationListFields monsoonShedApplicationListField = new MonsoonShedApplicationListFields();
+//				
+//				monsoonShedApplicationListField.setApplication_no((String) row[0]);
+//				monsoonShedApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				monsoonShedApplicationListField.setTenancy_id((String) row[2]);
+//				monsoonShedApplicationListField.setPlot_no((String) row[3]);
+//				monsoonShedApplicationListField.setEstate((String) row[4]);
+//				monsoonShedApplicationListField.setLocation((String) row[5]);
+////				monsoonShedApplicationListField.setForm_status((String) row[6]);
+//				if("APPR".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[6])){
+//					monsoonShedApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[6])){
+//					monsoonShedApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				monsoonShedApplicationListFields.add(monsoonShedApplicationListField);
+//			}
+//			
+//			for (MonsoonShedApplicationListFields monsoonShedApplicationListField : monsoonShedApplicationListFields) {
+//				System.out.println(monsoonShedApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MonsoonShedApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(monsoonShedApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", monsoonShedApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MonsoonShedApplicationList.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			======================================Monsoon Shed Application View======================================
+			//==============Main Report data============
+//			List<Object[]> mainResult = session.createSQLQuery("select amp.application_no, amp.form_status, amp.tenancy_id,\r\n"
+//					+ "amp.plot_no, amp.estate, amp.\"location\", amp.from_date, \r\n"
+//					+ "amp.to_date, amp.area, amp.signature, amp.update_timestamp, vpf.verification_remarks\r\n"
+//					+ "from appl_for_mansoon_protech amp\r\n"
+//					+ "left join\r\n"
+//					+ "verification_permission_forms vpf on amp.applicant_id = vpf.application_id\r\n"
+//					+ "where amp.mansoonpro_id = 4").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<MonsoonProtectionShedsViewFields> monsoonProtectionShedsViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				MonsoonProtectionShedsViewFields monsoonProtectionShedsViewField = new MonsoonProtectionShedsViewFields();
+//				
+//				monsoonProtectionShedsViewField.setApplication_no((String) row[0]);
+//				monsoonProtectionShedsViewField.setForm_status((String) row[1]);
+//				monsoonProtectionShedsViewField.setTenancy_id((String) row[2]);
+//				monsoonProtectionShedsViewField.setPlot_no((String) row[3]);
+//				monsoonProtectionShedsViewField.setEstate((String) row[4]);
+//				monsoonProtectionShedsViewField.setLocation((String) row[5]);
+//				monsoonProtectionShedsViewField.setFrom_date((String) row[6]);
+//				monsoonProtectionShedsViewField.setTo_date((String) row[7]);
+//				monsoonProtectionShedsViewField.setArea((BigDecimal) row[8]);
+//				monsoonProtectionShedsViewField.setSignature((String) row[9]);
+//				monsoonProtectionShedsViewField.setUpdate_timestamp((Timestamp) row[10]);
+//				if((String) row[11] == null) {
+//					monsoonProtectionShedsViewField.setVerification_remarks("No remarks available.");
+//				}else {
+//					monsoonProtectionShedsViewField.setVerification_remarks((String) row[11]);
+//				}
+//				
+//				parameters.put("Remark", monsoonProtectionShedsViewField.getVerification_remarks());
+//				parameters.put("Signature", monsoonProtectionShedsViewField.getSignature());
+//				parameters.put("Update_Timestamp", monsoonProtectionShedsViewField.getUpdate_timestamp());
+//				
+//				monsoonProtectionShedsViewFields.add(monsoonProtectionShedsViewField);
+//			}
+//			
+//			System.out.println("===============Main Report Data : (\"===============");
+//			for (MonsoonProtectionShedsViewFields monsoonProtectionShedsViewField : monsoonProtectionShedsViewFields) {
+//				System.out.println(monsoonProtectionShedsViewField);
+//			}
+//			
+//			// ================Document Table Data=================
+//			List<Object> documentTableResult = session.createSQLQuery("select md.doc_name\r\n"
+//					+ "from mansoonprotech_doc md\r\n"
+//					+ "where md.mansoonpro_id = 4").list();
+//			
+//			List<MonsoonProtectionShedsView_DocumentTableFields> monsoonProtectionShedsView_DocumentTableFields = new ArrayList<>();
+//			
+//			for (Object row : documentTableResult) {
+//				
+//				MonsoonProtectionShedsView_DocumentTableFields monsoonProtectionShedsView_DocumentTableField = new MonsoonProtectionShedsView_DocumentTableFields();
+//				
+//				monsoonProtectionShedsView_DocumentTableField.setDoc_name((String) row);
+//				
+//				monsoonProtectionShedsView_DocumentTableFields.add(monsoonProtectionShedsView_DocumentTableField);
+//			}
+//			
+//			System.out.println("==================Document Table Data================");
+//			for (MonsoonProtectionShedsView_DocumentTableFields monsoonProtectionShedsView_DocumentTableField : monsoonProtectionShedsView_DocumentTableFields) {
+//				System.out.println(monsoonProtectionShedsView_DocumentTableField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MonsoonProtectionShedsView.jrxml"));
+//			JasperReport bottomCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MonsoonProtectionShedsView_Bottom.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(monsoonProtectionShedsViewFields);
+//			JRBeanCollectionDataSource documentDataSource = new JRBeanCollectionDataSource(monsoonProtectionShedsView_DocumentTableFields);
+//			
+//			parameters.put("DocumentTable_DataSource", documentDataSource);
+//			parameters.put("Subreport_Path", bottomCompiledReport);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MonsoonProtectionShedsView.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=========================================Temporary Use Permission Application List===================================
+//			List<Object[]> result = session.createSQLQuery("select afc.application_no, afc.update_timestamp, afc.applicant_name,\r\n"
+//					+ "afc.area, afc.estate, afc.form_status\r\n"
+//					+ "from appl_for_casualoccupation afc").list();
+//			
+//			List<TemporaryUsePermissionApplicationListFields> temporaryUsePermissionApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				TemporaryUsePermissionApplicationListFields temporaryUsePermissionApplicationListField = new TemporaryUsePermissionApplicationListFields();
+//				
+//				temporaryUsePermissionApplicationListField.setApplication_no((String) row[0]);
+//				temporaryUsePermissionApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				temporaryUsePermissionApplicationListField.setApplicant_name((String) row[2]);
+//				temporaryUsePermissionApplicationListField.setArea((BigDecimal) row[3]);
+//				temporaryUsePermissionApplicationListField.setEstate((String) row[4]);
+////				temporaryUsePermissionApplicationListField.setForm_status((String) row[5]);
+//				if("APPR".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[5])){
+//					temporaryUsePermissionApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[5])){
+//					temporaryUsePermissionApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				temporaryUsePermissionApplicationListFields.add(temporaryUsePermissionApplicationListField);
+//			}
+//			
+//			for (TemporaryUsePermissionApplicationListFields temporaryUsePermissionApplicationListField : temporaryUsePermissionApplicationListFields) {
+//				System.out.println(temporaryUsePermissionApplicationListField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TemporaryUsePermissionApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(temporaryUsePermissionApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", temporaryUsePermissionApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledreport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\TemporaryUsePermissionApplicationList.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=========================================Temporary Use Permission Application View===================================
+			//================Main Data================
+//			List<Object[]> mainResult = session.createSQLQuery("select afc.application_no, afc.form_status, afc.applicant_name,\r\n"
+//					+ "afc.location_for_storage, afc.estate, afc.area, afc.from_date,\r\n"
+//					+ "afc.to_date, afc.purpose, afc.pan_no, vpf.verification_remarks, afc.signature, afc.update_timestamp\r\n"
+//					+ "from appl_for_casualoccupation afc\r\n"
+//					+ "left join \r\n"
+//					+ "verification_permission_forms vpf on afc.applicant_id = vpf.application_id\r\n"
+//					+ "where afc.casual_id = 9").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<TemporaryUsePermissionApplicationViewFields> temporaryUsePermissionApplicationViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				TemporaryUsePermissionApplicationViewFields temporaryUsePermissionApplicationViewField = new TemporaryUsePermissionApplicationViewFields();
+//				
+//				temporaryUsePermissionApplicationViewField.setApplication_no((String) row[0]);
+//				temporaryUsePermissionApplicationViewField.setForm_status((String) row[1]);
+//				temporaryUsePermissionApplicationViewField.setApplicant_name((String) row[2]);
+//				temporaryUsePermissionApplicationViewField.setLocation_for_storage((String) row[3]);
+//				temporaryUsePermissionApplicationViewField.setEstate((String) row[4]);
+//				temporaryUsePermissionApplicationViewField.setArea((BigDecimal) row[5]);
+//				temporaryUsePermissionApplicationViewField.setFrom_date((String) row[6]);
+//				temporaryUsePermissionApplicationViewField.setTo_date((String) row[7]);
+//				temporaryUsePermissionApplicationViewField.setPurpose((String) row[8]);
+//				temporaryUsePermissionApplicationViewField.setPan_no((String) row[9]);
+//				if((String) row[10] == null) {
+//					temporaryUsePermissionApplicationViewField.setVerification_remarks("No remarks available.");
+//				}else {
+//					temporaryUsePermissionApplicationViewField.setVerification_remarks((String) row[10]);
+//				}
+//				temporaryUsePermissionApplicationViewField.setSignature((String) row[11]);
+//				temporaryUsePermissionApplicationViewField.setUpdate_timestamp((Timestamp) row[12]);
+//				
+//				parameters.put("Remark", temporaryUsePermissionApplicationViewField.getVerification_remarks());
+//				parameters.put("Signature", temporaryUsePermissionApplicationViewField.getSignature());
+//				parameters.put("Update_Timestamp", temporaryUsePermissionApplicationViewField.getUpdate_timestamp());
+//				
+//				temporaryUsePermissionApplicationViewFields.add(temporaryUsePermissionApplicationViewField);
+//			}
+//			
+//			System.out.println("===============Main data=============");
+//			for (TemporaryUsePermissionApplicationViewFields temporaryUsePermissionApplicationViewField : temporaryUsePermissionApplicationViewFields) {
+//				System.out.println(temporaryUsePermissionApplicationViewField);
+//			}
+//			
+//			// ============Document Table=================
+//			List<Object> documentTableResult = session.createSQLQuery("select cd.doc_name\r\n"
+//					+ "from casualoccup_doc cd\r\n"
+//					+ "where cd.casual_id = 9").list();
+//			
+//			List<TemporaryUsePermissionApplicationView_DocumentTableFields> temporaryUsePermissionApplicationView_DocumentTableFields = new ArrayList<>();
+//			
+//			for (Object row: documentTableResult) {
+//				
+//				TemporaryUsePermissionApplicationView_DocumentTableFields temporaryUsePermissionApplicationView_DocumentTableField = new TemporaryUsePermissionApplicationView_DocumentTableFields();
+//				
+//				temporaryUsePermissionApplicationView_DocumentTableField.setDoc_name((String) row);
+//				
+//				temporaryUsePermissionApplicationView_DocumentTableFields.add(temporaryUsePermissionApplicationView_DocumentTableField);
+//			}
+//			
+//			System.out.println("=============Document Table Data=============");
+//			for (TemporaryUsePermissionApplicationView_DocumentTableFields temporaryUsePermissionApplicationView_DocumentTableField : temporaryUsePermissionApplicationView_DocumentTableFields) {
+//				System.out.println(temporaryUsePermissionApplicationView_DocumentTableField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TemporaryUsePermissionApplicationView.jrxml"));
+//			JasperReport bottomCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TemporaryUsePermissionApplicationView_Bottom.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(temporaryUsePermissionApplicationViewFields);
+//			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(temporaryUsePermissionApplicationView_DocumentTableFields);
+//			
+//			parameters.put("Subreport_Path", bottomCompiledReport);
+//			parameters.put("DocumentTable_DataSource", documentTableDataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\TemporaryUsePermissionApplicationView.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=====================================TENANTABLE Repairs Application List=====================================
+//			List<Object[]> result = session.createSQLQuery("select atr.application_no, atr.update_timestamp, atr.tenancy_id, atr.listofrepair,\r\n"
+//					+ "atr.\"year\", atr.form_status\r\n"
+//					+ "from appl_for_tenant_repair atr").list();
+//			
+//			List<TenantableRepairsApplicationListFields> tenantableRepairsApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				TenantableRepairsApplicationListFields tenantableRepairsApplicationListField = new TenantableRepairsApplicationListFields();
+//				
+//				tenantableRepairsApplicationListField.setApplication_no((String) row[0]);
+//				tenantableRepairsApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				tenantableRepairsApplicationListField.setTenancy_id((String) row[2]);
+//				tenantableRepairsApplicationListField.setListofrepair((String) row[3]);
+//				tenantableRepairsApplicationListField.setYear((String) row[4]);
+//				tenantableRepairsApplicationListField.setForm_status((String) row[5]);
+//				
+//				tenantableRepairsApplicationListFields.add(tenantableRepairsApplicationListField);
+//			}
+//			
+//			for (TenantableRepairsApplicationListFields tenantableRepairsApplicationListField : tenantableRepairsApplicationListFields) {
+//				System.out.println(tenantableRepairsApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TenantableRepairsApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tenantableRepairsApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", tenantableRepairsApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\TenantableRepairsApplicationList.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=======================================TENANTABLE Repairs Application View=======================================
+//			List<Object[]> mainResult = session.createSQLQuery("select atr.application_no, atr.form_status, atr.tenancy_id, atr.\"name\", atr.sanctioned_user,\r\n"
+//					+ "atr.structure_type, atr.\"year\", atr.listofrepair, vpf.verification_remarks,\r\n"
+//					+ "atr.signature, atr.update_timestamp\r\n"
+//					+ "from appl_for_tenant_repair atr\r\n"
+//					+ "left join\r\n"
+//					+ "verification_permission_forms vpf on atr.applicant_id = vpf.application_id\r\n"
+//					+ "where atr.tenantrepairapplication_id = 5;").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<TenantableRepairsApplicationViewFields> tenantableRepairsApplicationViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				TenantableRepairsApplicationViewFields tenantableRepairsApplicationViewField = new TenantableRepairsApplicationViewFields();
+//				
+//				tenantableRepairsApplicationViewField.setApplication_no((String) row[0]);
+//				tenantableRepairsApplicationViewField.setForm_status((String) row[1]);
+//				tenantableRepairsApplicationViewField.setTenancy_id((String) row[2]);
+//				tenantableRepairsApplicationViewField.setName((String) row[3]);
+//				tenantableRepairsApplicationViewField.setSanctioned_user((String) row[4]);
+//				tenantableRepairsApplicationViewField.setStructure_type((String) row[5]);
+//				tenantableRepairsApplicationViewField.setYear((String) row[6]);
+//				tenantableRepairsApplicationViewField.setListofrepair((String) row[7]);
+//				tenantableRepairsApplicationViewField.setArea_affected((String) row[6]);
+////				tenantableRepairsApplicationViewField.setVerification_remarks((String) row[8]);
+//				if((String) row[8] == null) {
+//					tenantableRepairsApplicationViewField.setVerification_remarks("No remarks available.");
+//				}else {
+//					tenantableRepairsApplicationViewField.setVerification_remarks((String) row[8]);
+//				}
+//				tenantableRepairsApplicationViewField.setSignature((String) row[9]);
+//				tenantableRepairsApplicationViewField.setUpdate_timestamp((Timestamp) row[10]);
+//				
+//				parameters.put("Remark", tenantableRepairsApplicationViewField.getVerification_remarks());
+//				parameters.put("Signature", tenantableRepairsApplicationViewField.getSignature());
+//				parameters.put("Update_Timestamp", tenantableRepairsApplicationViewField.getUpdate_timestamp());
+//				
+//				tenantableRepairsApplicationViewFields.add(tenantableRepairsApplicationViewField);
+//				
+//			}
+//			
+//			System.out.println("===============Main Report Data==============");
+//			for (TenantableRepairsApplicationViewFields tenantableRepairsApplicationViewField : tenantableRepairsApplicationViewFields) {
+//				System.out.println(tenantableRepairsApplicationViewField);
+//			}
+//			
+//			//===================Document Table====================
+//			List<Object> documentTableResult = session.createSQLQuery("select td.doc_name\r\n"
+//					+ "from tenantrepair_doc td\r\n"
+//					+ "where td.tenantrepairapplication_id = 5").list();
+//			
+//			List<TenantableRepairsApplicationView_DocumentTableFields> tenantableRepairsApplicationView_DocumentTableFields = new ArrayList<>();
+//			
+//			for (Object row : documentTableResult) {
+//				
+//				TenantableRepairsApplicationView_DocumentTableFields tenantableRepairsApplicationView_DocumentTableField = new TenantableRepairsApplicationView_DocumentTableFields();
+//				
+//				tenantableRepairsApplicationView_DocumentTableField.setDoc_name((String) row);
+//				
+//				tenantableRepairsApplicationView_DocumentTableFields.add(tenantableRepairsApplicationView_DocumentTableField);
+//			}
+//			
+//			System.out.println("============Documents Table Data===========");
+//			for (TenantableRepairsApplicationView_DocumentTableFields tenantableRepairsApplicationView_DocumentTableField : tenantableRepairsApplicationView_DocumentTableFields) {
+//				System.out.println(tenantableRepairsApplicationView_DocumentTableField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TenantableRepairsApplicationView.jrxml"));
+//			JasperReport bottomCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/TenantableRepairsApplicationView_Bottom.jrxml"));
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(tenantableRepairsApplicationViewFields);
+//			JRBeanCollectionDataSource documentDataSource = new JRBeanCollectionDataSource(tenantableRepairsApplicationView_DocumentTableFields);
+//			
+//			parameters.put("Subreport_Path", bottomCompiledReport);
+//			parameters.put("DocumentTable_DataSource", documentDataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\TenantableRepairsApplicationView.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=============================================Grant Fresh Lease Application List=============================================
+//			List<Object[]> result = session.createSQLQuery("select ag.application_no, ag.update_timestamp, ag.estate,\r\n"
+//					+ "ag.form_status\r\n"
+//					+ "from applications_for_grantlease ag").list();
+//			
+//			List<GrantFreshLeaseApplicationListFields> grantFreshLeaseApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				GrantFreshLeaseApplicationListFields grantFreshLeaseApplicationListField = new GrantFreshLeaseApplicationListFields();
+//				
+//				grantFreshLeaseApplicationListField.setApplication_no((String) row[0]);
+//				grantFreshLeaseApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				grantFreshLeaseApplicationListField.setEstate((String) row[2]);
+//				grantFreshLeaseApplicationListField.setForm_status((String) row[3]);
+//				
+//				grantFreshLeaseApplicationListFields.add(grantFreshLeaseApplicationListField);
+//			}
+//			
+//			for (GrantFreshLeaseApplicationListFields grantFreshLeaseApplicationListField : grantFreshLeaseApplicationListFields) {
+//				System.out.println(grantFreshLeaseApplicationListField);
+//			}
+//			
+//			// Jasper report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationList.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", grantFreshLeaseApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\GrantFreshLeaseApplicationList.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			========================================Grant Fresh Lease Application View=================================
+			List<Object[]> mainResult = session.createSQLQuery("select ag.plot, ag.tenancy_id, ag.period_of_lease, ag.application_no,\r\n"
+					+ "ag.form_status, ag.signature, ag.update_timestamp\r\n"
+					+ "from applications_for_grantlease ag\r\n"
+					+ "where ag.application_id =5").list();
 			
 			Map<String, Object> parameters = new HashMap<>();
 			
-			List<MortgageOfLeaseholdRightsApplicationViewFields> mortgageOfLeaseholdRightsApplicationViewFields = new ArrayList<>();
-			for (Object[] row : resultMain) {
+			List<GrantFreshLeaseApplicationViewFields> grantFreshLeaseApplicationViewFields = new ArrayList<>();
+			
+			for (Object[] row : mainResult) {
 				
-				MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField = new MortgageOfLeaseholdRightsApplicationViewFields();
+				GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField = new GrantFreshLeaseApplicationViewFields();
 				
-				mortgageOfLeaseholdRightsApplicationViewField.setApplication_no((String) row[0]);
-				mortgageOfLeaseholdRightsApplicationViewField.setForm_status((String) row[1]);
-				mortgageOfLeaseholdRightsApplicationViewField.setTenancy_id((String) row[2]);
-				mortgageOfLeaseholdRightsApplicationViewField.setPlot_no((String) row[3]);
-				mortgageOfLeaseholdRightsApplicationViewField.setEstate((String) row[4]);
-				mortgageOfLeaseholdRightsApplicationViewField.setMortgagor((String) row[5]);
-				mortgageOfLeaseholdRightsApplicationViewField.setMortgagee((String) row[6]);
-				mortgageOfLeaseholdRightsApplicationViewField.setName_of_org((String) row[7]);
-				mortgageOfLeaseholdRightsApplicationViewField.setArea_for_noc((BigDecimal) row[8]);
-				mortgageOfLeaseholdRightsApplicationViewField.setTenure((BigInteger) row[9]);
-				mortgageOfLeaseholdRightsApplicationViewField.setAmount_for_loan((BigDecimal) row[10]);
-				mortgageOfLeaseholdRightsApplicationViewField.setPurpose_of_mortgage((String) row[11]);
-				mortgageOfLeaseholdRightsApplicationViewField.setForm_date((String) row[12]);
-				mortgageOfLeaseholdRightsApplicationViewField.setTo_date((String) row[13]);
-				if((String) row[14] == null) {
-					mortgageOfLeaseholdRightsApplicationViewField.setVerification_remarks("No remarks available.");
+				grantFreshLeaseApplicationViewField.setPlot((String) row[0]);
+				grantFreshLeaseApplicationViewField.setTenancy_id((String) row[1]);
+				grantFreshLeaseApplicationViewField.setPeriod_of_lease((BigDecimal) row[2]);
+				grantFreshLeaseApplicationViewField.setApplication_no((String) row[3]);
+//				grantFreshLeaseApplicationViewField.setForm_status((String) row[4]);
+				if("APPR".equals((String) row[4])) {
+					grantFreshLeaseApplicationViewField.setForm_status("Approved");
+				}else if ("V".equals((String) row[4])) {
+					grantFreshLeaseApplicationViewField.setForm_status("Verified");
+				}else if ("RG".equals((String) row[4])) {
+					grantFreshLeaseApplicationViewField.setForm_status("Registered");
+				}else if ("Su".equals((String) row[4])){
+					grantFreshLeaseApplicationViewField.setForm_status("Submitted");
+				}else if ("RT".equals((String) row[4])){
+					grantFreshLeaseApplicationViewField.setForm_status("Returned");
 				}
-				mortgageOfLeaseholdRightsApplicationViewField.setSignature((String) row[15]);
-				mortgageOfLeaseholdRightsApplicationViewField.setUpdate_timestamp((Timestamp) row[16]);
+				grantFreshLeaseApplicationViewField.setSignature((String) row[5]);
+				grantFreshLeaseApplicationViewField.setUpdate_timestamp((Timestamp) row[6]);
 				
-				parameters.put("remark", mortgageOfLeaseholdRightsApplicationViewField.getVerification_remarks());
-				parameters.put("Signature", mortgageOfLeaseholdRightsApplicationViewField.getSignature());
-				parameters.put("UpdatedTimestamp", mortgageOfLeaseholdRightsApplicationViewField.getUpdate_timestamp());
+				parameters.put("Signature", grantFreshLeaseApplicationViewField.getSignature());
+				parameters.put("Update_Timestamp", grantFreshLeaseApplicationViewField.getUpdate_timestamp());
 				
-				mortgageOfLeaseholdRightsApplicationViewFields.add(mortgageOfLeaseholdRightsApplicationViewField);
+				grantFreshLeaseApplicationViewFields.add(grantFreshLeaseApplicationViewField);
 			}
 			
-			System.out.println("====================Main Report Data====================");
-			for (MortgageOfLeaseholdRightsApplicationViewFields mortgageOfLeaseholdRightsApplicationViewField : mortgageOfLeaseholdRightsApplicationViewFields) {
-				System.out.println(mortgageOfLeaseholdRightsApplicationViewField);
+			System.out.println("=================Detail Fields================");
+			for (GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField : grantFreshLeaseApplicationViewFields) {
+				System.out.println(grantFreshLeaseApplicationViewField);
 			}
 			
-//			============================Document Table============================
-			List<Object[]> resultDocumentTable = session.createSQLQuery("select md.doc_name\r\n"
-					+ "from mortgage_doc md\r\n"
-					+ "where md.mortgage_id = 8;").list();
+			//====================Area Table==================
+			List<Object[]> areaTableResult = session.createSQLQuery("select ag.plot_area, ag.\"location\", ag.use\r\n"
+					+ "from applications_for_grantlease ag\r\n"
+					+ "where ag.application_id = 5").list();
 			
-			List<MortgageOfLeaseholdRightsApplicationDocumentTableFields> mortgageOfLeaseholdRightsApplicationDocumentTableFields = new ArrayList<>();
+			List<GrantFreshLeaseApplicationView_AreaTableFields> grantFreshLeaseApplicationView_AreaTableFields = new ArrayList<>();
 			
-			
-			for (Object row : resultDocumentTable) {
+			for (Object[] row : areaTableResult) {
 				
-				MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField = new MortgageOfLeaseholdRightsApplicationDocumentTableFields();
+				GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField = new GrantFreshLeaseApplicationView_AreaTableFields();
 				
-				mortgageOfLeaseholdRightsApplicationDocumentTableField.setDoc_name((String) row);
+				grantFreshLeaseApplicationView_AreaTableField.setPlot_area((String) row[0]);
+				grantFreshLeaseApplicationView_AreaTableField.setLocation((String) row[1]);
+				grantFreshLeaseApplicationView_AreaTableField.setUse((String) row[2]);
 				
-				mortgageOfLeaseholdRightsApplicationDocumentTableFields.add(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+				grantFreshLeaseApplicationView_AreaTableFields.add(grantFreshLeaseApplicationView_AreaTableField);
 			}
 			
-			System.out.println("====================Document Table Data====================");
-			for (MortgageOfLeaseholdRightsApplicationDocumentTableFields mortgageOfLeaseholdRightsApplicationDocumentTableField : mortgageOfLeaseholdRightsApplicationDocumentTableFields) {
-				System.out.println(mortgageOfLeaseholdRightsApplicationDocumentTableField);
+			System.out.println("=================Area Table Fields================");
+			for (GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField : grantFreshLeaseApplicationView_AreaTableFields) {
+				System.out.println(grantFreshLeaseApplicationView_AreaTableField);
 			}
 			
-			// Jasper Report
-			JasperReport compiledMainReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplicationView.jrxml"));
-			JasperReport compiledSubreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MortgageOfLeaseholdRightsApplication_TermsandConditions.jrxml"));
+			//========================Document Table===========================
+			List<Object> documentTableResult = session.createSQLQuery("select gpd.doc_name\r\n"
+					+ "from grant_lease_permission_doc gpd\r\n"
+					+ "where gpd.application_id = 5").list();
 			
-			JRBeanCollectionDataSource mainReportDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationViewFields);
-			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationDocumentTableFields);
+			List<GrantFreshLeaseApplicationView_DocumentTableFields> grantFreshLeaseApplicationView_DocumentTableFields = new ArrayList<>();
 			
-			parameters.put("Subreport_Path", compiledSubreport);
-			parameters.put("DocumentTable_Data", documentTableDataSource);
+			for (Object row : documentTableResult) {
+				GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField = new GrantFreshLeaseApplicationView_DocumentTableFields();
+				
+				grantFreshLeaseApplicationView_DocumentTableField.setDoc_name((String) row);
+				
+				grantFreshLeaseApplicationView_DocumentTableFields.add(grantFreshLeaseApplicationView_DocumentTableField);
+			}
 			
-			JasperPrint report = JasperFillManager.fillReport(compiledMainReport, parameters, mainReportDataSource);
+			System.out.println("===============Document Table Data============");
+			for (GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField : grantFreshLeaseApplicationView_DocumentTableFields) {
+				System.out.println(grantFreshLeaseApplicationView_DocumentTableField);
+			}
 			
-			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MortgageOfLeaseholdRightsApplicationView.pdf";
+			//Jasper Report
+			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView.jrxml"));
+			JasperReport documentTableReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_DocumentTable.jrxml"));
+			JasperReport bottomTable = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_Bottom.jrxml"));
+			
+			parameters.put("DocumentTable_Path", documentTableReport);
+			parameters.put("BottomReport_Path", bottomTable);
+			
+			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationViewFields);
+			JRBeanCollectionDataSource areaTablaDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_AreaTableFields);
+			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_DocumentTableFields);
+			
+			parameters.put("AreaTable_Dataset", areaTablaDataSource);
+			parameters.put("DocumentTable_DataSet", documentTableDataSource);
+			
+			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+			
+			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\GrantFreshLeaseApplicationView.pdf";
+			
 			JasperExportManager.exportReportToPdfFile(report, outputPath);
 			
 			System.out.println("\nReport Generated Successfully at "+outputPath);
-		
+			
 		} catch (Exception e) {
 //			System.out.println(e.getMessage());
 			e.printStackTrace();

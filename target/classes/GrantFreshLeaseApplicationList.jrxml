@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GrantFreshLeaseApplicationList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5dba9db4-0eaa-41f7-9ada-1210c70a8ff6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="total_records" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select ag.application_no, ag.update_timestamp, ag.estate,
+ag.form_status
+from applications_for_grantlease ag]]>
+	</queryString>
+	<field name="application_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_grantlease"/>
+	</field>
+	<field name="update_timestamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_grantlease"/>
+	</field>
+	<field name="estate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estate"/>
+		<property name="com.jaspersoft.studio.field.label" value="estate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_grantlease"/>
+	</field>
+	<field name="form_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="applications_for_grantlease"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="6a361c60-09f4-4ae9-9051-864a43969e99"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="d6bd568a-c513-4fec-a373-21a9f594192c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="06d89ba4-fc0a-4d5b-90f8-3bebdb597f66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="f7f88c1d-8643-412b-a3ee-e1d353e91d38"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="6bbb7bf3-294d-48e2-a4c7-e8e9cd11a525"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="b94f9cc4-0d36-4d5b-8277-fa73ea93b7d7">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="148" y="81" width="265" height="31" uuid="cb6c20fa-f425-4023-a5b6-b39f70f55bc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRANT FRESH LEASE APPLICATION LIST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="90" width="100" height="20" uuid="5f3bfa18-401a-460c-8fdf-63c52f5b101d"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[Total No Of Records :   ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="520" y="90" width="34" height="20" uuid="371a6934-6559-4879-9f6c-95384d6893b4"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{total_records}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="554" height="1" uuid="d68b837d-ff42-412a-98f3-ebeaca6832ff">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="40" height="25" uuid="421d36f6-bb7c-4983-8636-a903fa0ee263"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="80" height="30" uuid="81b93e42-5ff1-4d98-84e4-835660e96d08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="1" width="100" height="30" uuid="9d8be780-a329-4963-923b-17a6eae4be02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="1" width="142" height="30" uuid="046d2b8a-1c45-4878-b745-780731b728a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="1" width="100" height="30" uuid="da4f9d1e-7511-4991-a37d-e4c1b7b02b7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="33" width="555" height="1" uuid="b0177976-f78b-4deb-a686-49dc58c878a7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="40" height="30" uuid="509d2843-99d6-4f83-a7cc-49d402e010d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="60" y="0" width="80" height="30" uuid="30b9de2f-fee8-4d54-aebf-e7cc73af45be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{application_no}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="160" y="1" width="100" height="30" uuid="ac37df7f-9859-48b4-a08c-7b84e022489a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{update_timestamp}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="290" y="0" width="142" height="30" uuid="56d5a634-1cfa-4fe0-988f-626057209e35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estate}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="454" y="0" width="100" height="30" uuid="615f2d9a-b760-435d-a793-2845f97e509b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{form_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="d6a104db-ec58-40ec-a0d5-394a2f02d363"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="695a6823-64d1-42eb-bc78-491cad03a130"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="6ecd98a6-4d0b-4adf-9310-e547c678d7c1">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

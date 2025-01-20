@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TenantableRepairsApplicationList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee3788b9-080a-4afe-9d6c-bf8d86872493">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="total_records" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select atr.application_no, atr.update_timestamp, atr.tenancy_id, atr.listofrepair,
+atr."year", atr.form_status
+from appl_for_tenant_repair atr]]>
+	</queryString>
+	<field name="application_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<field name="update_timestamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<field name="tenancy_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<field name="listofrepair" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="listofrepair"/>
+		<property name="com.jaspersoft.studio.field.label" value="listofrepair"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<field name="year" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="year"/>
+		<property name="com.jaspersoft.studio.field.label" value="year"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<field name="form_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_tenant_repair"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="b6d60302-d5d3-4a87-b152-736bd8a61178"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="1fadc017-75a5-4812-bec4-836fd52a6c75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="cdad1e20-23f5-4642-bff7-bc10fe03b550"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="4136d68a-99ce-4e90-afc3-88aa5c428977"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="ab3c86f2-95f5-4324-bdfc-b07cc79ff556"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="f330dbbe-836a-472c-b4c9-3ae3a60ac173">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="165" y="81" width="230" height="31" uuid="ec510632-e669-459c-9806-1726fe965bbb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TENANTABLE REPAIRS APPLICATION LIST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="90" width="100" height="20" uuid="1dd1cb3a-154a-477e-8221-c86c0512e0a1"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[Total No Of Records :   ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="520" y="90" width="34" height="20" uuid="903e3d09-13f5-4289-a424-99731da0c45a"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{total_records}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="554" height="1" uuid="830604af-3ffc-427c-b69a-556a8f9ab4ac">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="40" height="25" uuid="3b6c1a95-a94f-4aa4-aa1c-0f8d6f5710de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="0" width="68" height="30" uuid="145ee95d-7258-493d-85db-0898dfdc84e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="0" width="70" height="30" uuid="4f356e54-ff60-4890-9b4b-4995d078ae90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="60" height="30" uuid="f1452e7b-122a-4358-97ba-f46c4988db6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tenancy Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="80" height="30" uuid="5d406e2a-e2d6-48f5-8057-714b02df6316"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Repair Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="0" width="66" height="30" uuid="d00be3eb-b66a-4703-804c-28a79659ccbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Construction Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="1" width="62" height="30" uuid="9bb43ef6-2aab-4243-85bd-2edc9f9f8ccb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1" uuid="21d50fe5-d7bd-4e08-aa58-0e160143eeaa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="40" height="30" uuid="edde83a8-f5c1-4537-aaed-a8c30fdfc14e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="51" y="0" width="68" height="30" uuid="4bf3a94b-56b4-4d8b-859c-a6baf3fd582d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{application_no}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="130" y="0" width="80" height="30" uuid="50f81f8a-d13c-4e10-a490-b965ff2695b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{update_timestamp}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="220" y="0" width="70" height="30" uuid="0eae494a-6553-4789-b140-ec89645ea4a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tenancy_id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="300" y="0" width="120" height="30" uuid="dced7517-cf8b-4324-a728-483e8f0c65e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{listofrepair}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="430" y="0" width="50" height="30" uuid="ff1e9b1d-84cb-457e-b0ed-fcd0da41c38f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="491" y="0" width="62" height="30" uuid="22e46466-9afb-41fb-81c3-c92e29ba5ce1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{form_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="ca271f0f-3ac4-4f3d-8871-2c47a7482167"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="04f94c3e-a70e-416f-9271-d5eb968c5032"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="c206998a-e53e-4479-94d1-0b29adaf1ee1">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

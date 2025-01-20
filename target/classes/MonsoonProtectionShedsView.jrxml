@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MonsoonProtectionShedsView" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2ca1cffc-a4ee-4a91-8778-ea7acaa52ae9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DocumentTable" uuid="fdaf4e61-63ec-4823-b0fc-0700fda2942a">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+		<queryString language="SQL">
+			<![CDATA[select md.doc_name
+from mansoonprotech_doc md
+where md.mansoonpro_id = 4]]>
+		</queryString>
+		<field name="doc_name" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="doc_name"/>
+			<property name="com.jaspersoft.studio.field.label" value="doc_name"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="mansoonprotech_doc"/>
+		</field>
+	</subDataset>
+	<parameter name="Remark" class="java.lang.String"/>
+	<parameter name="Subreport_Path" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="Signature" class="java.lang.String"/>
+	<parameter name="Update_Timestamp" class="java.sql.Timestamp"/>
+	<parameter name="DocumentTable_DataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString language="SQL">
+		<![CDATA[select amp.application_no, amp.form_status, amp.tenancy_id,
+amp.plot_no, amp.estate, amp."location", amp.from_date, 
+amp.to_date, amp.area, amp.signature, amp.update_timestamp, vpf.verification_remarks
+from appl_for_mansoon_protech amp
+left join
+verification_permission_forms vpf on amp.applicant_id = vpf.application_id
+where amp.mansoonpro_id = 4]]>
+	</queryString>
+	<field name="application_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="application_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="form_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="form_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="tenancy_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenancy_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="plot_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plot_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="plot_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="estate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estate"/>
+		<property name="com.jaspersoft.studio.field.label" value="estate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="location" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="location"/>
+		<property name="com.jaspersoft.studio.field.label" value="location"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="from_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="from_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="to_date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="to_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="area" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="area"/>
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="signature" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="update_timestamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="update_timestamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appl_for_mansoon_protech"/>
+	</field>
+	<field name="verification_remarks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="verification_remarks"/>
+		<property name="com.jaspersoft.studio.field.label" value="verification_remarks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="verification_permission_forms"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="8d5c9d9f-04d1-4d09-a5d0-542cb3e2d901"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="dfd1d664-61f9-42ac-a949-242b3063e80a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="3865a973-20ce-4c7d-91ff-686e9a069a17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="6dce8af1-39d6-41f6-a9c8-68aaa249b5db"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="2b5a3ca1-07b6-44fb-86f0-108bb4e02679"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="675c7286-6075-4ca0-9ac8-3bac54a9895c">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="140" y="80" width="280" height="31" uuid="48802427-a5bd-46a1-af2a-56c311559ef6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APPLICATION FOR TEMPORARY MONSOON PROTECTION SHEDS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="112" width="555" height="1" uuid="2fe11774-08da-46d6-a782-577c45fb9587">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="412" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="50" height="20" uuid="346d6b14-cead-4125-9b5f-edc305de0a57"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="2f961c78-0ac5-476b-8c4f-2711eca3074f"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[The Estate Manager,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="41" width="100" height="20" uuid="765ed8a5-ea81-4f1b-b54a-62bb05c52bcb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Estate Division,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="52" width="120" height="20" uuid="552b7c99-7c4b-4537-aafb-f8ebb8bb01d1"/>
+				<text><![CDATA[Mumbai Port Authority.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="80" width="280" height="20" uuid="57c56cc0-0f15-4a82-829c-df53d3d3a8da"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub: Application for Monsoon Sheds]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="120" width="515" height="20" uuid="898a2a48-f59c-4bb0-8d6e-36e0421ffe49"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[I request permission to cover the monsoon sheds on the premises. The details are as follows:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="150" width="170" height="20" uuid="2dcbeac5-e3e0-4822-bf6e-fb188c15d683">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{application_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="150" width="170" height="20" uuid="dc085905-8fcb-49c4-bb86-9fc686d8ce10"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Application No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="170" width="170" height="20" uuid="0efbb179-2958-4484-bd6c-e325d5f9e269"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Application Status:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="190" width="170" height="20" uuid="dd9904b9-ef72-442a-ae74-9a749feb120a"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Tenancy Code:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="210" width="170" height="20" uuid="28d5cbda-d79f-4d8e-b1f5-f52d7d7afa0a"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Plot/RR No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="230" width="170" height="20" uuid="fb8fa820-c0f6-4564-ac52-0d8dd7c4d03b"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Estate:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="250" width="170" height="20" uuid="1171f7b5-2d31-4fb0-b501-dec0b5c0d3be"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="270" width="170" height="20" uuid="a42d2624-2696-4860-9ac0-a6e79f3027db"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[From Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="290" width="170" height="20" uuid="dcc74ace-8843-46cb-aed7-0ddf1160fd64"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[To Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="310" width="170" height="20" uuid="c1977361-0e14-4e0c-9aa9-ce0a40e1ed48"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Area (sq.mtr.):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="170" width="170" height="20" uuid="b6053fd9-d28f-4500-bdc4-d6009abf33a2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{form_status}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="190" width="170" height="20" uuid="87e40c3f-fcc6-4093-b22c-b049fc5735c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenancy_id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="210" width="170" height="20" uuid="18eebb28-9542-4c8e-8f0d-41c4f8f797eb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{plot_no}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="230" width="170" height="20" uuid="24b84e2f-ad57-459f-a860-e5a24910cbdb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="250" width="170" height="20" uuid="fce44f1d-3800-443c-ab89-8d665818370a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="270" width="170" height="20" uuid="5aaae98c-da0c-4e1b-9e2f-c85a2efe4268">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{from_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="290" width="170" height="20" uuid="8d86fce1-a88d-4812-ab2e-30306e239776">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{to_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="310" width="170" height="20" uuid="d5b4e3aa-cb12-4133-914b-83295830f278">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="110" y="350" width="340" height="60" uuid="05f8b44c-4005-4899-8b18-17331e6837e3">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DocumentTable" uuid="c6c79eb7-64d7-4d94-ae82-c3fd922c3046">
+						<dataSourceExpression><![CDATA[$P{DocumentTable_DataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="60" uuid="af5e86fe-3029-4e34-820e-2cd80640144c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="0da832e8-714d-41a6-9881-14ce5ec8a74b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Sr. No.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="60" height="30" uuid="c9027c18-d291-47a0-a7c8-636d09101674"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="280" uuid="22a00e16-df15-41ab-be1d-86091f84dc49">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="280" height="30" uuid="11fda1b7-e63f-447e-b28c-466a002fa0c7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Document Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="280" height="30" uuid="6782c121-6838-41e8-abb6-94e849309592"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{doc_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="25">
+			<subreport>
+				<reportElement x="-20" y="0" width="594" height="20" uuid="58d5dfce-8336-4de2-9af2-e96185acf63c"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="Remark">
+					<subreportParameterExpression><![CDATA[$P{Remark}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Signature">
+					<subreportParameterExpression><![CDATA[$P{Signature}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Update_Timestamp">
+					<subreportParameterExpression><![CDATA[$P{Update_Timestamp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{Subreport_Path}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="1" width="100" height="18" uuid="27d23123-38ac-4b18-bc8e-2fb06c47cb89"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="1" width="100" height="18" uuid="f47bd7ae-c28f-4670-a470-b78e0136f91c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="554" height="1" uuid="e9ad61d0-2e88-4c62-8866-703c7581a75c">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>
