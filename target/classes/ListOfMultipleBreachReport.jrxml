@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListOfMultipleBreachReport" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3175710c-6156-4e6b-9983-8bc12ef38d83">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<parameter name="total_records" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="sanctioned_user" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sanctioned_user"/>
+		<property name="com.jaspersoft.studio.field.label" value="sanctioned_user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="prev_cust_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="ren_earning" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ren_earning"/>
+		<property name="com.jaspersoft.studio.field.label" value="ren_earning"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="rent_paid_amount_txt" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rent_paid_amount_txt"/>
+		<property name="com.jaspersoft.studio.field.label" value="rent_paid_amount_txt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="party_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="party_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="party_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="amount" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="151d161e-4735-4d6e-ace1-6630df5e4751"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="250" y="0" width="259" height="39" uuid="33652f6f-8cce-415b-ab11-7d7a2db2b538"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="30" width="350" height="30" uuid="d6d0ab15-7de9-4324-a2f2-41e6d58fc3e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="651" y="0" width="100" height="30" uuid="c399e308-4999-400d-9e22-ec373981c312"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="628" y="10" width="122" height="30" uuid="3b5e5289-7c2a-4350-882f-a5f1b03ea0cd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="750" height="1" uuid="60949264-37dc-443f-95e6-d4f9a36115cd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="280" y="80" width="200" height="30" uuid="9a9ac75d-4baa-41a0-8f3f-c68c7a646309"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[List Of Multiple Breach Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="606" y="90" width="100" height="20" uuid="b5cd9a5f-ac49-46be-a249-98e036587ea0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[Total No Of Records :   ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="706" y="90" width="44" height="20" uuid="9a3b1b90-1e28-418a-93d9-db70da0dc95e"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{total_records}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="750" height="2" uuid="51e3c402-145a-4c22-b056-f999e8ed3cf8">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="4" width="39" height="26" uuid="55f57d42-20df-415a-ab7a-f7ea896f004c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="2" width="270" height="30" uuid="be70da4a-065f-4e7f-bb08-8cd5a563b7fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sanctioned User]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="2" width="80" height="30" uuid="e8eb33d0-2289-415c-8e71-d384022ca81e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="2" width="80" height="30" uuid="e14b6701-330e-4bba-ae38-73166c494827"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rent Earning]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="509" y="2" width="71" height="30" uuid="cfa3b04e-628e-4a18-9320-3d37021086a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rent Paid Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="590" y="2" width="70" height="30" uuid="9e907d3d-ab8d-45bc-b1da-d851e5c96f95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Party Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="670" y="2" width="81" height="30" uuid="018a526c-ffcd-4ddf-927b-7776f3f578e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="34" width="748" height="1" uuid="9ca92783-b27c-481c-bdb2-56292386e0f9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="8" width="40" height="15" uuid="f61023c6-2588-4bd3-8c3c-dcc3d4ab96c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="50" y="0" width="270" height="30" uuid="e8b8c2e3-783a-4374-9720-a6bc3e7ab6a9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sanctioned_user}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="331" y="0" width="78" height="30" uuid="157d5812-7503-4d50-896a-f882c297f94b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{prev_cust_code}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="420" y="0" width="80" height="30" uuid="cffdf41e-4f26-4859-8b90-59b11a7a55a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ren_earning}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="510" y="0" width="70" height="30" uuid="9b9b47b1-6938-4495-ba5d-62cfda5aaee1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rent_paid_amount_txt}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="590" y="0" width="70" height="30" uuid="42fdd7c9-9597-4185-9ae9-ebf948c81493"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{party_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="670" y="0" width="80" height="30" uuid="44785e7a-9c87-46c0-8369-6c6d2497670b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="751" height="1" uuid="5f6ff82b-2175-49da-932e-ffa3f8733dcf">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="280" y="1" width="100" height="18" uuid="605089b7-89c7-4c91-bdff-08d69773dc08"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="380" y="1" width="100" height="18" uuid="6c1f0206-9a17-4789-b19f-45a27ff0f227"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

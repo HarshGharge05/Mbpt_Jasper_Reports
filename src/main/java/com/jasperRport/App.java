@@ -41,6 +41,7 @@ import com.jasperRport.entities.LetoutInformationMainReportField;
 import com.jasperRport.entities.LetoutInformationSurrenderLetoutTable;
 import com.jasperRport.entities.LetoutInformationTenancyAllotmentDetailsTable;
 import com.jasperRport.entities.ListOfInspectionReportFields;
+import com.jasperRport.entities.ListOfMultipleBreachReportFields;
 import com.jasperRport.entities.ListOfOtherThanEstateInspectionReport;
 import com.jasperRport.entities.ListOfSurveyReportFields;
 import com.jasperRport.entities.MonsoonProtectionShedsViewFields;
@@ -49,6 +50,7 @@ import com.jasperRport.entities.MonsoonShedApplicationListFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationDocumentTableFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationListFields;
 import com.jasperRport.entities.MortgageOfLeaseholdRightsApplicationViewFields;
+import com.jasperRport.entities.MultipleBreachReportViewFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportDocumentTableFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportInformationFields;
 import com.jasperRport.entities.OtherThanEstateInspectionReportPersonTableFields;
@@ -2664,110 +2666,197 @@ public class App {
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
 			
 //			========================================Grant Fresh Lease Application View=================================
-			List<Object[]> mainResult = session.createSQLQuery("select ag.plot, ag.tenancy_id, ag.period_of_lease, ag.application_no,\r\n"
-					+ "ag.form_status, ag.signature, ag.update_timestamp\r\n"
-					+ "from applications_for_grantlease ag\r\n"
-					+ "where ag.application_id =5").list();
+//			List<Object[]> mainResult = session.createSQLQuery("select ag.plot, ag.tenancy_id, ag.period_of_lease, ag.application_no,\r\n"
+//					+ "ag.form_status, ag.signature, ag.update_timestamp\r\n"
+//					+ "from applications_for_grantlease ag\r\n"
+//					+ "where ag.application_id =5").list();
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			
+//			List<GrantFreshLeaseApplicationViewFields> grantFreshLeaseApplicationViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField = new GrantFreshLeaseApplicationViewFields();
+//				
+//				grantFreshLeaseApplicationViewField.setPlot((String) row[0]);
+//				grantFreshLeaseApplicationViewField.setTenancy_id((String) row[1]);
+//				grantFreshLeaseApplicationViewField.setPeriod_of_lease((BigDecimal) row[2]);
+//				grantFreshLeaseApplicationViewField.setApplication_no((String) row[3]);
+////				grantFreshLeaseApplicationViewField.setForm_status((String) row[4]);
+//				if("APPR".equals((String) row[4])) {
+//					grantFreshLeaseApplicationViewField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					grantFreshLeaseApplicationViewField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					grantFreshLeaseApplicationViewField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[4])){
+//					grantFreshLeaseApplicationViewField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[4])){
+//					grantFreshLeaseApplicationViewField.setForm_status("Returned");
+//				}
+//				grantFreshLeaseApplicationViewField.setSignature((String) row[5]);
+//				grantFreshLeaseApplicationViewField.setUpdate_timestamp((Timestamp) row[6]);
+//				
+//				parameters.put("Signature", grantFreshLeaseApplicationViewField.getSignature());
+//				parameters.put("Update_Timestamp", grantFreshLeaseApplicationViewField.getUpdate_timestamp());
+//				
+//				grantFreshLeaseApplicationViewFields.add(grantFreshLeaseApplicationViewField);
+//			}
+//			
+//			System.out.println("=================Detail Fields================");
+//			for (GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField : grantFreshLeaseApplicationViewFields) {
+//				System.out.println(grantFreshLeaseApplicationViewField);
+//			}
+//			
+//			//====================Area Table==================
+//			List<Object[]> areaTableResult = session.createSQLQuery("select ag.plot_area, ag.\"location\", ag.use\r\n"
+//					+ "from applications_for_grantlease ag\r\n"
+//					+ "where ag.application_id = 5").list();
+//			
+//			List<GrantFreshLeaseApplicationView_AreaTableFields> grantFreshLeaseApplicationView_AreaTableFields = new ArrayList<>();
+//			
+//			for (Object[] row : areaTableResult) {
+//				
+//				GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField = new GrantFreshLeaseApplicationView_AreaTableFields();
+//				
+//				grantFreshLeaseApplicationView_AreaTableField.setPlot_area((String) row[0]);
+//				grantFreshLeaseApplicationView_AreaTableField.setLocation((String) row[1]);
+//				grantFreshLeaseApplicationView_AreaTableField.setUse((String) row[2]);
+//				
+//				grantFreshLeaseApplicationView_AreaTableFields.add(grantFreshLeaseApplicationView_AreaTableField);
+//			}
+//			
+//			System.out.println("=================Area Table Fields================");
+//			for (GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField : grantFreshLeaseApplicationView_AreaTableFields) {
+//				System.out.println(grantFreshLeaseApplicationView_AreaTableField);
+//			}
+//			
+//			//========================Document Table===========================
+//			List<Object> documentTableResult = session.createSQLQuery("select gpd.doc_name\r\n"
+//					+ "from grant_lease_permission_doc gpd\r\n"
+//					+ "where gpd.application_id = 5").list();
+//			
+//			List<GrantFreshLeaseApplicationView_DocumentTableFields> grantFreshLeaseApplicationView_DocumentTableFields = new ArrayList<>();
+//			
+//			for (Object row : documentTableResult) {
+//				GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField = new GrantFreshLeaseApplicationView_DocumentTableFields();
+//				
+//				grantFreshLeaseApplicationView_DocumentTableField.setDoc_name((String) row);
+//				
+//				grantFreshLeaseApplicationView_DocumentTableFields.add(grantFreshLeaseApplicationView_DocumentTableField);
+//			}
+//			
+//			System.out.println("===============Document Table Data============");
+//			for (GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField : grantFreshLeaseApplicationView_DocumentTableFields) {
+//				System.out.println(grantFreshLeaseApplicationView_DocumentTableField);
+//			}
+//			
+//			//Jasper Report
+//			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView.jrxml"));
+//			JasperReport documentTableReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_DocumentTable.jrxml"));
+//			JasperReport bottomTable = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_Bottom.jrxml"));
+//			
+//			parameters.put("DocumentTable_Path", documentTableReport);
+//			parameters.put("BottomReport_Path", bottomTable);
+//			
+//			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationViewFields);
+//			JRBeanCollectionDataSource areaTablaDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_AreaTableFields);
+//			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_DocumentTableFields);
+//			
+//			parameters.put("AreaTable_Dataset", areaTablaDataSource);
+//			parameters.put("DocumentTable_DataSet", documentTableDataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\GrantFreshLeaseApplicationView.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================List Of Multiple Breach Report==========================================
+//			List<Object[]> result = session.createSQLQuery("select brm.sanctioned_user, brm.prev_cust_code, brm.ren_earning, \r\n"
+//					+ "brm.rent_paid_amount_txt, brm.party_name, brm.amount\r\n"
+//					+ "from breach_rpt_mbpt brm;").list();
+//			
+//			List<ListOfMultipleBreachReportFields> listOfMultipleBreachReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfMultipleBreachReportFields listOfMultipleBreachReportField = new ListOfMultipleBreachReportFields();
+//				
+//				listOfMultipleBreachReportField.setSanctioned_user((String) row[0]);
+//				listOfMultipleBreachReportField.setPrev_cust_code((String) row[1]);
+//				listOfMultipleBreachReportField.setRen_earning((String) row[2]);
+//				listOfMultipleBreachReportField.setRent_paid_amount_txt((String) row[3]);
+//				listOfMultipleBreachReportField.setParty_name((String) row[4]);
+//				listOfMultipleBreachReportField.setAmount((String) row[5]);
+//				
+//				listOfMultipleBreachReportFields.add(listOfMultipleBreachReportField);
+//			}
+//			
+//			for (ListOfMultipleBreachReportFields listOfMultipleBreachReportField : listOfMultipleBreachReportFields) {
+//				System.out.println(listOfMultipleBreachReportField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfMultipleBreachReport.jrxml"));
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfMultipleBreachReportFields.size());
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfMultipleBreachReportFields);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMultipleBreachReport.pdf";
+//			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================Breach Report Details==========================================
+			List<Object[]> result = session.createSQLQuery("select brm.prev_cust_code, brm.party_name, brm.area, brm.rr_no, brm.tenure,\r\n"
+					+ "brm.contractual_rent_on, brm.addl_rent, brm.sanctioned_user,\r\n"
+					+ "brm.ren_earning, brm.rent_paid_amount_txt\r\n"
+					+ "from breach_rpt_mbpt brm\r\n"
+					+ "where brm.mbpt_breach_id = '7588';").list();
+			
+			List<MultipleBreachReportViewFields> multipleBreachReportViewFields = new ArrayList<>();
+			
+			for (Object[] row : result) {
+				
+				MultipleBreachReportViewFields multipleBreachReportViewField = new MultipleBreachReportViewFields();
+				
+				multipleBreachReportViewField.setPrev_cust_code((String) row[0]);
+				multipleBreachReportViewField.setParty_name((String) row[1]);
+				multipleBreachReportViewField.setAddl_rent((String) row[2]);
+				multipleBreachReportViewField.setRr_no((String) row[3]);
+				multipleBreachReportViewField.setTenure((String) row[4]);
+				multipleBreachReportViewField.setContractual_rent_on((Timestamp) row[5]);
+				multipleBreachReportViewField.setAddl_rent((String) row[6]);
+				multipleBreachReportViewField.setSanctioned_user((String) row[7]);
+				multipleBreachReportViewField.setRen_earning((String) row[8]);
+				multipleBreachReportViewField.setRent_paid_amount_txt((String) row[9]);
+				
+				multipleBreachReportViewFields.add(multipleBreachReportViewField);
+			}
+			
+			for (MultipleBreachReportViewFields multipleBreachReportViewField : multipleBreachReportViewFields) {
+				System.out.println(multipleBreachReportViewField);
+			}
+			
+			// Jasper Report
+			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MultipleBreachReportView.jrxml"));
+			
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(multipleBreachReportViewFields);
 			
 			Map<String, Object> parameters = new HashMap<>();
 			
-			List<GrantFreshLeaseApplicationViewFields> grantFreshLeaseApplicationViewFields = new ArrayList<>();
+			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
 			
-			for (Object[] row : mainResult) {
-				
-				GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField = new GrantFreshLeaseApplicationViewFields();
-				
-				grantFreshLeaseApplicationViewField.setPlot((String) row[0]);
-				grantFreshLeaseApplicationViewField.setTenancy_id((String) row[1]);
-				grantFreshLeaseApplicationViewField.setPeriod_of_lease((BigDecimal) row[2]);
-				grantFreshLeaseApplicationViewField.setApplication_no((String) row[3]);
-//				grantFreshLeaseApplicationViewField.setForm_status((String) row[4]);
-				if("APPR".equals((String) row[4])) {
-					grantFreshLeaseApplicationViewField.setForm_status("Approved");
-				}else if ("V".equals((String) row[4])) {
-					grantFreshLeaseApplicationViewField.setForm_status("Verified");
-				}else if ("RG".equals((String) row[4])) {
-					grantFreshLeaseApplicationViewField.setForm_status("Registered");
-				}else if ("Su".equals((String) row[4])){
-					grantFreshLeaseApplicationViewField.setForm_status("Submitted");
-				}else if ("RT".equals((String) row[4])){
-					grantFreshLeaseApplicationViewField.setForm_status("Returned");
-				}
-				grantFreshLeaseApplicationViewField.setSignature((String) row[5]);
-				grantFreshLeaseApplicationViewField.setUpdate_timestamp((Timestamp) row[6]);
-				
-				parameters.put("Signature", grantFreshLeaseApplicationViewField.getSignature());
-				parameters.put("Update_Timestamp", grantFreshLeaseApplicationViewField.getUpdate_timestamp());
-				
-				grantFreshLeaseApplicationViewFields.add(grantFreshLeaseApplicationViewField);
-			}
-			
-			System.out.println("=================Detail Fields================");
-			for (GrantFreshLeaseApplicationViewFields grantFreshLeaseApplicationViewField : grantFreshLeaseApplicationViewFields) {
-				System.out.println(grantFreshLeaseApplicationViewField);
-			}
-			
-			//====================Area Table==================
-			List<Object[]> areaTableResult = session.createSQLQuery("select ag.plot_area, ag.\"location\", ag.use\r\n"
-					+ "from applications_for_grantlease ag\r\n"
-					+ "where ag.application_id = 5").list();
-			
-			List<GrantFreshLeaseApplicationView_AreaTableFields> grantFreshLeaseApplicationView_AreaTableFields = new ArrayList<>();
-			
-			for (Object[] row : areaTableResult) {
-				
-				GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField = new GrantFreshLeaseApplicationView_AreaTableFields();
-				
-				grantFreshLeaseApplicationView_AreaTableField.setPlot_area((String) row[0]);
-				grantFreshLeaseApplicationView_AreaTableField.setLocation((String) row[1]);
-				grantFreshLeaseApplicationView_AreaTableField.setUse((String) row[2]);
-				
-				grantFreshLeaseApplicationView_AreaTableFields.add(grantFreshLeaseApplicationView_AreaTableField);
-			}
-			
-			System.out.println("=================Area Table Fields================");
-			for (GrantFreshLeaseApplicationView_AreaTableFields grantFreshLeaseApplicationView_AreaTableField : grantFreshLeaseApplicationView_AreaTableFields) {
-				System.out.println(grantFreshLeaseApplicationView_AreaTableField);
-			}
-			
-			//========================Document Table===========================
-			List<Object> documentTableResult = session.createSQLQuery("select gpd.doc_name\r\n"
-					+ "from grant_lease_permission_doc gpd\r\n"
-					+ "where gpd.application_id = 5").list();
-			
-			List<GrantFreshLeaseApplicationView_DocumentTableFields> grantFreshLeaseApplicationView_DocumentTableFields = new ArrayList<>();
-			
-			for (Object row : documentTableResult) {
-				GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField = new GrantFreshLeaseApplicationView_DocumentTableFields();
-				
-				grantFreshLeaseApplicationView_DocumentTableField.setDoc_name((String) row);
-				
-				grantFreshLeaseApplicationView_DocumentTableFields.add(grantFreshLeaseApplicationView_DocumentTableField);
-			}
-			
-			System.out.println("===============Document Table Data============");
-			for (GrantFreshLeaseApplicationView_DocumentTableFields grantFreshLeaseApplicationView_DocumentTableField : grantFreshLeaseApplicationView_DocumentTableFields) {
-				System.out.println(grantFreshLeaseApplicationView_DocumentTableField);
-			}
-			
-			//Jasper Report
-			JasperReport mainCompiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView.jrxml"));
-			JasperReport documentTableReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_DocumentTable.jrxml"));
-			JasperReport bottomTable = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/GrantFreshLeaseApplicationView_Bottom.jrxml"));
-			
-			parameters.put("DocumentTable_Path", documentTableReport);
-			parameters.put("BottomReport_Path", bottomTable);
-			
-			JRBeanCollectionDataSource mainDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationViewFields);
-			JRBeanCollectionDataSource areaTablaDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_AreaTableFields);
-			JRBeanCollectionDataSource documentTableDataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationView_DocumentTableFields);
-			
-			parameters.put("AreaTable_Dataset", areaTablaDataSource);
-			parameters.put("DocumentTable_DataSet", documentTableDataSource);
-			
-			JasperPrint report = JasperFillManager.fillReport(mainCompiledReport, parameters, mainDataSource);
-			
-			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\GrantFreshLeaseApplicationView.pdf";
+			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MultipleBreachReportView.pdf";
 			
 			JasperExportManager.exportReportToPdfFile(report, outputPath);
 			

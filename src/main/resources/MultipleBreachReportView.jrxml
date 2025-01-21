@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MultipleBreachReportView" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc806b66-9cf3-46ed-b98f-ce4d1c3bb71c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MBPT_DB"/>
+	<queryString language="SQL">
+		<![CDATA[select brm.prev_cust_code, brm.party_name, brm.area, brm.rr_no, brm.tenure,
+brm.contractual_rent_on, brm.addl_rent, brm.sanctioned_user,
+brm.ren_earning, brm.rent_paid_amount_txt
+from breach_rpt_mbpt brm
+where brm.mbpt_breach_id = '7588']]>
+	</queryString>
+	<field name="prev_cust_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="prev_cust_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="party_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="party_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="party_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="area" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="area"/>
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="rr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="rr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="tenure" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tenure"/>
+		<property name="com.jaspersoft.studio.field.label" value="tenure"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="contractual_rent_on" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="contractual_rent_on"/>
+		<property name="com.jaspersoft.studio.field.label" value="contractual_rent_on"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="addl_rent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="addl_rent"/>
+		<property name="com.jaspersoft.studio.field.label" value="addl_rent"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="sanctioned_user" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sanctioned_user"/>
+		<property name="com.jaspersoft.studio.field.label" value="sanctioned_user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="ren_earning" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ren_earning"/>
+		<property name="com.jaspersoft.studio.field.label" value="ren_earning"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<field name="rent_paid_amount_txt" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rent_paid_amount_txt"/>
+		<property name="com.jaspersoft.studio.field.label" value="rent_paid_amount_txt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="breach_rpt_mbpt"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="80" height="69" uuid="717a3db6-93ce-457f-984b-f1b1738c5f79"/>
+				<imageExpression><![CDATA["F:/C-DAC Mumbai Internship/MBPT_Circle_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="151" y="0" width="259" height="39" uuid="63ef16db-c3eb-40a7-a670-773a732a7b10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mumbai Port Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="30" width="350" height="30" uuid="b1b70ec1-d781-4abf-be0d-3708d5c37cf3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Estate Manager's Department vijay Deep, 3rd Floor, Shoorji Vallabhdas Marg,
+ Mumbai-400001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="30" uuid="630f7557-c4cb-4433-bb72-edb32e09af47"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Download Date : ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="10" width="122" height="30" uuid="7ad0cbaf-7990-4789-97c0-c9fbf118c3d4"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date().toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="80" width="554" height="1" uuid="c4e6f53f-3668-4e2a-858e-e09db13b8cdc">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="194" y="80" width="166" height="31" uuid="49f3c469-b046-4c2b-bfd2-cd3de6ececad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Breach Report Details]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="111" width="555" height="1" uuid="e1d141f4-3287-41e2-867c-ec7cbe9560dd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="141" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="10" width="160" height="20" uuid="8d28c03c-350d-4d04-ae87-fd960b36b3f9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{prev_cust_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="10" width="80" height="20" uuid="12b39d6b-f594-4e4a-b474-f747588b85d2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Code:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="30" width="80" height="20" uuid="d2dba110-3618-40ac-b486-7cfb71e5eed8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Area:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="50" width="80" height="20" uuid="a5e7b60f-815c-4b6e-a9ce-13899a2514bb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tenure:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="70" width="80" height="20" uuid="23e8f5b6-d860-45f3-a0c8-ffaa657c878d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Additional Rent:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="90" width="80" height="20" uuid="aa964ba5-7bd4-461d-ba47-ee8029b81cab"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rent Earning:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="110" width="80" height="30" uuid="d30d2b5c-126a-4ec0-948b-7444fa7dc033"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rent Paid Amount:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="30" width="160" height="20" uuid="e45ebc57-e067-414f-8cd8-3fb5b1113556"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="50" width="160" height="20" uuid="9bea4e62-7d20-46c3-93f6-07c295e1ee0f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tenure}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="70" width="160" height="20" uuid="1b881aed-5853-40de-9bdb-5c7c31ec28a8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{addl_rent}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="90" width="160" height="20" uuid="219ea5e4-3211-4694-a0c7-961c49639afc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ren_earning}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="110" width="160" height="30" uuid="8a7875c9-aa29-40a0-950d-15203b41e000"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rent_paid_amount_txt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="10" width="154" height="20" uuid="1de63c9d-3402-4f1d-9700-4da045962442"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{party_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="10" width="80" height="20" uuid="e4678aa3-c565-4268-a78d-5e834e061837"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tenant name:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="30" width="154" height="20" uuid="d6769257-bea7-49e7-859e-3cf79370b964"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rr_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="30" width="80" height="20" uuid="97ee08a2-79ba-4790-ba46-5f0138219c90"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plot No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="50" width="80" height="30" uuid="c3c9a1c8-4686-479d-947c-a88c8fd7c06e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contractual Rent:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="50" width="154" height="30" uuid="1b516129-2547-4ddc-bd4e-9f6ef7f59a3a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{contractual_rent_on}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="80" width="90" height="20" uuid="b6d7a64e-dd77-4653-b1ce-c1730f775a3a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sanctioned User:]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="400" y="80" width="154" height="20" uuid="439aae2c-ac2c-4083-b260-0a9371a38e39"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sanctioned_user}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
