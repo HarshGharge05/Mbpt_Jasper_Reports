@@ -2,17 +2,17 @@ package com.jasperRport.entities;
 
 public class UnitReportField {
 
-	private String unit_id;
+	private int unit_id;
 	private String div_name;
 	private String unit_desc;
 	private String custodian;
 	private String status;
-	private String remarks;
+	private String remark;
 	
-	public String getUnit_id() {
+	public int getUnit_id() {
 		return unit_id;
 	}
-	public void setUnit_id(String unit_id) {
+	public void setUnit_id(int unit_id) {
 		this.unit_id = unit_id;
 	}
 	public String getDiv_name() {
@@ -39,17 +39,16 @@ public class UnitReportField {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getRemarks() {
-		return remarks;
+	public String getRemark() {
+		return remark;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 	@Override
 	public String toString() {
 		return "UnitReportField [unit_id=" + unit_id + ", div_name=" + div_name + ", unit_desc=" + unit_desc
-				+ ", custodian=" + custodian + ", status=" + status + ", remarks=" + remarks + "]";
+				+ ", custodian=" + custodian + ", status=" + status + ", remark=" + remark + "]";
 	}
-	
 }

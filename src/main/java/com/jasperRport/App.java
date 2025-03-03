@@ -23,6 +23,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.jasperRport.entities.BreachRegularizationApplicationListFields;
 import com.jasperRport.entities.Division;
+import com.jasperRport.entities.DivisionExcelFeilds;
 import com.jasperRport.entities.DivisionInformation;
 import com.jasperRport.entities.DivisionInformationListOfPlots;
 import com.jasperRport.entities.DivisionReportField;
@@ -87,6 +88,12 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimpleXlsExporterConfiguration;
+import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 
 public class App {
 	public static void main(String[] args) {
@@ -100,7 +107,7 @@ public class App {
 			Session session = sessionFactory.openSession();
 
 //            =====================================Division=====================================
-			// Fetching list of Divisions from database
+//			 Fetching list of Divisions from database
 //            List<Division> listOfDiv = session.createQuery("From Division", Division.class).list();
 //            // Transforming Division objects to DivisionReportField objects
 //            List<DivisionReportField> listOfDivField = new ArrayList<>();
@@ -804,7 +811,7 @@ public class App {
 //			exporter.exportReport();
 //
 //			System.out.println("\nReport Generated Successfully ");
-			
+
 //			=====================================Estate Information=====================================
 			// getting only required fields from db and map it to Estate Information
 //			List<Object[]> result = session.createSQLQuery("select e.estate_code, e.estate_name, e.estate_desc, e.update_timestamp, e.status,\r\n"
@@ -919,7 +926,7 @@ public class App {
 //			exporter.exportReport();
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputFile);
-			
+
 //			=====================================Plot Information=====================================
 //			try {
 //				
@@ -1125,7 +1132,7 @@ public class App {
 //			} catch (IOException e) {
 //				System.out.println(e.getMessage());
 //			}
-			
+
 //			=====================================Letut Information=====================================
 //			try {
 //				
@@ -1145,8 +1152,9 @@ public class App {
 //				parameters.put("PreviousUpdatedLetoutAreaDetails_Path", PreviousUpdatedLetoutAreaDetailsSubreport);
 //				parameters.put("SurrenderLetoutTable_Path", surrenderLetoutSubreport);
 //				parameters.put("TenancyAllotmentDetailsTable_Path", tenancyAllotmentDetailsSubreport);
-				
-				// =========================Getting Main report fields form DB=========================
+
+			// =========================Getting Main report fields form
+			// DB=========================
 //				List<Object[]> mainReportData = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.rr_no, p.plot_code, \r\n"
 //						+ "lst.struct_type, lt.layout_type, lo.let_out_no, lo.let_out_name , lo.area, lo.home_occupation,\r\n"
 //						+ "lo.non_home_occupation, md.dept_name, lo.from_date, lo.billable_area, lo.status, au.\"name\", lo.let_out_desc,\r\n"
@@ -1306,7 +1314,7 @@ public class App {
 //			} catch (Exception e) {
 //				System.out.println(e.getMessage());
 //			}
-			
+
 //			=====================================Wayleave Information=====================================
 //			try {
 //				
@@ -1449,7 +1457,7 @@ public class App {
 //			} catch (Exception e) {
 //				System.out.println(e.getMessage());
 //			}
-			
+
 //			=====================================List Of Inspection Report=====================================
 //			List<Object[]> result = session.createSQLQuery("select ir.customer_code, ir.inspection_date, l.let_out_name, \r\n"
 //					+ "au.\"name\", ir.status \r\n"
@@ -1504,9 +1512,9 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			==========================================Inspection Report Information==========================================
-			
+
 //			==========================Main Report Fields==========================
 //			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.rr_no, ir.inspection_date, ir.person_at_site,\r\n"
 //					+ "ir.customer_code, au.\"name\", ir.status, ir.is_fresh_survey\r\n"
@@ -1591,7 +1599,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			==========================================List Of Other Than Estate Inspection Report==========================================
 //			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, oir.plot_location, l.let_out_name, mit.insp_type, oir.inspection_date,\r\n"
 //					+ "oir.observation_date, oir.person_at_site\r\n"
@@ -1648,7 +1656,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			==========================================List Of Other Than Estate Inspection Information Report==========================================
 //			======================Main Report======================
 //			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, oir.plot_location, oir.custodian_dept,\r\n"
@@ -1755,7 +1763,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=======================================List Of Survey Report=======================================
 //			List<Object[]> result = session.createSQLQuery("select sr.survey_date, sr.customer_code, p.rr_no, l.let_out_name,\r\n"
 //					+ "sr.status, sr.forwarded_to\r\n"
@@ -1812,10 +1820,10 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			====================================Survey Report Information====================================
-			
-			//===========================Main Report===========================
+
+			// ===========================Main Report===========================
 //			List<Object[]> resultMain = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, p.rr_no,\r\n"
 //					+ "l.let_out_name, sr.survey_date, sr.plot_is_covered_with, sr.plot_area,\r\n"
 //					+ "sr.location_part_of_encroachment, sr.area_of_encroachment,\r\n"
@@ -1921,10 +1929,9 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
-			
+
 //			=================================================MORTGAGE OF LEASEHOLD RIGHTS Application List=================================================
-			
+
 //			List<Object[]> mainResult = session.createSQLQuery("select afm.application_no, afm.update_timestamp,afm.tenancy_id, \r\n"
 //					+ "afm.plot_no, afm.mortgagor, afm.mortgagee, afm.form_status\r\n"
 //					+ "from applications_for_mortgage afm\r\n"
@@ -1977,7 +1984,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			================================================MORTGAGE OF LEASEHOLD RIGHTS Application================================================
 //			==============================Main Report==============================
 //			List<Object[]> resultMain = session.createSQLQuery("select afm.application_no, afm.form_status, afm.tenancy_id, afm.plot_no, \r\n"
@@ -2068,9 +2075,9 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=================================================BREACH REGULARIZATION APPLICATION LIST=================================================
-			
+
 //			List<Object[]> result = session.createSQLQuery("select abr.application_no, abr.update_timestamp, abr.tenancy_id,\r\n"
 //					+ "abr.plot_no, abr.form_status\r\n"
 //					+ "from appl_for_breach_regularization abr;").list();
@@ -2118,10 +2125,10 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=================================================BREACH REGULARIZATION APPLICATION View=================================================
-			
-			//=======================Main Report=======================
+
+			// =======================Main Report=======================
 //			List<Object[]> resultMain = session.createSQLQuery("select abr.estate, abr.plot_no, abr.tenancy_id,\r\n"
 //					+ "abr.application_no, abr.form_status, abr.signature, \r\n"
 //					+ "abr.update_timestamp\r\n"
@@ -2220,7 +2227,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			====================================Monsoon Shed Application List====================================
 //			List<Object[]> result = session.createSQLQuery("select amp.application_no, amp.update_timestamp, amp.tenancy_id,\r\n"
 //					+ "amp.plot_no, amp.estate, amp.\"location\", amp.form_status\r\n"
@@ -2272,9 +2279,9 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			======================================Monsoon Shed Application View======================================
-			//==============Main Report data============
+			// ==============Main Report data============
 //			List<Object[]> mainResult = session.createSQLQuery("select amp.application_no, amp.form_status, amp.tenancy_id,\r\n"
 //					+ "amp.plot_no, amp.estate, amp.\"location\", amp.from_date, \r\n"
 //					+ "amp.to_date, amp.area, amp.signature, amp.update_timestamp, vpf.verification_remarks\r\n"
@@ -2358,7 +2365,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=========================================Temporary Use Permission Application List===================================
 //			List<Object[]> result = session.createSQLQuery("select afc.application_no, afc.update_timestamp, afc.applicant_name,\r\n"
 //					+ "afc.area, afc.estate, afc.form_status\r\n"
@@ -2410,9 +2417,9 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=========================================Temporary Use Permission Application View===================================
-			//================Main Data================
+			// ================Main Data================
 //			List<Object[]> mainResult = session.createSQLQuery("select afc.application_no, afc.form_status, afc.applicant_name,\r\n"
 //					+ "afc.location_for_storage, afc.estate, afc.area, afc.from_date,\r\n"
 //					+ "afc.to_date, afc.purpose, afc.pan_no, vpf.verification_remarks, afc.signature, afc.update_timestamp\r\n"
@@ -2497,7 +2504,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=====================================TENANTABLE Repairs Application List=====================================
 //			List<Object[]> result = session.createSQLQuery("select atr.application_no, atr.update_timestamp, atr.tenancy_id, atr.listofrepair,\r\n"
 //					+ "atr.\"year\", atr.form_status\r\n"
@@ -2538,7 +2545,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=======================================TENANTABLE Repairs Application View=======================================
 //			List<Object[]> mainResult = session.createSQLQuery("select atr.application_no, atr.form_status, atr.tenancy_id, atr.\"name\", atr.sanctioned_user,\r\n"
 //					+ "atr.structure_type, atr.\"year\", atr.listofrepair, vpf.verification_remarks,\r\n"
@@ -2625,7 +2632,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			=============================================Grant Fresh Lease Application List=============================================
 //			List<Object[]> result = session.createSQLQuery("select ag.application_no, ag.update_timestamp, ag.estate,\r\n"
 //					+ "ag.form_status\r\n"
@@ -2664,7 +2671,7 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			========================================Grant Fresh Lease Application View=================================
 //			List<Object[]> mainResult = session.createSQLQuery("select ag.plot, ag.tenancy_id, ag.period_of_lease, ag.application_no,\r\n"
 //					+ "ag.form_status, ag.signature, ag.update_timestamp\r\n"
@@ -2774,91 +2781,1067 @@ public class App {
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
-			
+
 //			==========================================List Of Multiple Breach Report==========================================
-//			List<Object[]> result = session.createSQLQuery("select brm.sanctioned_user, brm.prev_cust_code, brm.ren_earning, \r\n"
-//					+ "brm.rent_paid_amount_txt, brm.party_name, brm.amount\r\n"
-//					+ "from breach_rpt_mbpt brm;").list();
-//			
+//			List<Object[]> result = session
+//					.createSQLQuery("select brm.sanctioned_user, brm.prev_cust_code, brm.ren_earning, \r\n"
+//							+ "brm.rent_paid_amount_txt, brm.party_name, brm.amount\r\n" + "from breach_rpt_mbpt brm;")
+//					.list();
+////
 //			List<ListOfMultipleBreachReportFields> listOfMultipleBreachReportFields = new ArrayList<>();
-//			
+//////
 //			for (Object[] row : result) {
-//				
+////
 //				ListOfMultipleBreachReportFields listOfMultipleBreachReportField = new ListOfMultipleBreachReportFields();
-//				
+////
 //				listOfMultipleBreachReportField.setSanctioned_user((String) row[0]);
 //				listOfMultipleBreachReportField.setPrev_cust_code((String) row[1]);
 //				listOfMultipleBreachReportField.setRen_earning((String) row[2]);
 //				listOfMultipleBreachReportField.setRent_paid_amount_txt((String) row[3]);
 //				listOfMultipleBreachReportField.setParty_name((String) row[4]);
 //				listOfMultipleBreachReportField.setAmount((String) row[5]);
-//				
+////
 //				listOfMultipleBreachReportFields.add(listOfMultipleBreachReportField);
 //			}
-//			
+////
 //			for (ListOfMultipleBreachReportFields listOfMultipleBreachReportField : listOfMultipleBreachReportFields) {
 //				System.out.println(listOfMultipleBreachReportField);
 //			}
-//			
-//			// Jasper Report
+//
+////			 Jasper Report
 //			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/ListOfMultipleBreachReport.jrxml"));
-//			
+//////			
 //			Map<String, Object> parameters = new HashMap<>();
 //			parameters.put("total_records", listOfMultipleBreachReportFields.size());
-//			
+//////			
 //			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfMultipleBreachReportFields);
+////			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+////			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMultipleBreachReport.pdf";
+////			
+//			JasperExportManager.exportReportToPdfFile(report, outputPath);
+////			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+
+			// ============================================For
+			// Excel============================================
+
+//			JasperReport compiledReport = JasperCompileManager
+//					.compileReport(new FileInputStream("src/main/resources/ListOfMultipleBreachReport.jrxml"));
+////
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfMultipleBreachReportFields.size());
+////
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfMultipleBreachReportFields);
+////
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMultipleBreachReport.xlsx";
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//
+//			exporter.exportReport();
+//
+//			System.out.println("\nReport Generated Successfully at " + outputPath);
+
+//			==========================================Breach Report Details==========================================
+//			List<Object[]> result = session.createSQLQuery("select brm.prev_cust_code, brm.party_name, brm.area, brm.rr_no, brm.tenure,\r\n"
+//					+ "brm.contractual_rent_on, brm.addl_rent, brm.sanctioned_user,\r\n"
+//					+ "brm.ren_earning, brm.rent_paid_amount_txt\r\n"
+//					+ "from breach_rpt_mbpt brm\r\n"
+//					+ "where brm.mbpt_breach_id = '7588';").list();
+//			
+//			List<MultipleBreachReportViewFields> multipleBreachReportViewFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				MultipleBreachReportViewFields multipleBreachReportViewField = new MultipleBreachReportViewFields();
+//				
+//				multipleBreachReportViewField.setPrev_cust_code((String) row[0]);
+//				multipleBreachReportViewField.setParty_name((String) row[1]);
+//				multipleBreachReportViewField.setAddl_rent((String) row[2]);
+//				multipleBreachReportViewField.setRr_no((String) row[3]);
+//				multipleBreachReportViewField.setTenure((String) row[4]);
+//				multipleBreachReportViewField.setContractual_rent_on((Timestamp) row[5]);
+//				multipleBreachReportViewField.setAddl_rent((String) row[6]);
+//				multipleBreachReportViewField.setSanctioned_user((String) row[7]);
+//				multipleBreachReportViewField.setRen_earning((String) row[8]);
+//				multipleBreachReportViewField.setRent_paid_amount_txt((String) row[9]);
+//				
+//				multipleBreachReportViewFields.add(multipleBreachReportViewField);
+//			}
+//			
+//			for (MultipleBreachReportViewFields multipleBreachReportViewField : multipleBreachReportViewFields) {
+//				System.out.println(multipleBreachReportViewField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MultipleBreachReportView.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(multipleBreachReportViewFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
 //			
 //			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
 //			
-//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMultipleBreachReport.pdf";
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MultipleBreachReportView.pdf";
 //			
 //			JasperExportManager.exportReportToPdfFile(report, outputPath);
+
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+
+//			=====================================List Division Excel=====================================
+//			List<Object[]> result = session
+//					.createSQLQuery(""
+//							+ "select d.div_code, d.div_name, d.div_desc, d.status\r\n" + 
+//							"from division d "
+//							+ "order by d.div_code")
+//					.list();
+//
+//			List<DivisionExcelFeilds> listOfDivFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//
+//				DivisionExcelFeilds divisionExcelFeild = new DivisionExcelFeilds();
+//
+//				divisionExcelFeild.setDiv_code((String) row[0]);
+//				divisionExcelFeild.setDiv_name((String) row[1]);
+//				divisionExcelFeild.setDiv_desc((String) row[2]);
+//				divisionExcelFeild.setStatus((String) row[3]);
+//				divisionExcelFeild.setCustodian("Estate Division");
+//				
+//			if ("A".equals((String) row[3])) {
+//				divisionExcelFeild.setStatus("Approved");
+//			} else if ("RG".equals((String) row[3])) {
+//				divisionExcelFeild.setStatus("Registered");
+//			} else if ("RT".equals((String) row[3])) {
+//				divisionExcelFeild.setStatus("Return");
+//			} else {
+//				divisionExcelFeild.setStatus("Verified");
+//			}
+////
+//				listOfDivFields.add(divisionExcelFeild);
+//			}
+//			
+//			for (DivisionExcelFeilds divisionExcelFeild : listOfDivFields) {
+//				System.out.println(divisionExcelFeild);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfDivision_Excel.jrxml"));
+//			
+//			// Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfDivFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfDivFields.size());
+//			parameters.put("ListOfDivision_DataSet", dataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfDivision_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//
+////			SimpleXlsxReportConfiguration configuration = new SimpleXlsxReportConfiguration();
+////			configuration.setDetectCellType(true);
+////			configuration.setOnePagePerSheet(false);
+////			configuration.setRemoveEmptySpaceBetweenRows(true);
+////			configuration.setRemoveEmptySpaceBetweenColumns(true);
+////			configuration.setWhitePageBackground(false);
+////			configuration.setIgnoreGraphics(false);
+////			configuration.setIgnoreCellBorder(true);
+////
+////			exporter.setConfiguration(configuration);
+//
+//			exporter.exportReport();
+//
+//			System.out.println("\nReport Generated Successfully at " + outputPath);
+
+//			=====================================List of Unit Excel=====================================
+//			List<Object[]> result = session
+//					.createSQLQuery("select u.unit_id, d.div_name , u.unit_desc, u.status, r.remark\r\n"
+//							+ "from unit u \r\n" + "left join unit_rmk r on u.unit_id = r.unit_id \r\n"
+//							+ "left join Division d on u.div_id = d.div_id \r\n" + "order by u.unit_id ")
+//					.list();
+//
+//			List<UnitReportField> unitReportFields = new ArrayList<>();
+//
+//			for (Object[] row : result) {
+//
+//				UnitReportField unitReportField = new UnitReportField();
+//
+//				unitReportField.setUnit_id((int) row[0]);
+//				unitReportField.setDiv_name((String) row[1]);
+//				unitReportField.setUnit_desc((String) row[2]);
+////				unitReportField.setStatus((String) row[3]);
+//				if ("A".equals((String) row[3])) {
+//					unitReportField.setStatus("Approved");
+//				} else if ("RG".equals((String) row[3])) {
+//					unitReportField.setStatus("Registered");
+//				} else if ("RT".equals((String) row[3])) {
+//					unitReportField.setStatus("Return");
+//				} else {
+//					unitReportField.setStatus("Verified");
+//				}
+//				unitReportField.setRemark((String) row[4]);
+//
+//				unitReportFields.add(unitReportField);
+//			}
+//
+//			for (UnitReportField unitReportField : unitReportFields) {
+//				System.out.println(unitReportField);
+//			}
+//
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager
+//					.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfUnit_Excel.jrxml"));
+//
+//			// Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(unitReportFields);
+//
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", unitReportFields.size());
+//			parameters.put("ListOfUnit_DataSet", dataSource);
+//
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfUnit_Excel.xlsx";
+//
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//
+//			exporter.exportReport();
+//
+//			System.out.println("\nReport Generated Successfully at " + outputPath);
+			
+//			=====================================List of Estate Excel=====================================
+//			List<Object[]> result = session.createSQLQuery(
+//					"select estate_code, estate_name, unit_id, status, remarks\r\n"
+//					+ "from Estate\r\n"
+//					+ "order by estate_code")
+//					.list();
+//			
+//			List<EstateReportField> estateReportFields = new ArrayList<>();
+//			for (Object[] row : result) {
+//
+//				EstateReportField estateReportField = new EstateReportField();
+//
+//				estateReportField.setEstate_code((String) row[0]);
+//				estateReportField.setEstate_name((String) row[1]);
+//				estateReportField.setUnit_id((int) row[2]);
+//				if ("A".equals((String) row[3])) {
+//					estateReportField.setStatus("Approved");
+//				} else if ("RG".equals((String) row[3])) {
+//					estateReportField.setStatus("Registered");
+//				} else if ("RT".equals((String) row[3])) {
+//					estateReportField.setStatus("Return");
+//				} else {
+//					estateReportField.setStatus("Verified");
+//				}
+//				estateReportField.setRemarks((String) row[4]);
+//
+//				estateReportFields.add(estateReportField);
+//			}
+//			
+//			for (EstateReportField estateReportField : estateReportFields) {
+//				System.out.println(estateReportField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfEstate_Excel.jrxml"));
+//			
+//			// Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(estateReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();	
+//			parameters.put("total_records", estateReportFields.size());
+//			parameters.put("ListOfEstate_DataSet", dataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfEstate_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
 //			
 //			System.out.println("\nReport Generated Successfully at "+outputPath);
 			
-//			==========================================Breach Report Details==========================================
-			List<Object[]> result = session.createSQLQuery("select brm.prev_cust_code, brm.party_name, brm.area, brm.rr_no, brm.tenure,\r\n"
-					+ "brm.contractual_rent_on, brm.addl_rent, brm.sanctioned_user,\r\n"
-					+ "brm.ren_earning, brm.rent_paid_amount_txt\r\n"
-					+ "from breach_rpt_mbpt brm\r\n"
-					+ "where brm.mbpt_breach_id = '7588';").list();
+//			=====================================List of Plot Excel=====================================
+//			List<Object[]> result = session.createSQLQuery("select p.plot_code, d.div_name, p.unit_id, e.estate_name, p.plot_id , p.rr_no , p.street_no , p.main_structure_name ,p.mcgm_allotted_no , p.mcgm_ward_name , p.\"location\" , p.area , p.status , \r\n"
+//					+ "p.customer_code, p.from_date , p.to_date \r\n"
+//					+ "from plot p \r\n"
+//					+ "LEFT JOIN division d on p.div_id  = d.div_id \r\n"
+//					+ "LEFT JOIN estate e on p.estate_id  = e.estate_id").list();
+//			
+//			List<PlotReportField> plotReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//
+//				PlotReportField plotReportField = new PlotReportField();
+//
+//				plotReportField.setPlot_code((String) row[0]);
+//				plotReportField.setDiv_name((String) row[1]);
+//				plotReportField.setUnit_id((int) row[2]);
+//				plotReportField.setEstate_name((String) row[3]);
+//				plotReportField.setPlot_id((int) row[4]);
+//				plotReportField.setRr_no((String) row[5]);
+//				plotReportField.setStreet_no((String) row[6]);
+//				plotReportField.setMain_structure_name((String) row[7]);
+//				plotReportField.setMcgm_allotted_no((String) row[8]);
+//				plotReportField.setMcgm_ward_name((String) row[9]);
+//				plotReportField.setLocation((String) row[10]);
+//				plotReportField.setArea((BigDecimal) row[11]);
+//				if ("A".equals((String) row[12])) {
+//					plotReportField.setStatus("Approved");
+//				} else if ("RG".equals((String) row[12])) {
+//					plotReportField.setStatus("Registered");
+//				} else if ("RT".equals((String) row[12])) {
+//					plotReportField.setStatus("Return");
+//				} else {
+//					plotReportField.setStatus("Verified");
+//				}
+//				plotReportField.setCustomer_code((String) row[13]);
+//				plotReportField.setFrom_date((Date) row[14]);
+//				plotReportField.setTo_date((Date) row[15]);
+//				plotReportField.setCustomer_name("");
+//
+//				plotReportFields.add(plotReportField);
+//			}
+//			
+//			for (PlotReportField plotReportField : plotReportFields) {
+//				System.out.println(plotReportField);
+//			}
+//			
+//			//jasper report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfPlot_Excel.jrxml"));
+//			
+//			//Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(plotReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", plotReportFields.size());
+//			parameters.put("ListOfPlots_DataSet", dataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfPlot_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
 			
-			List<MultipleBreachReportViewFields> multipleBreachReportViewFields = new ArrayList<>();
+//			 =====================================List of Letout Excel=====================================
+//			List<Object[]> result = session.createSQLQuery("SELECT l.plot_id, l.let_out_name, l.letout_category_id, l.layout_type_id, l.prev_cust_code, l.status, l.remarks, l.let_out_no,\r\n"
+//					+ "l.cess_building, l.cess_building_no, l.allotment_status, l.from_date, l.to_date, l.sor, l.is_mbpt_prop, l.building_name, l.land_area, l.dept_id, l.struct_type_id, l.amount,\r\n"
+//					+ "l.is_higher_fee_applicable, l.percent_home_occupant, l.letout_from_date, l.prev_letout_id, l.area, l.year_of_constr, l.home_occupation, l.non_home_occupation, l.billable_area, l.surrender_status \r\n"
+//					+ "FROM let_out l;").list();
+//			
+//			List<LetOut> letoutReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				LetOut letOut = new LetOut();
+//				
+//				letOut.setPlot_id((int) row[0]);
+//				letOut.setLet_out_name((String) row[1]);
+//				letOut.setLetout_category_id((String) row[2]);
+//				letOut.setLayout_type_id((String) row[3]);
+//				letOut.setPrev_cust_code((String) row[4]);
+//				if ("A".equals((String) row[5])) {
+//					letOut.setStatus("Approved");
+//				} else if ("RG".equals((String) row[5])) {
+//					letOut.setStatus("Registered");
+//				} else if ("RT".equals((String) row[5])) {
+//					letOut.setStatus("Return");
+//				} else {
+//					letOut.setStatus("Verified");
+//				}
+//				letOut.setRemarks((String) row[6]);
+//				letOut.setLet_out_no((String) row[7]);
+//				letOut.setCess_building((Boolean) row[8]);
+//				letOut.setCess_building_no((String) row[9]);
+//				letOut.setAllotment_status((String) row[10]);
+//				letOut.setFrom_date((Date) row[11]);
+//				letOut.setTo_date((Date) row[12]);
+//				letOut.setSor((String) row[13]);
+//				letOut.setIs_mbpt_prop((Boolean) row[14]);
+//				letOut.setBuilding_name((String) row[15]);
+//				letOut.setLand_area((BigDecimal) row[16]);
+//				letOut.setDept_id((int) row[17]);
+//				letOut.setStruct_type_id((int) row[18]);
+//				letOut.setAmount((BigDecimal) row[19]);
+//				letOut.setIs_higher_fee_applicable((Boolean) row[20]);
+//				letOut.setPercent_home_occupant((BigDecimal) row[21]);
+//				letOut.setLetout_from_date((Date) row[22]);
+//				letOut.setPrev_letout_id((Date) row[23]);	
+//				letOut.setArea((String) row[24]);
+//				letOut.setYear_of_constr((String) row[25]);
+//				letOut.setHome_occupation((BigInteger) row[26]);
+//				letOut.setNon_home_occupation((BigInteger) row[27]);
+//				letOut.setBillable_area((String) row[28]);
+//				letOut.setSurrender_status((String) row[29]);
+//				
+//				letoutReportFields.add(letOut);
+//			}
+//			
+//			for (LetOut letOut : letoutReportFields) {
+//				System.out.println(letOut);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfLetOut_Excel.jrxml"));
+//			
+//			// Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(letoutReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", letoutReportFields.size());
+////			parameters.put("ListOfLetOut_DataSet", dataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfLetOut_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			 =====================================List of WayLeave Excel=====================================
+//			List<Object[]> result = session.createSQLQuery("Select w.origin_estate_id, w.terminating_estate_id, w.wyl_code, \r\n"
+//					+ "w.wyl_type_id, w.status, w.unit_id, w.wyl_date, w.draw_number, \r\n"
+//					+ "w.tr_no, w.tr_year \r\n"
+//					+ "from WayLeave w").list();
+//			
+//			List<WayLeave> wayLeaveReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//
+//				WayLeave wayLeave = new WayLeave();
+//
+//				wayLeave.setOrigin_estate_id((int) row[0]);
+//				wayLeave.setTerminating_estate_id((int) row[1]);
+//				wayLeave.setWyl_code((String) row[2]);
+//				wayLeave.setWyl_type_id((String) row[3]);
+//				if ("A".equals((String) row[4])) {
+//					wayLeave.setStatus("Approved");
+//				} else if ("RG".equals((String) row[4])) {
+//					wayLeave.setStatus("Registered");
+//				} else if ("RT".equals((String) row[4])) {
+//					wayLeave.setStatus("Return");
+//				} else {
+//					wayLeave.setStatus("Verified");
+//				}
+//				wayLeave.setUnit_id((String) row[5]);
+//				wayLeave.setWyl_date((Date) row[6]);
+//				wayLeave.setDraw_number((String) row[7]);
+//				wayLeave.setTr_no((String) row[8]);
+//				wayLeave.setTr_year((String) row[9]);
+//
+//				wayLeaveReportFields.add(wayLeave);
+//			}
+//			
+//			for (WayLeave wayLeave : wayLeaveReportFields) {
+//				System.out.println(wayLeave);
+//			}
+//			
+//            // Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfWayLeave_Excel.jrxml"));
+//			
+//			// Dummy data source
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(wayLeaveReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", wayLeaveReportFields.size());
+////			parameters.put("ListOfWayleave_DataSet", dataSource);
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfWayLeave_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			=========================================List of Inspection excel=========================================
+//			List<Object[]> result = session.createSQLQuery("select ir.customer_code, ir.inspection_date, l.let_out_name, \r\n"
+//					+ "au.\"name\", ir.status \r\n"
+//					+ "from inspection_rpt ir\r\n"
+//					+ "left join \r\n"
+//					+ "let_out l on l.let_out_id = ir.let_out_id\r\n"
+//					+ "left join\r\n"
+//					+ "admin_users au on ir.admin_id = au.admin_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on u.unit_id = ir.unit_id\r\n"
+//					+ "where ir.unit_id = 1").list();
+//			
+//			List<ListOfInspectionReportFields> listOfInspectionReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfInspectionReportFields listOfInspectionReportField = new ListOfInspectionReportFields();
+//				
+//				listOfInspectionReportField.setCustomer_code((String) row[0]);
+//				listOfInspectionReportField.setInspection_date((Date) row[1]);
+//				listOfInspectionReportField.setLet_out_name((String) row[2]);
+//				listOfInspectionReportField.setName((String) row[3]);
+////				listOfInspectionReportField.setStatus((String) row[4]);
+//				if("A".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					listOfInspectionReportField.setStatus("Registered");
+//				}else if ("S".equals((String) row[4])){
+//					listOfInspectionReportField.setStatus("Submitted");
+//				}
+//				
+//				listOfInspectionReportFields.add(listOfInspectionReportField);
+//				
+//			}
+//			
+//			for (ListOfInspectionReportFields listOfInspectionReportField : listOfInspectionReportFields) {
+//				System.out.println(listOfInspectionReportField);
+//			}
+//			
+//			// Jasper Report
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfInspection_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfInspectionReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfInspectionReportFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfInspection_Excel.xlsx";
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			===========================================================List Of Other Than Estate Inspection Report excel===========================================================
+//			List<Object[]> result = session.createSQLQuery("select d.div_name, u.unit_code, e.estate_name, oir.plot_location, l.let_out_name, mit.insp_type, oir.inspection_date,\r\n"
+//					+ "oir.observation_date, oir.person_at_site\r\n"
+//					+ "from  other_inspection_rpt oir\r\n"
+//					+ "left join\r\n"
+//					+ "estate e on oir.estate_id = e.estate_id\r\n"
+//					+ "left join\r\n"
+//					+ "admin_users au on oir.admin_id = au.admin_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on u.unit_id = e.unit_id\r\n"
+//					+ "left join \r\n"
+//					+ "division d on d.div_id = u.div_id\r\n"
+//					+ "left join \r\n"
+//					+ "inspection_rpt ir on ir.inspection_date = oir.inspection_date\r\n"
+//					+ "left join \r\n"
+//					+ "m_inspection_type mit on ir.insp_type_id = mit.insp_type_id\r\n"
+//					+ "left join\r\n"
+//					+ "let_out l on ir.let_out_id = l.let_out_id\r\n"
+//					+ "order by oir.inspection_date asc;").list();
+//			
+//			List<ListOfOtherThanEstateInspectionReport> listOfOtherThanEstateInspectionReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfOtherThanEstateInspectionReport listOfOtherThanEstateInspectionReport = new ListOfOtherThanEstateInspectionReport();
+//				
+//				listOfOtherThanEstateInspectionReport.setDiv_name((String) row[0]);
+//				listOfOtherThanEstateInspectionReport.setUnit_code((String) row[1]);
+//				listOfOtherThanEstateInspectionReport.setEstate_name((String) row[2]);
+//				listOfOtherThanEstateInspectionReport.setPlot_location((String) row[3]);
+//				listOfOtherThanEstateInspectionReport.setLet_out_name((String) row[4]);
+//				listOfOtherThanEstateInspectionReport.setInsp_type((String) row[5]);
+//				listOfOtherThanEstateInspectionReport.setInspection_date((Date) row[6]);
+//				listOfOtherThanEstateInspectionReport.setObservation_date((Date) row[7]);
+//				listOfOtherThanEstateInspectionReport.setPerson_at_site((String) row[8]);
+//				
+//				listOfOtherThanEstateInspectionReportFields.add(listOfOtherThanEstateInspectionReport);
+//			}
+//			
+//			for (ListOfOtherThanEstateInspectionReport listOfOtherThanEstateInspectionReport : listOfOtherThanEstateInspectionReportFields) {
+//				System.out.println(listOfOtherThanEstateInspectionReport);
+//			}
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfOtherThanEstateInspection_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfOtherThanEstateInspectionReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfOtherThanEstateInspectionReportFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfOtherThanEstateInspectionReport.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			====================================================List Of Survey Excel====================================================
+			
+//			List<Object[]> result = session.createSQLQuery("select sr.survey_date, sr.customer_code, p.rr_no, l.let_out_name,\r\n"
+//					+ "sr.status, sr.forwarded_to\r\n"
+//					+ "from survey_rpt sr\r\n"
+//					+ "left join\r\n"
+//					+ "let_out l on l.let_out_id = sr.let_out_id\r\n"
+//					+ "left join \r\n"
+//					+ "plot p on l.plot_id = p.plot_id\r\n"
+//					+ "left join\r\n"
+//					+ "unit u on p.unit_id = u.unit_id\r\n"
+//					+ "where u.unit_id = 1").list();
+//			
+//			List<ListOfSurveyReportFields> listOfSurveyReportFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				ListOfSurveyReportFields listOfSurveyReportField = new ListOfSurveyReportFields();
+//				
+//				listOfSurveyReportField.setSurvey_date((Date) row[0]);
+//				listOfSurveyReportField.setCustomer_code((String) row[1]);
+//				listOfSurveyReportField.setRr_no((String) row[2]);
+//				listOfSurveyReportField.setLet_out_name((String) row[3]);
+//				if("A".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					listOfSurveyReportField.setStatus("Registered");
+//				}else if ("S".equals((String) row[4])){
+//					listOfSurveyReportField.setStatus("Submitted");
+//				}
+//				listOfSurveyReportField.setForwarded_to((String) row[5]);
+//				
+//				listOfSurveyReportFields.add(listOfSurveyReportField);
+//			}
+//			
+//			for (ListOfSurveyReportFields listOfSurveyReportField : listOfSurveyReportFields) {
+//				System.out.println(listOfSurveyReportField);
+//			}
+//			
+//			System.out.println("Total Records : "+listOfSurveyReportFields.size());
+//			
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfSurveyReport_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfSurveyReportFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfSurveyReportFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfSurveyReport_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			====================================================List Of Multiple Breach Report Excel====================================================
+//			List<Object[]> result = session
+//					.createSQLQuery("select brm.sanctioned_user, brm.prev_cust_code, brm.ren_earning, \r\n"
+//							+ "brm.rent_paid_amount_txt, brm.party_name, brm.amount\r\n" + "from breach_rpt_mbpt brm;")
+//					.list();
+////
+//			List<ListOfMultipleBreachReportFields> listOfMultipleBreachReportFields = new ArrayList<>();
+////
+//			for (Object[] row : result) {
+////
+//				ListOfMultipleBreachReportFields listOfMultipleBreachReportField = new ListOfMultipleBreachReportFields();
+////
+//				listOfMultipleBreachReportField.setSanctioned_user((String) row[0]);
+//				listOfMultipleBreachReportField.setPrev_cust_code((String) row[1]);
+//				listOfMultipleBreachReportField.setRen_earning((String) row[2]);
+//				listOfMultipleBreachReportField.setRent_paid_amount_txt((String) row[3]);
+//				listOfMultipleBreachReportField.setParty_name((String) row[4]);
+//				listOfMultipleBreachReportField.setAmount((String) row[5]);
+////
+//				listOfMultipleBreachReportFields.add(listOfMultipleBreachReportField);
+//			}
+////
+//			for (ListOfMultipleBreachReportFields listOfMultipleBreachReportField : listOfMultipleBreachReportFields) {
+//				System.out.println(listOfMultipleBreachReportField);
+//			}
+//
+////			 Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfMultipleBreachReport_Excel.jrxml"));
+////			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", listOfMultipleBreachReportFields.size());
+////			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(listOfMultipleBreachReportFields);
+////			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+////			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMultipleBreachReport_Excel.xlsx";
+////			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+////			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			===============================MORTGAGE OF LEASEHOLD RIGHTS APPLICATION LIST Excel===============================
+//			List<Object[]> mainResult = session.createSQLQuery("select afm.application_no, afm.update_timestamp,afm.tenancy_id, \r\n"
+//					+ "afm.plot_no, afm.mortgagor, afm.mortgagee, afm.form_status\r\n"
+//					+ "from applications_for_mortgage afm\r\n"
+//					+ "order by afm.applicant_id desc;").list();
+//			
+//			List<MortgageOfLeaseholdRightsApplicationListFields> mortgageOfLeaseholdRightsApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : mainResult) {
+//				
+//				MortgageOfLeaseholdRightsApplicationListFields mortgageOfLeaseholdRightsApplicationListField = new MortgageOfLeaseholdRightsApplicationListFields();
+//				
+//				mortgageOfLeaseholdRightsApplicationListField.setApplication_no((String) row[0]);
+//				mortgageOfLeaseholdRightsApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				mortgageOfLeaseholdRightsApplicationListField.setTenancy_id((String) row[2]);
+//				mortgageOfLeaseholdRightsApplicationListField.setPlot_no((String) row[3]);
+//				mortgageOfLeaseholdRightsApplicationListField.setMortgagor((String) row[4]);
+//				mortgageOfLeaseholdRightsApplicationListField.setMortgagee((String) row[5]);
+////				mortgageOfLeaseholdRightsApplicationListField.setForm_status((String) row[6]);
+//				if("APPR".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[6])) {
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[6])){
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[6])){
+//					mortgageOfLeaseholdRightsApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				mortgageOfLeaseholdRightsApplicationListFields.add(mortgageOfLeaseholdRightsApplicationListField);
+//			}
+//			
+//			for (MortgageOfLeaseholdRightsApplicationListFields mortgageOfLeaseholdRightsApplicationListField : mortgageOfLeaseholdRightsApplicationListFields) {
+//				System.out.println(mortgageOfLeaseholdRightsApplicationListField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfMortgageOfLeaseholdRightsApplication_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mortgageOfLeaseholdRightsApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", mortgageOfLeaseholdRightsApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfMortgageOfLeaseholdRightsApplication_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			====================================Breach regularization application List Excel====================================
+//			List<Object[]> result = session.createSQLQuery("select abr.application_no, abr.update_timestamp, abr.tenancy_id,\r\n"
+//					+ "abr.plot_no, abr.form_status\r\n"
+//					+ "from appl_for_breach_regularization abr;").list();
+//			
+//			List<BreachRegularizationApplicationListFields> breachRegularizationApplicationListFields = new ArrayList<>();
+//			for (Object[] row : result) {
+//				
+//				BreachRegularizationApplicationListFields breachRegularizationApplicationListField = new BreachRegularizationApplicationListFields();
+//				
+//				breachRegularizationApplicationListField.setApplication_no((String) row[0]);
+//				breachRegularizationApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				breachRegularizationApplicationListField.setTenancy_id((String) row[2]);
+//				breachRegularizationApplicationListField.setPlot_no((String) row[3]);
+////				breachRegularizationApplicationListField.setForm_status((String) row[4]);
+//				if("APPR".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[4])) {
+//					breachRegularizationApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[4])){
+//					breachRegularizationApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[4])){
+//					breachRegularizationApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				breachRegularizationApplicationListFields.add(breachRegularizationApplicationListField);
+//			}
+//			
+//			for (BreachRegularizationApplicationListFields breachRegularizationApplicationListField : breachRegularizationApplicationListFields) {
+//				System.out.println(breachRegularizationApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfBreachRegularizationApplication_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(breachRegularizationApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", breachRegularizationApplicationListFields.size());
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfBreachRegularizationApplication_Excel.xlsx";
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================Monsoon Shed Application List Excel==========================================
+//			List<Object[]> result = session.createSQLQuery("select amp.application_no, amp.update_timestamp, amp.tenancy_id,\r\n"
+//					+ "amp.plot_no, amp.estate, amp.\"location\", amp.form_status\r\n"
+//					+ "from appl_for_mansoon_protech amp").list();
+//			
+//			List<MonsoonShedApplicationListFields> monsoonShedApplicationListFields = new ArrayList<>();
+//			for (Object[] row : result) {
+//				
+//				MonsoonShedApplicationListFields monsoonShedApplicationListField = new MonsoonShedApplicationListFields();
+//				
+//				monsoonShedApplicationListField.setApplication_no((String) row[0]);
+//				monsoonShedApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				monsoonShedApplicationListField.setTenancy_id((String) row[2]);
+//				monsoonShedApplicationListField.setPlot_no((String) row[3]);
+//				monsoonShedApplicationListField.setEstate((String) row[4]);
+//				monsoonShedApplicationListField.setLocation((String) row[5]);
+////				monsoonShedApplicationListField.setForm_status((String) row[6]);
+//				if("APPR".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[6])) {
+//					monsoonShedApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[6])){
+//					monsoonShedApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[6])){
+//					monsoonShedApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				monsoonShedApplicationListFields.add(monsoonShedApplicationListField);
+//			}
+//			
+//			for (MonsoonShedApplicationListFields monsoonShedApplicationListField : monsoonShedApplicationListFields) {
+//				System.out.println(monsoonShedApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfMonsoonShedApplication_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(monsoonShedApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", monsoonShedApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListofMonsoonShedApplication_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			===================================Temporary Use Permission Application List Excel===================================
+//			List<Object[]> result = session.createSQLQuery("select afc.application_no, afc.update_timestamp, afc.applicant_name,\r\n"
+//					+ "afc.area, afc.estate, afc.form_status\r\n"
+//					+ "from appl_for_casualoccupation afc").list();
+//			
+//			List<TemporaryUsePermissionApplicationListFields> temporaryUsePermissionApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				TemporaryUsePermissionApplicationListFields temporaryUsePermissionApplicationListField = new TemporaryUsePermissionApplicationListFields();
+//				
+//				temporaryUsePermissionApplicationListField.setApplication_no((String) row[0]);
+//				temporaryUsePermissionApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				temporaryUsePermissionApplicationListField.setApplicant_name((String) row[2]);
+//				temporaryUsePermissionApplicationListField.setArea((BigDecimal) row[3]);
+//				temporaryUsePermissionApplicationListField.setEstate((String) row[4]);
+////				temporaryUsePermissionApplicationListField.setForm_status((String) row[5]);
+//				if("APPR".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Approved");
+//				}else if ("V".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Verified");
+//				}else if ("RG".equals((String) row[5])) {
+//					temporaryUsePermissionApplicationListField.setForm_status("Registered");
+//				}else if ("Su".equals((String) row[5])){
+//					temporaryUsePermissionApplicationListField.setForm_status("Submitted");
+//				}else if ("RT".equals((String) row[5])){
+//					temporaryUsePermissionApplicationListField.setForm_status("Returned");
+//				}
+//				
+//				temporaryUsePermissionApplicationListFields.add(temporaryUsePermissionApplicationListField);
+//			}
+//			
+//			for (TemporaryUsePermissionApplicationListFields temporaryUsePermissionApplicationListField : temporaryUsePermissionApplicationListFields) {
+//				System.out.println(temporaryUsePermissionApplicationListField);
+//			}
+//			
+//			// Jasper Report
+//			JasperReport compiledreport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfTemporaryUsePermissionApplication_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(temporaryUsePermissionApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", temporaryUsePermissionApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledreport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfTemporaryUsePermissionApplication_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			============================================TENANTABLE Repairs Application List============================================
+//			List<Object[]> result = session.createSQLQuery("select atr.application_no, atr.update_timestamp, atr.tenancy_id, atr.listofrepair,\r\n"
+//					+ "atr.\"year\", atr.form_status\r\n"
+//					+ "from appl_for_tenant_repair atr").list();
+//			
+//			List<TenantableRepairsApplicationListFields> tenantableRepairsApplicationListFields = new ArrayList<>();
+//			
+//			for (Object[] row : result) {
+//				
+//				TenantableRepairsApplicationListFields tenantableRepairsApplicationListField = new TenantableRepairsApplicationListFields();
+//				
+//				tenantableRepairsApplicationListField.setApplication_no((String) row[0]);
+//				tenantableRepairsApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+//				tenantableRepairsApplicationListField.setTenancy_id((String) row[2]);
+//				tenantableRepairsApplicationListField.setListofrepair((String) row[3]);
+//				tenantableRepairsApplicationListField.setYear((String) row[4]);
+//				tenantableRepairsApplicationListField.setForm_status((String) row[5]);
+//				
+//				tenantableRepairsApplicationListFields.add(tenantableRepairsApplicationListField);
+//			}
+//			
+//			for (TenantableRepairsApplicationListFields tenantableRepairsApplicationListField : tenantableRepairsApplicationListFields) {
+//				System.out.println(tenantableRepairsApplicationListField);
+//			}
+//			
+//			// Jasper Report 
+//			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfTenantableRepairsApplication_Excel.jrxml"));
+//			
+//			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tenantableRepairsApplicationListFields);
+//			
+//			Map<String, Object> parameters = new HashMap<>();
+//			parameters.put("total_records", tenantableRepairsApplicationListFields.size());
+//			
+//			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
+//			
+//			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfTenantableRepairsApplication_Excel.xlsx";
+//			
+//			JRXlsxExporter exporter = new JRXlsxExporter();
+//			
+//			exporter.setExporterInput(new SimpleExporterInput(report));
+//			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+//			
+//			exporter.exportReport();
+//			
+//			System.out.println("\nReport Generated Successfully at "+outputPath);
+			
+//			==========================================Grant Fresh Lease Application List==========================================
+			List<Object[]> result = session.createSQLQuery("select ag.application_no, ag.update_timestamp, ag.estate,\r\n"
+					+ "ag.form_status\r\n"
+					+ "from applications_for_grantlease ag").list();
+			
+			List<GrantFreshLeaseApplicationListFields> grantFreshLeaseApplicationListFields = new ArrayList<>();
 			
 			for (Object[] row : result) {
 				
-				MultipleBreachReportViewFields multipleBreachReportViewField = new MultipleBreachReportViewFields();
+				GrantFreshLeaseApplicationListFields grantFreshLeaseApplicationListField = new GrantFreshLeaseApplicationListFields();
 				
-				multipleBreachReportViewField.setPrev_cust_code((String) row[0]);
-				multipleBreachReportViewField.setParty_name((String) row[1]);
-				multipleBreachReportViewField.setAddl_rent((String) row[2]);
-				multipleBreachReportViewField.setRr_no((String) row[3]);
-				multipleBreachReportViewField.setTenure((String) row[4]);
-				multipleBreachReportViewField.setContractual_rent_on((Timestamp) row[5]);
-				multipleBreachReportViewField.setAddl_rent((String) row[6]);
-				multipleBreachReportViewField.setSanctioned_user((String) row[7]);
-				multipleBreachReportViewField.setRen_earning((String) row[8]);
-				multipleBreachReportViewField.setRent_paid_amount_txt((String) row[9]);
+				grantFreshLeaseApplicationListField.setApplication_no((String) row[0]);
+				grantFreshLeaseApplicationListField.setUpdate_timestamp((Timestamp) row[1]);
+				grantFreshLeaseApplicationListField.setEstate((String) row[2]);
+				grantFreshLeaseApplicationListField.setForm_status((String) row[3]);
 				
-				multipleBreachReportViewFields.add(multipleBreachReportViewField);
+				grantFreshLeaseApplicationListFields.add(grantFreshLeaseApplicationListField);
 			}
 			
-			for (MultipleBreachReportViewFields multipleBreachReportViewField : multipleBreachReportViewFields) {
-				System.out.println(multipleBreachReportViewField);
+			for (GrantFreshLeaseApplicationListFields grantFreshLeaseApplicationListField : grantFreshLeaseApplicationListFields) {
+				System.out.println(grantFreshLeaseApplicationListField);
 			}
 			
-			// Jasper Report
-			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/MultipleBreachReportView.jrxml"));
+			// Jasper report 
+			JasperReport compiledReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/jasper/excel/ListOfGrantFreshLeaseApplication_Excel.jrxml"));
 			
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(multipleBreachReportViewFields);
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(grantFreshLeaseApplicationListFields);
 			
 			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("total_records", grantFreshLeaseApplicationListFields.size());
 			
 			JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, dataSource);
 			
-			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\MultipleBreachReportView.pdf";
+			String outputPath = "F:\\C-DAC Mumbai Internship\\8th week\\Generated_Reports\\ListOfGrantFreshLeaseApplication_Excel.xlsx";
 			
-			JasperExportManager.exportReportToPdfFile(report, outputPath);
+			JRXlsxExporter exporter = new JRXlsxExporter();
+			
+			exporter.setExporterInput(new SimpleExporterInput(report));
+			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputPath));
+			
+			exporter.exportReport();
 			
 			System.out.println("\nReport Generated Successfully at "+outputPath);
 			

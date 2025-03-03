@@ -2,30 +2,30 @@ package com.jasperRport.entities;
 
 public class EstateReportField {
 	
-	private String estateCode;
-	private String estateName;
-	private int unitId;
+	private String estate_code;
+	private String estate_name;
+	private int unit_id;
 	private String status;
 	private String custodian;
-	private String remark;
+	private String remarks;
 	
-	public String getEstateCode() {
-		return estateCode;
+	public String getEstate_code() {
+		return estate_code;
 	}
-	public void setEstateCode(String estateCode) {
-		this.estateCode = estateCode;
+	public void setEstate_code(String estate_code) {
+		this.estate_code = estate_code;
 	}
-	public String getEstateName() {
-		return estateName;
+	public String getEstate_name() {
+		return estate_name;
 	}
-	public void setEstateName(String estateName) {
-		this.estateName = estateName;
+	public void setEstate_name(String estate_name) {
+		this.estate_name = estate_name;
 	}
-	public int getUnitId() {
-		return unitId;
+	public int getUnit_id() {
+		return unit_id;
 	}
-	public void setUnitId(int unitId) {
-		this.unitId = unitId;
+	public void setUnit_id(int unit_id) {
+		this.unit_id = unit_id;
 	}
 	public String getStatus() {
 		return status;
@@ -39,16 +39,16 @@ public class EstateReportField {
 	public void setCustodian(String custodian) {
 		this.custodian = custodian;
 	}
-	public String getRemark() {
-		return remark;
+	public String getRemarks() {
+		return remarks;
 	}
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 	
 	@Override
 	public String toString() {
-		return "EstateReportField [estateCode=" + estateCode + ", estateName=" + estateName + ", unitId=" + unitId
-				+ ", status=" + status + ", custodian=" + custodian + ", remark=" + remark + "]";
+		return "EstateReportField [estate_code=" + estate_code + ", estate_name=" + estate_name + ", unit_id=" + unit_id
+				+ ", status=" + status + ", custodian=" + custodian + ", remarks=" + remarks + "]";
 	}
 }

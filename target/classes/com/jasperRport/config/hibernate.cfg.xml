@@ -7,7 +7,7 @@
 	<session-factory>
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/MBPT_DB</property>
-		<property name="connection.username">postgres</property>
+		<property name="connection.username">postgres</property> 
 		<property name="connection.password">9604096593</property>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>

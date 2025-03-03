@@ -99,13 +99,13 @@ public class LetOut {
     private String year_of_constr;
 	
 	@Column(name = "home_occupation")
-    private String home_occupation;
+    private BigInteger home_occupation;
 	
 	@Column(name = "non_home_occupation")
     private BigInteger non_home_occupation;
 	
 	@Column(name = "billable_area")
-    private BigInteger billable_area;
+    private String billable_area;
 	
 	@Column(name = "surrender_status", length = 20)
     private String surrender_status;
@@ -326,11 +326,11 @@ public class LetOut {
 		this.year_of_constr = year_of_constr;
 	}
 
-	public String getHome_occupation() {
+	public BigInteger getHome_occupation() {
 		return home_occupation;
 	}
 
-	public void setHome_occupation(String home_occupation) {
+	public void setHome_occupation(BigInteger home_occupation) {
 		this.home_occupation = home_occupation;
 	}
 
@@ -342,11 +342,11 @@ public class LetOut {
 		this.non_home_occupation = non_home_occupation;
 	}
 
-	public BigInteger getBillable_area() {
+	public String getBillable_area() {
 		return billable_area;
 	}
 
-	public void setBillable_area(BigInteger billable_area) {
+	public void setBillable_area(String billable_area) {
 		this.billable_area = billable_area;
 	}
 
